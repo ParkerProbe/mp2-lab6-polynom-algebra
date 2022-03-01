@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-02-28T14:53:33.551Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36 Edg/98.0.1108.62" etag="YIi4BsDnp4tTeIw3XKUt" version="16.6.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-01T13:38:59.577Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36 Edg/98.0.1108.62" etag="19LPQE40Ya7M6OmB1JPt" version="16.6.4" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
-    <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1153" dy="643" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -88,7 +88,7 @@
             <mxPoint x="453.75" y="145" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-22" value="Агрегация в виде массива" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iuW7hz9HEa-le5su57v6-31">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-22" value="Агрегация в виде массива" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="iuW7hz9HEa-le5su57v6-31" vertex="1" connectable="0">
           <mxGeometry x="-0.2126" y="-5" relative="1" as="geometry">
             <mxPoint x="5" y="7" as="offset" />
           </mxGeometry>
@@ -102,7 +102,7 @@
             <mxPoint x="707.48" y="309.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-10" value="Агрегирует дерево TableString&#39;ов" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_brPIxiP5qlf1YPKhSUV-8">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-10" value="Агрегирует список TableString&#39;ов" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_brPIxiP5qlf1YPKhSUV-8" vertex="1" connectable="0">
           <mxGeometry x="-0.1785" y="2" relative="1" as="geometry">
             <mxPoint x="-24" y="15" as="offset" />
           </mxGeometry>
@@ -128,7 +128,7 @@
             <mxPoint x="494.5999999999999" y="296.15" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_brPIxiP5qlf1YPKhSUV-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.843;exitY=0.915;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.261;entryY=0.048;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="iuW7hz9HEa-le5su57v6-15" target="AkKtNoqjXA9DniaEXeEG-18" edge="1">
+        <mxCell id="_brPIxiP5qlf1YPKhSUV-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.261;entryY=0.048;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="iuW7hz9HEa-le5su57v6-15" target="AkKtNoqjXA9DniaEXeEG-18" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="538.2012195121954" y="236.55487804878032" as="sourcePoint" />
             <mxPoint x="675" y="295" as="targetPoint" />
@@ -152,39 +152,45 @@
             <mxPoint x="533.73" y="310.35" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-8" value="Агрегирует дерево TableString&#39;ов" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_brPIxiP5qlf1YPKhSUV-27">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-8" value="Агрегирует дерево TableString&#39;ов" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="_brPIxiP5qlf1YPKhSUV-27" vertex="1" connectable="0">
           <mxGeometry x="-0.2483" y="3" relative="1" as="geometry">
             <mxPoint x="73" y="-37" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-7" value="Interface" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="170" width="75" height="50" as="geometry" />
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-7" value="Interface" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+          <mxGeometry x="20" y="540" width="75" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-12" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="AkKtNoqjXA9DniaEXeEG-19" target="_brPIxiP5qlf1YPKhSUV-9">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-12" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="AkKtNoqjXA9DniaEXeEG-19" target="_brPIxiP5qlf1YPKhSUV-9" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="910" y="240" as="sourcePoint" />
             <mxPoint x="990" y="290" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-13" value="Список Monom&#39;ов" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="AkKtNoqjXA9DniaEXeEG-12">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-13" value="Список Monom&#39;ов" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="AkKtNoqjXA9DniaEXeEG-12" vertex="1" connectable="0">
           <mxGeometry x="-0.4403" y="-1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-16" value="Возможен вариант включения объявления класса Monom в Polinom" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-16" value="Возможен вариант включения объявления класса Monom в Polinom" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="837.5" y="360" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-17" value="TreeTable" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-17" value="TreeTable" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
           <mxGeometry x="457.5" y="295" width="75" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-18" value="ListTable" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-18" value="ListTable" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
           <mxGeometry x="640" y="295" width="75" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-19" value="TList" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-19" value="TList" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
           <mxGeometry x="862.5" y="170" width="75" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="AkKtNoqjXA9DniaEXeEG-23" value="Также предлагаю названия классов писать без T вначале" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="AkKtNoqjXA9DniaEXeEG-23" value="Также предлагаю названия классов писать без T вначале" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="611.25" y="410" width="132.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pSLm4igQXvGaD_Qqo5TO-1" value="Желательно включение объявления Node-структур в классы, их использующие" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="80" width="120" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="pSLm4igQXvGaD_Qqo5TO-2" value="Есть желание через этот класс статически вызывать методы типа Show для таблиц, но может потребоваться дружественность" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="131.87" y="530" width="158.13" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
