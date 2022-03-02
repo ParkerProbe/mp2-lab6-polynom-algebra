@@ -9,10 +9,9 @@ using std::string;
 
 struct TableString
 {
-    std::string key_;
-	  std::string poly_string_;
-	  Polynom poly_;
-
+    std::string key;
+    std::string poly_string;
+    Polynom poly;
 };
 
 

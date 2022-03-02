@@ -8,30 +8,30 @@
 class EqException
 {
 private:
-  void operator=(const EqException& other) = delete;
+    void operator=(const EqException& other) = delete;
 
 public:
-  std::string comment_;
+    std::string comment_;
 
-  enum error_code
-  {
-    TEST
-  } error_;
+    enum error_code
+    {
+        TEST
+    } error_;
 
-  EqException(error_code _error, const std::string comment = "") :
-    comment_(comment), error_(error)
-  {}
-  ~EqException()= default;
+    EqException(error_code error, const std::string comment = "")
+        : comment_(comment), error_(error)
+    {}
+    ~EqException()= default;
 
-  const std::string& GetComment() const
-  {
-    return comment_;
-  }
+    const std::string& GetComment() const
+    {
+        return comment_;
+    }
 
-  inline int GetError() const
-  {
-    return error_;
-  }
+    inline int GetError() const
+    {
+        return error_;
+    }
 };
 
 

@@ -14,13 +14,13 @@
 class Monom
 {
 private:
-  double coef;
-  int degree;
+  double coef_;
+  int degree_;
 public:
-    Monom() : coef(0.0), degree(0)
+    Monom() : coef_(0.0), degree_(0)
       {}
 
-    Monom(double _coef, int _degree) : coef(_coef), degree(_degree)
+    Monom(double coef, int degree) : coef_(coef), degree_(degree)
       {}
 
     Monom(const Monom& other) = default;
@@ -39,12 +39,12 @@ public:
 
     inline int GetDegree() const
     {
-      return degree;
+      return degree_;
     }
 
     inline double GetCoef() const
     {
-      return coef;
+      return coef_;
     }
   };
 
