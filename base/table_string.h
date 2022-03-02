@@ -17,5 +17,4 @@ struct TableString
 
 
 
-
 #endif // _LIST_H_

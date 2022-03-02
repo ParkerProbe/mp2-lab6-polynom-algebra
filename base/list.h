@@ -66,7 +66,6 @@ private:
     int size_;
     NodeList<T> *pFirst_;
     NodeList<T> *pLast_;
-
 public:
     List() : size_(0), pFirst_(nullptr), pLast_(nullptr) {}
 
@@ -82,7 +81,7 @@ public:
     }
 
     ListIterator<T> Insert(iterator iter, const T& val)
-      {
+    {
         if(iter.ptr_ == pFirst_) {
             AddNodeList(val);
             return iterator{nullptr};

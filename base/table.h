@@ -13,6 +13,5 @@ public:
     virtual void Print() = 0;
     virtual ~Table(){}
 };
-
   
 #endif // _TABLE_H_

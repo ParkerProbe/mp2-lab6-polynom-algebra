@@ -23,8 +23,7 @@ private:
     void RotateBigRight(NodeTree* t);
     void ChangeBalance(NodeTree* t);
     void Balance();
-  	NodeTree* pFirst_;
-
+    NodeTree* pFirst_;
 public:
     RedBlackTree() : Table()
     {}
