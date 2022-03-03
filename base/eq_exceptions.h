@@ -23,12 +23,12 @@ public:
     {}
     ~EqException()= default;
 
-    const std::string& GetComment() const
+    const std::string& get_comment() const
     {
         return comment_;
     }
 
-    inline int GetError() const
+    inline int get_error() const
     {
         return error_;
     }

@@ -9,16 +9,16 @@
 class Interface
 {
 private:
-    void TableSelect();
-    void Add();
-    void Print();
-    void Search();
-    void ChangePolynom(TableString* data);
-    void Calculate();
+    void table_select();
+    void add();
+    void print();
+    void search();
+    void change_polynom(TableString* data);
+    void calculate();
     void Delete();
-    bool isCorrect(string str);
+    bool is_correct(string str);
 public:
     Interface();
-    void Menu();
+    void menu();
 };
 #endif
