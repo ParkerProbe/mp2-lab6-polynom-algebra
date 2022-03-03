@@ -17,17 +17,17 @@ template <class T>
 class RedBlackTree : public Table
 {
 private:
-    void RotateLeft(NodeTree* t);
-    void RotateRight(NodeTree* t);
-    void RotateBigLeft(NodeTree* t);
-    void RotateBigRight(NodeTree* t);
-    void ChangeBalance(NodeTree* t);
+    void rotate_left(NodeTree* t);
+    void rotate_right(NodeTree* t);
+    void rotatei_bigLeft(NodeTree* t);
+    void rotate_big_right(NodeTree* t);
+    void change_balance(NodeTree* t);
     void Balance();
     NodeTree* pFirst_;
 public:
     RedBlackTree() : Table()
     {}
-    void Insert(const TableString& d);
+    void insert(const TableString& d);
     TableString* Find(const string& key);
     void Delete(const string& key);
     void Print();
