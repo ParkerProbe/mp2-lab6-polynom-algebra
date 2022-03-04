@@ -22,7 +22,7 @@ private:
     void rotatei_bigLeft(NodeTree* t);
     void rotate_big_right(NodeTree* t);
     void change_balance(NodeTree* t);
-    void Balance();
+    void balance();
     NodeTree* pFirst_;
 public:
     RedBlackTree() : Table()

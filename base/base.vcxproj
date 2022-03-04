@@ -88,7 +88,7 @@
     <ClCompile Include="sample_polinom.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="eq_exceptions.h" />
+    <ClInclude Include="eq_exception.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="polynom.h" />

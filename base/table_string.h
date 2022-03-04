@@ -7,13 +7,16 @@
 
 using std::string;
 
-struct TableString // Структура удобна, но может нарушить инкапсуляцию. Оставим структурой
+struct TableBody
 {
-    std::string key;
-    std::string poly_string;
+    string poly_string;
     Polynom* poly;
 };
-
+struct TableString // Структура удобна, но может нарушить инкапсуляцию. Оставим структурой
+{
+    string key;
+    TableBody body;
+};
 
 
 
