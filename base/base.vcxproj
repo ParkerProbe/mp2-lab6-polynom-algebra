@@ -92,7 +92,9 @@
     <ClInclude Include="interface.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="polynom.h" />
+    <ClInclude Include="postfix.h" />
     <ClInclude Include="red_black_tree.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="table_string.h" />
   </ItemGroup>

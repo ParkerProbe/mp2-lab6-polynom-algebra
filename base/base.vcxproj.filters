@@ -50,5 +50,11 @@
     <ClInclude Include="table_string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="postfix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
