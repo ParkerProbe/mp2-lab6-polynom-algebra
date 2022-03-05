@@ -10,9 +10,12 @@ class TPostfix
 {
 	string infix;
 	string postfix;
-	TStack <char> sc;//стек операций
-	TStack <double> sd;//стек операндов
-	double* p;//для хранения значений переменных
+	//operation stack
+	TStack <char> sc;
+	//operand stack
+	TStack <double> sd;
+	//to store the values of variables
+	double* p;
 public:
 	TPostfix()
 	{
@@ -22,12 +25,16 @@ public:
 	{
 		delete[] p;
 	}
+
+	// Changed in accordance with the coding rules
+
 	int prior(char a);
-	void SetInfix(string t);
-	string GetInfix() { return infix; }
-	string GetPostfix() { return postfix; }
-	string ToPostfix();
-	double Calculate(); // Ввод переменных, вычисление по постфиксной форме
+	void set_infix(string t);
+	string get_infix() { return infix; }
+	string get_postfix() { return postfix; }
+	string to_postfix();
+	// gets variables and calculates following postfix form
+	double calculate();
 };
 
 #endif

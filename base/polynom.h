@@ -71,7 +71,7 @@ public:
       friend std::ostream& operator<<(std::ostream& os,  const Polynom& pl);
       friend std::istream& operator>>(std::istream& is,  Polynom& pl);
 
-      //Этот блок может быть сильно изменён
+      //This block strongly depends on the preferences of a particular developer
 
       void add_monom(const Monom& monom);
       Polynom sort(const Polynom& pl) const;

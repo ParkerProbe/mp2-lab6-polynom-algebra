@@ -15,7 +15,7 @@ private:
     void search();
     void change_polynom(TableString* data);
     void calculate();
-    void Delete();
+    void erase();
     bool is_correct(string str);
 public:
     Interface();

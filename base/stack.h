@@ -14,12 +14,15 @@ public:
     TStack(const TStack<T>& s);
     ~TStack();
     void add(T tmp);
-    T gettop();
-    T infotop();
-    bool empty();
-    bool full();
-    void setsize(int s);
-    int getsize();
+
+    //Changed in accordance with the coding rules
+
+    T get_top();
+    T info_top();
+    bool is_empty();
+    bool is_full();
+    void set_size(int s);
+    int get_size();
 };
 template <class T>
 TStack<T>::TStack(const TStack<T>& s)
@@ -52,7 +55,7 @@ void TStack<T>::add(T tmp)
     pMem[++top] = tmp;
 }
 template <class T>
-T TStack<T>::gettop()
+T TStack<T>::get_top()
 {
     if (empty() == true)
     {
@@ -61,7 +64,7 @@ T TStack<T>::gettop()
     return (pMem[top--]);
 }
 template <class T>
-T TStack<T>::infotop()
+T TStack<T>::info_top()
 {
     if (empty() == true)
     {
@@ -70,19 +73,19 @@ T TStack<T>::infotop()
     return (pMem[top]);
 }
 template <class T>
-bool TStack<T>::empty()
+bool TStack<T>::is_empty()
 {
     if (top == -1)
         return true;
 }
 template <class T>
-bool TStack<T>::full()
+bool TStack<T>::is_full()
 {
     if (top == size - 1)
         return true;
 }
 template <class T>
-void TStack<T>::setsize(int s)
+void TStack<T>::set_size(int s)
 {
     size = s;
     top = -1;
@@ -92,7 +95,7 @@ void TStack<T>::setsize(int s)
     pMem = new T[size];
 }
 template <class T>
-int TStack<T>::getsize()
+int TStack<T>::get_size()
 {
     return size;
 }

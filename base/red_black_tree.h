@@ -23,15 +23,20 @@ private:
     void rotate_big_right(NodeTree* t);
     void change_balance(NodeTree* t);
     void balance();
-    NodeTree* pFirst_;
+
+    NodeTree* pFirst;
+
+    TableString* find_str(const string& key);
 public:
     RedBlackTree() : Table()
     {}
     void insert(const TableString& d);
-    TableString* Find(const string& key);
-    void Delete(const string& key);
-    void Print();
-    
+    TableBody* find(const std::string& key) = 0;
+    void erase(const string& key);
+    void print();
+    bool empty();
+    bool full();
+
     ~RedBlackTree();
 
 

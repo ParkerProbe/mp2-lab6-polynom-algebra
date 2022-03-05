@@ -11,26 +11,26 @@ private:
     void operator=(const EqException& other) = delete;
 
 public:
-    std::string comment_;
+    std::string comment;
     
     enum error_code
     {
         TEST
-    } error_;
+    } error;
 
-    EqException(error_code error, const std::string comment = "")
-        : comment_(comment), error_(error)
+    EqException(error_code error_, const std::string comment_ = "")
+        : comment(comment_), error(error_)
     {}
     ~EqException()= default;
 
     const std::string& get_comment() const
     {
-        return comment_;
+        return comment;
     }
 
     inline int get_error() const
     {
-        return error_;
+        return error;
     }
 };
 
