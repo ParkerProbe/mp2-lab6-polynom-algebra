@@ -25,36 +25,36 @@ class ListIterator
 {
 private:
     friend class List<T>;
-    NodeList<T>* pptr_;
-    NodeList<T>* ptr_;
+    NodeList<T>* prev_ptr;//предыдущее звено
+    NodeList<T>* ptr;//текущее звено
 
-    ListIterator(NodeList<T>* ptr) : ptr_(ptr), pptr_(ptr_)
+    ListIterator(NodeList<T>* ptr1) : ptr(ptr1), prev_ptr(ptr)
     {}
 public:
-    ListIterator(const ListIterator& it) : ptr_(it.ptr_), pptr_(it.pptr_)
+    ListIterator(const ListIterator& it) : ptr(it.ptr), prev_ptr(it.prev_ptr)
     {}
 
     bool operator==(const ListIterator& it) const
     {
-        return (ptr_ == it.ptr_);
+        return (ptr == it.ptr);
     }
 
     bool operator!=(const ListIterator& it) const
     {
-        return (ptr_ != it.ptr_);
+        return (ptr != it.ptr);
     }
 
     T& operator*() const
     {
-        return ptr_->key;
+        return ptr->key;
     }
 
     ListIterator& operator++()
     {
-        pptr_ = ptr_;
-        if (ptr_ == nullptr)
+        prev_ptr = ptr;
+        if (ptr == nullptr)
             return *this;
-        ptr_ = ptr_->pNext;
+        ptr = ptr->pNext;
         return *this;
     }
 };
@@ -63,16 +63,16 @@ template <class T>
 class List
 {
 private:
-    int size_;
-    NodeList<T> *pFirst_;
-    NodeList<T> *pLast_;
+    int size;
+    NodeList<T> *pFirst;
+    NodeList<T> *pLast;
 public:
-    List() : size_(0), pFirst_(nullptr), pLast_(nullptr) {}
+    List() : size(0), pFirst(nullptr), pLast(nullptr) {}
 
     using iterator = ListIterator<T>;
     iterator begin() const
     {
-        return iterator{pFirst_};
+        return iterator{pFirst};
     }
 
     iterator end() const
@@ -80,44 +80,44 @@ public:
         return iterator{nullptr};
     }
 
-    ListIterator<T> Insert(iterator iter, const T& val)
+    ListIterator<T> insert(iterator iter, const T& val)
     {
-        if(iter.ptr_ == pFirst_) {
+        if(iter.ptr == pFirst) {
             AddNodeList(val);
             return iterator{nullptr};
         }
 
         NodeList<T>* tmp = new NodeList<T>();
         tmp->key = val;
-        tmp->pNext = iter.ptr_;
-        iter.pptr_->pNext = tmp;
-        iter.ptr_ = tmp;
+        tmp->pNext = iter.ptr;
+        iter.prev_ptr->pNext = tmp;
+        iter.ptr = tmp;
         return iter;
     }
 
-    void Erase(iterator iter)
+    void erase(iterator iter)
     {
-        NodeList<T>* tmp = pFirst_;
+        NodeList<T>* tmp = pFirst;
         NodeList<T>* prev;
         int pos = 0;
-        while (tmp != iter.ptr_) {
+        while (tmp != iter.ptr) {
             prev = tmp;
             tmp = tmp -> pNext;
             pos++;
         }
         if (pos == 0) {
-            pFirst_ = pFirst_->pNext;
+            pFirst = pFirst->pNext;
             delete tmp;
-            size_--;
+            size--;
         }
         else {
             prev->pNext = tmp->pNext;
             delete tmp;
-            size_--;
+            size--;
         }
     }
 
-    List(T* arr) : size_(0), pFirst_(nullptr), pLast_(nullptr)
+    List(T* arr) : size(0), pFirst(nullptr), pLast(nullptr)
     {
         if(arr == nullptr)
             throw(EqException(EqException::TEST,"Wrong length of mass"));
@@ -126,9 +126,9 @@ public:
         }
     }
 
-    List(std::vector<T>& v) : size_(0), pFirst_(nullptr), pLast_(nullptr)
+    List(std::vector<T>& v) : size(0), pFirst(nullptr), pLast(nullptr)
     {
-        if(v.size_() == 0)
+        if(v.size() == 0)
             throw(EqException(EqException::TEST,"Wrong length of vector"));
         for(T tmp: v) {
             AddNodeList(tmp);
@@ -137,12 +137,12 @@ public:
 
     T& operator[](int index)
     {
-        if ((index > size_ - 1) || (index < 0)) {
+        if ((index > size - 1) || (index < 0)) {
             throw(EqException(EqException::TEST, "Incorrect index"));
         }
         int n = 0;
 
-        NodeList<T>* pCurrent = pFirst_;
+        NodeList<T>* pCurrent = pFirst;
         while(pCurrent != nullptr) {
             if (index == n) {
               return pCurrent->key;
@@ -155,7 +155,7 @@ public:
 
     inline bool operator==(const List& other)
     {
-        if(size_ != other.size_) {
+        if(size != other.size) {
             return false;
         }
 
@@ -167,7 +167,7 @@ public:
         iterator it2 = other.begin();
 
         for(;it1 != this->end(); ++it1, ++it2) {
-            if(it1.ptr_->key != it2.ptr_->key) {
+            if(it1.ptr->key != it2.ptr->key) {
               return false;
             }
         }
@@ -181,74 +181,74 @@ public:
 
     List(List && list) noexcept
     {
-        size_ = list.size_;
-        pFirst_ = list.pFirst_;
-        pLast_ = list.pLast_;
+        size = list.size;
+        pFirst = list.pFirst;
+        pLast = list.pLast;
 
-        list.pFirst_ = nullptr;
-        list.pLast_ = nullptr;
-        list.size_ = 0;
+        list.pFirst = nullptr;
+        list.pLast = nullptr;
+        list.size = 0;
     }
 
     List& operator=(List && list) noexcept
     {
         if (this != &list) {
-            while (pFirst_ != nullptr) {
-                NodeList<T>* tmp = pFirst_;
-                pFirst_ = pFirst_->pNext;
+            while (pFirst != nullptr) {
+                NodeList<T>* tmp = pFirst;
+                pFirst = pFirst->pNext;
                 delete tmp;
             }
 
-            size_ = list.size_;
-            pFirst_ = list.pFirst_;
-            pLast_ = list.pLast_;
+            size = list.size;
+            pFirst = list.pFirst;
+            pLast = list.pLast;
 
-            list.size_ = 0;
-            list.pFirst_ = nullptr;
-            list.pLast_ = nullptr;
+            list.size = 0;
+            list.pFirst = nullptr;
+            list.pLast = nullptr;
 
-            //std::swap(pFirst_, list.pFirst_)
+            //std::swap(pFirst, list.pFirst)
             //std::swap(pLast, list.pLast)
-            //std::swap(size_, list.size_)
+            //std::swap(size, list.size)
         }
         return *this;
     }
     
     List(const List& other)
     {
-        pFirst_ = nullptr;
-        pLast_ = nullptr;
-        size_ = 0;
+        pFirst = nullptr;
+        pLast = nullptr;
+        size = 0;
 
-        if(other.pFirst_ == nullptr) {
+        if(other.pFirst == nullptr) {
           return;
         }
 
-        pFirst_ = new NodeList<T>();
-        pFirst_->key = other.pFirst_->key;
-        NodeList<T>* pCurrent = pFirst_;
-        size_ = 1;
+        pFirst = new NodeList<T>();
+        pFirst->key = other.pFirst->key;
+        NodeList<T>* pCurrent = pFirst;
+        size = 1;
 
-        for(NodeList<T>* pTmp = other.pFirst_->pNext;
+        for(NodeList<T>* pTmp = other.pFirst->pNext;
               pTmp != nullptr; pTmp = pTmp->pNext) {
             pCurrent->pNext = new NodeList<T>();
             pCurrent = pCurrent->pNext;
             pCurrent->key = pTmp->key;
-            size_++;
+            size++;
         }
         pCurrent->pNext = nullptr;
-        pLast_ = pCurrent;
+        pLast = pCurrent;
     }
 
-    void EraseList()
+    void clear()//полное стирание списка
     {
-      NodeList<T>* pCurrent = pFirst_;
+      NodeList<T>* pCurrent = pFirst;
       while(pCurrent != nullptr) {
           pCurrent = pCurrent->pNext;
-          delete  pFirst_;
-          pFirst_ = pCurrent;
+          delete  pFirst;
+          pFirst = pCurrent;
       }
-      size_ = 0;
+      size = 0;
     }
 
     ~List()
@@ -261,59 +261,58 @@ public:
         if(this == &other) {
             return *this;
         }
-
         List tmp(other);
         std::swap(tmp, *this);
         return *this;
     }
 
-    NodeList<T>* AddNodeList(T item)
+    NodeList<T>* add(T item)//добавление звена с данными от item
     {
-        if(pLast_ == nullptr) {
+        if(pLast == nullptr) {
             NodeList<T>* tmp = new NodeList<T>();
-            pLast_ = tmp;
-            pLast_->key = item;
-            pFirst_ = pLast_;
+            pLast = tmp;
+            pLast->key = item;
+            pFirst = pLast;
         }
         else{
             NodeList<T>* tmp = new NodeList<T>();
-            pLast_->pNext = tmp;
-            pLast_ = tmp;
-            pLast_->key = item;
+            pLast->pNext = tmp;
+            pLast = tmp;
+            pLast->key = item;
         }
-        pLast_->pNext = nullptr;
-        size_++;
-        return pLast_;
+        pLast->pNext = nullptr;
+        size++;
+        return pLast;
     }
     
-    NodeList<T>* GeNodeList(int index) const
+    NodeList<T>* get_node(int index) const
     {
-        if((index > size_ - 1) || (index < 0) )
+        if((index > size - 1) || (index < 0) )
             throw(EqException(EqException::TEST, "Index incorrect"));
-        if(index == size_ - 1) {
-            return pLast_;
+        if(index == size - 1) {
+            return pLast;
         }
         else if(index == 0) {
-            return pFirst_;
+            return pFirst;
         }
         else {
-            NodeList<T>* ptr_ = pFirst_;
+            NodeList<T>* ptr = pFirst;
             while(index) {
-              ptr_ = ptr_->pNext;
+              ptr = ptr->pNext;
               index--;
             }
-            return ptr_;
+            return ptr;
         }
     }
 
-    inline int Getsize_() const
+    inline int get_size() const
     {
-        return size_;
+        return size;
     }
 
-    inline bool IsEmpty() const
+    inline bool is_empty() const
     {
-        return (size_ == 0);
+        return (size == 0);
     }
 };
 
