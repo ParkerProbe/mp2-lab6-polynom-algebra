@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-03-06T12:29:03.633Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="_fX7hg2YbaYBRRUzv_DQ" version="16.6.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-06T12:51:05.790Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="mNfcHqNloRpFHyRsMkcY" version="16.6.6" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
     <mxGraphModel dx="1422" dy="766" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -258,14 +258,14 @@
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-49" value="Колесников Денис" style="swimlane;" parent="1" vertex="1">
           <mxGeometry x="652.5" y="560" width="200" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="bgZzb26QuUzWCFqquuYQ-1" value="Две таблицы на массиве" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+        <mxCell id="bgZzb26QuUzWCFqquuYQ-1" value="Две таблицы на массиве" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="32.5" y="40" width="150" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="bgZzb26QuUzWCFqquuYQ-3" value="Полином и моном" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
-          <mxGeometry x="40" y="140" width="120" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="bgZzb26QuUzWCFqquuYQ-5" value="Таблица на дереве" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+        <mxCell id="bgZzb26QuUzWCFqquuYQ-5" value="Таблица на дереве" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="lb1J8IbFt9z_0kmrgKfr-49" vertex="1">
           <mxGeometry x="40" y="90" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="azQFu7ck9IAu0cVhb8L5-2" value="Хэш-таблица на списке" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="lb1J8IbFt9z_0kmrgKfr-49">
+          <mxGeometry x="32.5" y="130" width="150" height="20" as="geometry" />
         </mxCell>
         <mxCell id="lb1J8IbFt9z_0kmrgKfr-50" value="Цветков Алексей" style="swimlane;" parent="1" vertex="1">
           <mxGeometry x="875" y="560" width="200" height="200" as="geometry" />
