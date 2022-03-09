@@ -7,12 +7,15 @@
 
 using std::string;
 
+//Protects against key damage
 struct TableBody
 {
     string poly_string;
     Polynom* poly;
+    
 };
-struct TableString // Структура удобна, но может нарушить инкапсуляцию. Оставим структурой
+//Base element in every table
+struct TableString
 {
     string key;
     TableBody body;

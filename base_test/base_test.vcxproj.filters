@@ -18,11 +18,13 @@
     <ClCompile Include="test_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_monom.cpp">
+    <ClCompile Include="test_list_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_polinom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\base\table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
