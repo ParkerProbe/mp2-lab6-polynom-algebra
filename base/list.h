@@ -25,8 +25,8 @@ class ListIterator
 {
 private:
     friend class List<T>;
-    NodeList<T>* prev_ptr;//предыдущее звено
-    NodeList<T>* ptr;//текущее звено
+    NodeList<T>* prev_ptr;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    NodeList<T>* ptr;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
     ListIterator(NodeList<T>* ptr1) : ptr(ptr1), prev_ptr(ptr)
     {}
@@ -115,6 +115,17 @@ public:
             delete tmp;
             size--;
         }
+    }
+
+    void erase_list()
+    {
+        NodeList<T>* pCurrent = pFirst;
+        while(pCurrent != nullptr) {
+            pCurrent = pCurrent->pNext;
+            delete  pFirst;
+            pFirst = pCurrent;
+        }
+        size = 0;
     }
 
     List(T* arr) : size(0), pFirst(nullptr), pLast(nullptr)
@@ -240,7 +251,7 @@ public:
         pLast = pCurrent;
     }
 
-    void clear()//полное стирание списка
+    void clear()//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
       NodeList<T>* pCurrent = pFirst;
       while(pCurrent != nullptr) {
@@ -253,7 +264,7 @@ public:
 
     ~List()
     {
-      EraseList();
+      erase_list();
     }
 
     List& operator=(const List& other)
@@ -266,7 +277,7 @@ public:
         return *this;
     }
 
-    NodeList<T>* add(T item)//добавление звена с данными от item
+    NodeList<T>* add(T item)
     {
         if(pLast == nullptr) {
             NodeList<T>* tmp = new NodeList<T>();

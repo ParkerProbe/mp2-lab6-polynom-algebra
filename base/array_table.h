@@ -9,18 +9,18 @@ class ArrayTable : public Table
     TableString* data_;
     int size_;
     int capacity_;
-    void Repack();
+    void repack();
 public:
-    ArrayTable() : BaseTable()
+    ArrayTable() : Table()
     {
         size = 0;
         capacity_ = 100;
         data = new TableString[capacity_];
     }
-    void Delete(const string& key);
-    void Insert(const TableString& data);
-    TableString* Find(const string& key);
-    void Print();
+    void erase(const string& key);
+    void insert(const TableString& data);
+    TableString* find(const string& key);
+    void print();
     ~ArrayTable();
 };
 

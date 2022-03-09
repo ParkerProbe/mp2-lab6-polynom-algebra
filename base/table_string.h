@@ -12,7 +12,7 @@ struct TableBody
     string poly_string;
     Polynom* poly;
 };
-struct TableString // Структура удобна, но может нарушить инкапсуляцию. Оставим структурой
+struct TableString
 {
     string key;
     TableBody body;
