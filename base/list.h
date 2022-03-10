@@ -131,7 +131,7 @@ public:
     List(T* arr) : size(0), pFirst(nullptr), pLast(nullptr)
     {
         if(arr == nullptr)
-            throw(EqException(EqException::TEST,"Wrong length of mass"));
+            throw(EqException(error_code::k_EMPTY);
         for(int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
             AddNodeList(arr[i]);
         }
@@ -140,7 +140,7 @@ public:
     List(std::vector<T>& v) : size(0), pFirst(nullptr), pLast(nullptr)
     {
         if(v.size() == 0)
-            throw(EqException(EqException::TEST,"Wrong length of vector"));
+            throw(EqException(error_code::k_EMPTY)
         for(T tmp: v) {
             AddNodeList(tmp);
         }
@@ -149,7 +149,7 @@ public:
     T& operator[](int index)
     {
         if ((index > size - 1) || (index < 0)) {
-            throw(EqException(EqException::TEST, "Incorrect index"));
+            throw(EqException(error_code::k_INCORRECT_INDEX);
         }
         int n = 0;
 
@@ -161,7 +161,7 @@ public:
             pCurrent = pCurrent->pNext;
             n++;
         }
-        throw(EqException(EqException::TEST, "Incorrect index"));
+        throw(EqException(error_code::k_INCORRECT_INDEX);
     }
 
     inline bool operator==(const List& other)
@@ -299,7 +299,7 @@ public:
     NodeList<T>* get_node(int index) const
     {
         if((index > size - 1) || (index < 0) )
-            throw(EqException(EqException::TEST, "Index incorrect"));
+            throw(EqException(error_code::k_INCORRECT_INDEX);
         if(index == size - 1) {
             return pLast;
         }

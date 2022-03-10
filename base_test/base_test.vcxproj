@@ -83,9 +83,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="test_eq_exception.cpp" />
+    <ClCompile Include="test_list_table.cpp" />
     <ClCompile Include="test_main.cpp" />
-    <ClCompile Include="test_monom.cpp" />
-    <ClCompile Include="test_polinom.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -18,10 +18,10 @@
     <ClCompile Include="test_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_monom.cpp">
+    <ClCompile Include="test_eq_exception.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_polinom.cpp">
+    <ClCompile Include="test_list_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
