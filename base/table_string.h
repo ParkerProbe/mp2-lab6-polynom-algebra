@@ -12,13 +12,18 @@ struct TableBody
 {
     string poly_string;
     Polynom* poly;
-    
+    TableBody() 
+        : poly_string("0")
+    {}
 };
 //Base element in every table
 struct TableString
 {
     string key;
     TableBody body;
+    TableString() 
+        :body(), key("I")
+    {}
 };
 
 

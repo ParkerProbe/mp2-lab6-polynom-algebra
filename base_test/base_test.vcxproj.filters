@@ -21,6 +21,9 @@
     <ClCompile Include="test_list_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_eq_exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base\table.h">

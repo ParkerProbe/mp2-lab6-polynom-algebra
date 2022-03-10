@@ -6,11 +6,14 @@
 #include "red_black_tree.h"
 #include "polynom.h"
 
+// static?
+
 class Interface
 {
 private:
     void table_select();
     void add();
+    // may be print_string and print_table
     void print();
     void search();
     void change_polynom(TableString* data);

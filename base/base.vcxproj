@@ -83,12 +83,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="monom.cpp" />
-    <ClCompile Include="polinom.cpp" />
-    <ClCompile Include="sample_polinom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="eq_exception.h" />
+    <ClInclude Include="list_table.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="polynom.h" />

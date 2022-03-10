@@ -22,18 +22,21 @@ class EqException
 private:
     void operator=(const EqException& other) = delete;
 
-    //code of error
+    // code of error
     error_code error;
-public:
     const std::string k_set_comment[8] = { "NO ERROR", "NEGATIVE VALUE", "OVERFLOW", "OUT OF MEMORY", "NOT FOUND", "EMPTY", "WRONG OPERATION PLACEMENT", "WRONG BRACKETS QUANTITY" };
 
+public:
+    // create exception using error_code::<something>
     EqException(error_code error_)
         : error(error_)
     {}
-
+    EqException()
+        : error(k_NO_ERROR)
+    {}
     ~EqException() = default;
 
-    const std::string& get_comment() const
+    inline const std::string& get_comment() const
     {
         return k_set_comment[error];
     }

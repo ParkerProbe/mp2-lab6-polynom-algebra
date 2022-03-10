@@ -4,11 +4,12 @@
 
 #include "table_string.h"
 
-//It is possible that new methods or fields will be added
+// READ THIS CLASS!
 class Table
 {
 protected:
 	int size;
+	int capacity;
 	virtual TableString* find_str(const std::string& key) = 0;
 public:
 	virtual TableBody* find(const std::string& key) = 0;
@@ -24,7 +25,6 @@ public:
 	{
 		return size;
 	}
-	//virtual bool full();
 };
   
 #endif // _TABLE_H_

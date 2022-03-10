@@ -1,30 +1,59 @@
 #include <gtest.h>
 #include "table.h"
-TEST(list_table, can_create_empty_table)
+TEST(ListTable, can_create_empty_tab)
 {
 
 }
-TEST(list_table, can_find_table_record_by_the_key)
+
+TEST(ListTable, empty_tab_shows_that_it_is_empty)
 {
 
 }
-TEST(list_table, can_add_string_with_unic_key)
+
+TEST(ListTable, can_existing_find_elem_by_key)
 {
 
 }
-TEST(list_table, cant_add_string_with_non_unique_key)
+
+TEST(ListTable, cant_find_elem_by_non_existent_key)
 {
 
 }
-TEST(list_table, can_show_table)
+TEST(ListTable, can_insert_elem)
 {
 
 }
-TEST(list_table)
+TEST(ListTable, after_insert_elem_tab_is_not_empty)
 {
 
 }
-TEST(list_table)
+
+TEST(ListTable, cant_insert_elem_with_non_unique_key)
 {
 
 }
+
+TEST(ListTable, can_show_table)
+{
+
+}
+
+TEST(ListTable, cant_delete_elem_when_its_empty)
+{
+
+}
+
+TEST(ListTable, can_delete_existing_elem)
+{
+
+}
+
+TEST(ListTable, cant_delete_non_existing_elem)
+{
+
+}
+
+//TEST(ListTable)
+//{
+//
+//}
