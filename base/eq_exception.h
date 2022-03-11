@@ -17,7 +17,6 @@ enum error_code
     k_WRONG_OPERATION_PLACEMENT,
     k_WRONG_BRACKETS_QUANTITY
 };
-
 class EqException
 {
 private:

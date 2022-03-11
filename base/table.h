@@ -9,7 +9,6 @@ class Table
 {
 protected:
 	int size;
-	int capacity;
 	virtual TableString* find_str(const std::string& key) = 0;
 public:
 	virtual TableBody* find(const std::string& key) = 0;

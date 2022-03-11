@@ -6,9 +6,8 @@
 
 class ArrayTable : public Table
 {
-    TableString* data_;
-    int size_;
-    int capacity_;
+    TableString* data;
+    int capacity;
     void repack();
 public:
     ArrayTable() : Table()
