@@ -35,7 +35,10 @@ public:
          pCurrent(nullptr), ppRef(nullptr)
         {}
     void insert(const TableString& d);
-    TableBody* find(const std::string& key) = 0;
+    
+    TableString& find_str(const std::string& key);
+	TableBody& find(const std::string& key);
+
     void erase(const string& key);
     void print();
     bool empty();

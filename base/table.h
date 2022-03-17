@@ -13,26 +13,26 @@ class Table
 
 protected:
 	int size;
-	virtual TableString* find_str(const std::string& key) = 0;
+	virtual TableString& find_str(const std::string& key) = 0;
 public:
-	virtual TableBody* find(const std::string& key) = 0;
+	virtual TableBody& find(const std::string& key) = 0;
 	virtual void insert(const TableString& data) = 0;
 	virtual void erase(const std::string& key) = 0;
 	virtual void print() const = 0;
 	virtual bool is_full() const = 0;
 
 	// Set to first record
-	virtual bool reset() const = 0;
+	virtual bool reset() = 0;
 
 	// Is tab ended
 	virtual bool is_tab_ended() const = 0;
 
 	// Next record
 	// return false for last record
-	virtual bool go_next() const = 0;
+	virtual bool go_next() = 0;
 
 	// Get value of current iterable record
-	virtual TableString* get_value() const = 0;
+	virtual TableString* get_value() = 0;
 
 	virtual TableIterator begin() const = 0;
 	virtual TableIterator end() const = 0;
