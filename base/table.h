@@ -6,7 +6,7 @@
 #include "table_string.h"
 #include "table_iterator.h"
 #include <ostream>
-// READ THIS CLASS!
+
 class Table
 {
 

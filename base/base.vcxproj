@@ -82,6 +82,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="interface.cpp" />
+    <ClCompile Include="list_table.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monom.cpp" />
     <ClCompile Include="polinom.cpp" />
@@ -99,6 +101,7 @@
     <ClInclude Include="red_black_tree.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="table.h" />
+    <ClInclude Include="table_iterator.h" />
     <ClInclude Include="table_string.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
