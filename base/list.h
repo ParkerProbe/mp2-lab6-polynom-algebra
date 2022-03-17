@@ -80,7 +80,7 @@ public:
         return iterator{nullptr};
     }
 
-    ListIterator<T> insert(iterator iter, const T& val)
+    iterator insert(iterator iter, const T& val)
     {
         if(iter.ptr == pFirst) {
             AddNodeList(val);
