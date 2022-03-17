@@ -22,17 +22,17 @@ public:
 	virtual bool is_full() const = 0;
 
 	// Set to first record
-	virtual bool reset() = 0;
+	virtual bool reset() const = 0;
 
 	// Is tab ended
 	virtual bool is_tab_ended() const = 0;
 
 	// Next record
 	// return false for last record
-	virtual bool go_next() = 0;
+	virtual bool go_next() const = 0;
 
 	// Get value of current iterable record
-	virtual TableString* get_value() = 0;
+	virtual TableString* get_value() const = 0;
 
 	virtual TableIterator begin() const = 0;
 	virtual TableIterator end() const = 0;

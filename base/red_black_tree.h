@@ -3,7 +3,9 @@
 
 
 #include "table.h"
-
+#include "stack.h"
+#include <iterator>
+#include <ostream>
 
 struct NodeTree
 {
@@ -17,25 +19,42 @@ template <class T>
 class RedBlackTree : public Table
 {
 private:
-    void rotate_left(NodeTree* t);
-    void rotate_right(NodeTree* t);
-    void rotatei_bigLeft(NodeTree* t);
-    void rotate_big_right(NodeTree* t);
-    void change_balance(NodeTree* t);
-    void balance();
+    int curr_pos;
+    NodeTree* pRoot;
+    NodeTree* pCurrent;
+    NodeTree** ppRef;
+    Stack<NodeTree*> st;
 
-    NodeTree* pFirst;
+    void print_tree_table(std::ostream &os, NodeTree* pNode);
+    void draw_tree(NodeTree* pNode, int level);
+    void delete_tree(NodeTree* pNode);
 
-    TableString* find_str(const string& key);
 public:
-    RedBlackTree() : Table()
-    {}
+    RedBlackTree()
+        : Table() , curr_pos(0),  pRoot(nullptr),
+         pCurrent(nullptr), ppRef(nullptr)
+        {}
     void insert(const TableString& d);
     TableBody* find(const std::string& key) = 0;
     void erase(const string& key);
     void print();
     bool empty();
-    bool full();
+    bool is_full();
+
+	bool reset();
+	bool is_tab_ended() const;
+    bool go_next();
+
+    // Left -> Right
+    void Draw();
+
+    //Up -> Down
+    void Show();
+
+    TableString* get_value();
+
+	TableIterator begin() const;
+	TableIterator end() const;
 
     ~RedBlackTree();
 
