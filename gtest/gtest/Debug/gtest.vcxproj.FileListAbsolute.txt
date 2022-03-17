@@ -1,0 +1,2 @@
+C:\Users\Андрей\mp2-lab5-polinom\Бугров\gtest\Debug\gtest.lib
+C:\Users\Андрей\mp2-lab5-polinom\Бугров\gtest\Debug\gtest.pdb
