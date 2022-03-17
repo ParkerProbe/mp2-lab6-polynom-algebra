@@ -1,13 +1,14 @@
 #include <gtest.h>
-#include "table.h"
+#include "list_table.h"
 TEST(ListTable, can_create_empty_tab)
 {
-
+    ASSERT_NO_THROW(ListTable tab);
 }
 
 TEST(ListTable, empty_tab_shows_that_it_is_empty)
 {
-
+    ListTable tab;
+    ASSERT_NO_THROW(tab.empty());
 }
 
 TEST(ListTable, can_existing_find_elem_by_key)

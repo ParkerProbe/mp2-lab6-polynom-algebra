@@ -58,7 +58,8 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\gtest\debug</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,12 +84,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
+=======
+    <ClCompile Include="..\base\list_table.cpp" />
+    <ClCompile Include="..\base\main.cpp" />
+    <ClCompile Include="test_array_table.cpp" />
+>>>>>>> Stashed changes
     <ClCompile Include="test_eq_exception.cpp" />
     <ClCompile Include="test_main.cpp" />
     <ClCompile Include="test_list_table.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base\table.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\base\array_table.h" />
+    <ClInclude Include="..\base\eq_exception.h" />
+    <ClInclude Include="..\base\hash_table_list.h" />
+    <ClInclude Include="..\base\interface.h" />
+    <ClInclude Include="..\base\list.h" />
+    <ClInclude Include="..\base\list_table.h" />
+    <ClInclude Include="..\base\polynom.h" />
+    <ClInclude Include="..\base\postfix.h" />
+    <ClInclude Include="..\base\red_black_tree.h" />
+    <ClInclude Include="..\base\stack.h" />
+    <ClInclude Include="..\base\table.h" />
+    <ClInclude Include="..\base\table_string.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

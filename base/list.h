@@ -83,7 +83,7 @@ public:
     ListIterator<T> insert(iterator iter, const T& val)
     {
         if(iter.ptr == pFirst) {
-            AddNodeList(val);
+            add(val);
             return iterator{nullptr};
         }
 
@@ -116,29 +116,72 @@ public:
             size--;
         }
     }
+<<<<<<< Updated upstream
+=======
+    // deletes first Node which has the same parameters with p
+    void erase_first_found(T p_)
+    {
+        NodeList<T>* p;
+        p->key = p_;
+        NodeList<T>* pCurrent = pFirst;
+        NodeList<T>* prevCurrent = nullptr;
+        for (; pCurrent->key != p->key; prevCurrent = pCurrent, pCurrent = pCurrent->pNext)
+            ;
+        if (pCurrent == nullptr) {
+            return;
+        }
+        else {
+            prevCurrent->pNext = pCurrent->pNext;
+            delete pCurrent;
+        }
+    }
+    void erase_list()
+    {
+        NodeList<T>* pCurrent = pFirst;
+        while(pCurrent != nullptr) {
+            pCurrent = pCurrent->pNext;
+            delete  pFirst;
+            pFirst = pCurrent;
+        }
+        size = 0;
+    }
+>>>>>>> Stashed changes
 
     List(T* arr) : size(0), pFirst(nullptr), pLast(nullptr)
     {
         if(arr == nullptr)
+<<<<<<< Updated upstream
             throw(EqException(EqException::TEST,"Wrong length of mass"));
+=======
+            throw(EqException(error_code::k_EMPTY));
+>>>>>>> Stashed changes
         for(int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
-            AddNodeList(arr[i]);
+            add(arr[i]);
         }
     }
 
     List(std::vector<T>& v) : size(0), pFirst(nullptr), pLast(nullptr)
     {
+<<<<<<< Updated upstream
         if(v.size() == 0)
             throw(EqException(EqException::TEST,"Wrong length of vector"));
+=======
+        if (v.size() == 0)
+            throw(EqException(error_code::k_EMPTY));
+>>>>>>> Stashed changes
         for(T tmp: v) {
-            AddNodeList(tmp);
+            add(tmp);
         }
     }
 
     T& operator[](int index)
     {
         if ((index > size - 1) || (index < 0)) {
+<<<<<<< Updated upstream
             throw(EqException(EqException::TEST, "Incorrect index"));
+=======
+            throw(EqException(error_code::k_INCORRECT_INDEX));
+>>>>>>> Stashed changes
         }
         int n = 0;
 
@@ -150,7 +193,11 @@ public:
             pCurrent = pCurrent->pNext;
             n++;
         }
+<<<<<<< Updated upstream
         throw(EqException(EqException::TEST, "Incorrect index"));
+=======
+        throw(EqException(error_code::k_INCORRECT_INDEX));
+>>>>>>> Stashed changes
     }
 
     inline bool operator==(const List& other)
@@ -288,7 +335,11 @@ public:
     NodeList<T>* get_node(int index) const
     {
         if((index > size - 1) || (index < 0) )
+<<<<<<< Updated upstream
             throw(EqException(EqException::TEST, "Index incorrect"));
+=======
+            throw(EqException(error_code::k_INCORRECT_INDEX));
+>>>>>>> Stashed changes
         if(index == size - 1) {
             return pLast;
         }

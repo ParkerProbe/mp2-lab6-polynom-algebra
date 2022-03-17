@@ -15,6 +15,14 @@ struct TableBody
     TableBody() 
         : poly_string("0")
     {}
+    bool operator!=(const TableBody& tb)
+    {
+        return poly_string != tb.poly_string;
+    }
+    bool operator==(const TableBody& tb)
+    {
+        return poly_string != tb.poly_string;
+    }
 };
 //Base element in every table
 struct TableString
@@ -24,6 +32,14 @@ struct TableString
     TableString() 
         :body(), key("I")
     {}
+    bool operator!=(const TableString& ts)
+    {
+        return body != ts.body;
+    }
+    bool operator==(const TableString& ts)
+    {
+        return body == ts.body;
+    }
 };
 
 
