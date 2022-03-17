@@ -6,7 +6,7 @@
 #include "table_string.h"
 #include "table_iterator.h"
 #include <ostream>
-// READ THIS CLASS!
+
 class Table
 {
 
@@ -15,7 +15,7 @@ protected:
 	int size;
 	virtual TableString* find_str(const std::string& key) = 0;
 public:
-	virtual TableBody* find(const std::string& key) = 0;
+	virtual TableBody& find(const std::string& key) = 0;
 	virtual void insert(const TableString& data) = 0;
 	virtual void erase(const std::string& key) = 0;
 	virtual void print() const = 0;

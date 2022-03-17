@@ -59,32 +59,32 @@ public:
     }
 };
 
-template <class T> 
+template <class T>
 class List
 {
 private:
     int size;
-    NodeList<T> *pFirst;
-    NodeList<T> *pLast;
+    NodeList<T>* pFirst;
+    NodeList<T>* pLast;
 public:
     List() : size(0), pFirst(nullptr), pLast(nullptr) {}
 
     using iterator = ListIterator<T>;
     iterator begin() const
     {
-        return iterator{pFirst};
+        return iterator{ pFirst };
     }
 
     iterator end() const
     {
-        return iterator{nullptr};
+        return iterator{ nullptr };
     }
 
     iterator insert(iterator iter, const T& val)
     {
-        if(iter.ptr == pFirst) {
+        if (iter.ptr == pFirst) {
             AddNodeList(val);
-            return iterator{nullptr};
+            return iterator{ nullptr };
         }
 
         NodeList<T>* tmp = new NodeList<T>();
@@ -102,7 +102,7 @@ public:
         int pos = 0;
         while (tmp != iter.ptr) {
             prev = tmp;
-            tmp = tmp -> pNext;
+            tmp = tmp->pNext;
             pos++;
         }
         if (pos == 0) {
@@ -117,10 +117,27 @@ public:
         }
     }
 
+    void erase_first_found(T p_)// to delete elem from table. It is not normal list method but it helps in tables
+    {
+        NodeList<T>* p;
+        p->key = p_;
+        NodeList<T>* pCurrent = pFirst;
+        NodeList<T>* prevCurrent = nullptr;
+        for (; pCurrent->key != p->key; prevCurrent = pCurrent, pCurrent = pCurrent->pNext)
+            ;
+        if (pCurrent == nullptr) {
+            return;
+        }
+        else {
+            prevCurrent->pNext = pCurrent->pNext;
+            delete pCurrent;
+        }
+    }
+
     void erase_list()
     {
         NodeList<T>* pCurrent = pFirst;
-        while(pCurrent != nullptr) {
+        while (pCurrent != nullptr) {
             pCurrent = pCurrent->pNext;
             delete  pFirst;
             pFirst = pCurrent;
@@ -130,20 +147,20 @@ public:
 
     List(T* arr) : size(0), pFirst(nullptr), pLast(nullptr)
     {
-        if(arr == nullptr)
+        if (arr == nullptr)
             throw(EqException(error_code::k_EMPTY);
-        for(int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
+        for (int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
             AddNodeList(arr[i]);
         }
     }
 
     List(std::vector<T>& v) : size(0), pFirst(nullptr), pLast(nullptr)
     {
-        if(v.size() == 0)
+        if (v.size() == 0)
             throw(EqException(error_code::k_EMPTY)
-        for(T tmp: v) {
-            AddNodeList(tmp);
-        }
+                for (T tmp : v) {
+                    AddNodeList(tmp);
+                }
     }
 
     T& operator[](int index)
@@ -154,9 +171,9 @@ public:
         int n = 0;
 
         NodeList<T>* pCurrent = pFirst;
-        while(pCurrent != nullptr) {
+        while (pCurrent != nullptr) {
             if (index == n) {
-              return pCurrent->key;
+                return pCurrent->key;
             }
             pCurrent = pCurrent->pNext;
             n++;
@@ -166,20 +183,20 @@ public:
 
     inline bool operator==(const List& other)
     {
-        if(size != other.size) {
+        if (size != other.size) {
             return false;
         }
 
-        if(this == &other) {
+        if (this == &other) {
             return true;
         }
 
         iterator it1 = this->begin();
         iterator it2 = other.begin();
 
-        for(;it1 != this->end(); ++it1, ++it2) {
-            if(it1.ptr->key != it2.ptr->key) {
-              return false;
+        for (; it1 != this->end(); ++it1, ++it2) {
+            if (it1.ptr->key != it2.ptr->key) {
+                return false;
             }
         }
         return true;
@@ -190,7 +207,7 @@ public:
         return !(*this == other);
     }
 
-    List(List && list) noexcept
+    List(List&& list) noexcept
     {
         size = list.size;
         pFirst = list.pFirst;
@@ -201,7 +218,7 @@ public:
         list.size = 0;
     }
 
-    List& operator=(List && list) noexcept
+    List& operator=(List&& list) noexcept
     {
         if (this != &list) {
             while (pFirst != nullptr) {
@@ -224,15 +241,15 @@ public:
         }
         return *this;
     }
-    
+
     List(const List& other)
     {
         pFirst = nullptr;
         pLast = nullptr;
         size = 0;
 
-        if(other.pFirst == nullptr) {
-          return;
+        if (other.pFirst == nullptr) {
+            return;
         }
 
         pFirst = new NodeList<T>();
@@ -240,8 +257,8 @@ public:
         NodeList<T>* pCurrent = pFirst;
         size = 1;
 
-        for(NodeList<T>* pTmp = other.pFirst->pNext;
-              pTmp != nullptr; pTmp = pTmp->pNext) {
+        for (NodeList<T>* pTmp = other.pFirst->pNext;
+            pTmp != nullptr; pTmp = pTmp->pNext) {
             pCurrent->pNext = new NodeList<T>();
             pCurrent = pCurrent->pNext;
             pCurrent->key = pTmp->key;
@@ -253,23 +270,23 @@ public:
 
     void clear()//������ �������� ������
     {
-      NodeList<T>* pCurrent = pFirst;
-      while(pCurrent != nullptr) {
-          pCurrent = pCurrent->pNext;
-          delete  pFirst;
-          pFirst = pCurrent;
-      }
-      size = 0;
+        NodeList<T>* pCurrent = pFirst;
+        while (pCurrent != nullptr) {
+            pCurrent = pCurrent->pNext;
+            delete  pFirst;
+            pFirst = pCurrent;
+        }
+        size = 0;
     }
 
     ~List()
     {
-      erase_list();
+        erase_list();
     }
 
     List& operator=(const List& other)
     {
-        if(this == &other) {
+        if (this == &other) {
             return *this;
         }
         List tmp(other);
@@ -279,13 +296,13 @@ public:
 
     NodeList<T>* add(T item)
     {
-        if(pLast == nullptr) {
+        if (pLast == nullptr) {
             NodeList<T>* tmp = new NodeList<T>();
             pLast = tmp;
             pLast->key = item;
             pFirst = pLast;
         }
-        else{
+        else {
             NodeList<T>* tmp = new NodeList<T>();
             pLast->pNext = tmp;
             pLast = tmp;
@@ -295,22 +312,22 @@ public:
         size++;
         return pLast;
     }
-    
+
     NodeList<T>* get_node(int index) const
     {
-        if((index > size - 1) || (index < 0) )
+        if ((index > size - 1) || (index < 0))
             throw(EqException(error_code::k_INCORRECT_INDEX);
-        if(index == size - 1) {
+        if (index == size - 1) {
             return pLast;
         }
-        else if(index == 0) {
+        else if (index == 0) {
             return pFirst;
         }
         else {
             NodeList<T>* ptr = pFirst;
-            while(index) {
-              ptr = ptr->pNext;
-              index--;
+            while (index) {
+                ptr = ptr->pNext;
+                index--;
             }
             return ptr;
         }
