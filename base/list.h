@@ -25,8 +25,8 @@ class ListIterator
 {
 private:
     friend class List<T>;
-    NodeList<T>* prev_ptr;//предыдущее звено
-    NodeList<T>* ptr;//текущее звено
+    NodeList<T>* prev_ptr;//previous pointer
+    NodeList<T>* ptr;//pointer
 
     ListIterator(NodeList<T>* ptr1) : ptr(ptr1), prev_ptr(ptr)
     {}
@@ -59,32 +59,32 @@ public:
     }
 };
 
-template <class T> 
+template <class T>
 class List
 {
 private:
     int size;
-    NodeList<T> *pFirst;
-    NodeList<T> *pLast;
+    NodeList<T>* pFirst;
+    NodeList<T>* pLast;
 public:
     List() : size(0), pFirst(nullptr), pLast(nullptr) {}
 
     using iterator = ListIterator<T>;
     iterator begin() const
     {
-        return iterator{pFirst};
+        return iterator{ pFirst };
     }
 
     iterator end() const
     {
-        return iterator{nullptr};
+        return iterator{ nullptr };
     }
 
     ListIterator<T> insert(iterator iter, const T& val)
     {
-        if(iter.ptr == pFirst) {
-            add(val);
-            return iterator{nullptr};
+        if (iter.ptr == pFirst) {
+            AddNodeList(val);
+            return iterator{ nullptr };
         }
 
         NodeList<T>* tmp = new NodeList<T>();
@@ -102,7 +102,7 @@ public:
         int pos = 0;
         while (tmp != iter.ptr) {
             prev = tmp;
-            tmp = tmp -> pNext;
+            tmp = tmp->pNext;
             pos++;
         }
         if (pos == 0) {
@@ -116,10 +116,8 @@ public:
             size--;
         }
     }
-<<<<<<< Updated upstream
-=======
-    // deletes first Node which has the same parameters with p
-    void erase_first_found(T p_)
+
+    void erase_first_found(T p_)// to delete elem from table
     {
         NodeList<T>* p;
         p->key = p_;
@@ -138,84 +136,66 @@ public:
     void erase_list()
     {
         NodeList<T>* pCurrent = pFirst;
-        while(pCurrent != nullptr) {
+        while (pCurrent != nullptr) {
             pCurrent = pCurrent->pNext;
             delete  pFirst;
             pFirst = pCurrent;
         }
         size = 0;
     }
->>>>>>> Stashed changes
 
     List(T* arr) : size(0), pFirst(nullptr), pLast(nullptr)
     {
-        if(arr == nullptr)
-<<<<<<< Updated upstream
-            throw(EqException(EqException::TEST,"Wrong length of mass"));
-=======
-            throw(EqException(error_code::k_EMPTY));
->>>>>>> Stashed changes
-        for(int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
-            add(arr[i]);
+        if (arr == nullptr)
+            throw(EqException(error_code::k_EMPTY);
+        for (int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
+            AddNodeList(arr[i]);
         }
     }
 
     List(std::vector<T>& v) : size(0), pFirst(nullptr), pLast(nullptr)
     {
-<<<<<<< Updated upstream
-        if(v.size() == 0)
-            throw(EqException(EqException::TEST,"Wrong length of vector"));
-=======
         if (v.size() == 0)
-            throw(EqException(error_code::k_EMPTY));
->>>>>>> Stashed changes
-        for(T tmp: v) {
-            add(tmp);
-        }
+            throw(EqException(error_code::k_EMPTY)
+                for (T tmp : v) {
+                    AddNodeList(tmp);
+                }
     }
 
     T& operator[](int index)
     {
         if ((index > size - 1) || (index < 0)) {
-<<<<<<< Updated upstream
-            throw(EqException(EqException::TEST, "Incorrect index"));
-=======
-            throw(EqException(error_code::k_INCORRECT_INDEX));
->>>>>>> Stashed changes
+            throw(EqException(error_code::k_INCORRECT_INDEX);
         }
         int n = 0;
 
         NodeList<T>* pCurrent = pFirst;
-        while(pCurrent != nullptr) {
+        while (pCurrent != nullptr) {
             if (index == n) {
-              return pCurrent->key;
+                return pCurrent->key;
             }
             pCurrent = pCurrent->pNext;
             n++;
         }
-<<<<<<< Updated upstream
-        throw(EqException(EqException::TEST, "Incorrect index"));
-=======
-        throw(EqException(error_code::k_INCORRECT_INDEX));
->>>>>>> Stashed changes
+        throw(EqException(error_code::k_INCORRECT_INDEX);
     }
 
     inline bool operator==(const List& other)
     {
-        if(size != other.size) {
+        if (size != other.size) {
             return false;
         }
 
-        if(this == &other) {
+        if (this == &other) {
             return true;
         }
 
         iterator it1 = this->begin();
         iterator it2 = other.begin();
 
-        for(;it1 != this->end(); ++it1, ++it2) {
-            if(it1.ptr->key != it2.ptr->key) {
-              return false;
+        for (; it1 != this->end(); ++it1, ++it2) {
+            if (it1.ptr->key != it2.ptr->key) {
+                return false;
             }
         }
         return true;
@@ -226,7 +206,7 @@ public:
         return !(*this == other);
     }
 
-    List(List && list) noexcept
+    List(List&& list) noexcept
     {
         size = list.size;
         pFirst = list.pFirst;
@@ -237,7 +217,7 @@ public:
         list.size = 0;
     }
 
-    List& operator=(List && list) noexcept
+    List& operator=(List&& list) noexcept
     {
         if (this != &list) {
             while (pFirst != nullptr) {
@@ -260,15 +240,15 @@ public:
         }
         return *this;
     }
-    
+
     List(const List& other)
     {
         pFirst = nullptr;
         pLast = nullptr;
         size = 0;
 
-        if(other.pFirst == nullptr) {
-          return;
+        if (other.pFirst == nullptr) {
+            return;
         }
 
         pFirst = new NodeList<T>();
@@ -276,8 +256,8 @@ public:
         NodeList<T>* pCurrent = pFirst;
         size = 1;
 
-        for(NodeList<T>* pTmp = other.pFirst->pNext;
-              pTmp != nullptr; pTmp = pTmp->pNext) {
+        for (NodeList<T>* pTmp = other.pFirst->pNext;
+            pTmp != nullptr; pTmp = pTmp->pNext) {
             pCurrent->pNext = new NodeList<T>();
             pCurrent = pCurrent->pNext;
             pCurrent->key = pTmp->key;
@@ -287,25 +267,25 @@ public:
         pLast = pCurrent;
     }
 
-    void clear()//полное стирание списка
+    void clear()//completely deletes list 
     {
-      NodeList<T>* pCurrent = pFirst;
-      while(pCurrent != nullptr) {
-          pCurrent = pCurrent->pNext;
-          delete  pFirst;
-          pFirst = pCurrent;
-      }
-      size = 0;
+        NodeList<T>* pCurrent = pFirst;
+        while (pCurrent != nullptr) {
+            pCurrent = pCurrent->pNext;
+            delete  pFirst;
+            pFirst = pCurrent;
+        }
+        size = 0;
     }
 
     ~List()
     {
-      EraseList();
+        erase_list();
     }
 
     List& operator=(const List& other)
     {
-        if(this == &other) {
+        if (this == &other) {
             return *this;
         }
         List tmp(other);
@@ -313,15 +293,15 @@ public:
         return *this;
     }
 
-    NodeList<T>* add(T item)//добавление звена с данными от item
+    NodeList<T>* add(T item) //adding node with data from item
     {
-        if(pLast == nullptr) {
+        if (pLast == nullptr) {
             NodeList<T>* tmp = new NodeList<T>();
             pLast = tmp;
             pLast->key = item;
             pFirst = pLast;
         }
-        else{
+        else {
             NodeList<T>* tmp = new NodeList<T>();
             pLast->pNext = tmp;
             pLast = tmp;
@@ -331,26 +311,22 @@ public:
         size++;
         return pLast;
     }
-    
+
     NodeList<T>* get_node(int index) const
     {
-        if((index > size - 1) || (index < 0) )
-<<<<<<< Updated upstream
-            throw(EqException(EqException::TEST, "Index incorrect"));
-=======
-            throw(EqException(error_code::k_INCORRECT_INDEX));
->>>>>>> Stashed changes
-        if(index == size - 1) {
+        if ((index > size - 1) || (index < 0))
+            throw(EqException(error_code::k_INCORRECT_INDEX);
+        if (index == size - 1) {
             return pLast;
         }
-        else if(index == 0) {
+        else if (index == 0) {
             return pFirst;
         }
         else {
             NodeList<T>* ptr = pFirst;
-            while(index) {
-              ptr = ptr->pNext;
-              index--;
+            while (index) {
+                ptr = ptr->pNext;
+                index--;
             }
             return ptr;
         }
