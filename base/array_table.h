@@ -3,24 +3,44 @@
 
 
 #include "table.h"
+#include <utility>
+
+#define DEFAULT_SIZE 25
 
 class ArrayTable : public Table
 {
-    TableString* data;
-    int capacity;
-    void repack();
+    TableString** data;
+    int size;
+    int curr_pos;
 public:
-    ArrayTable() : Table()
+    ArrayTable(int _size = DEFAULT_SIZE)
+        : Table(), size(_size), curr_pos(0)
     {
-        size = 0;
-        capacity_ = 100;
-        data = new TableString[capacity_];
+        data = new TableString*[size];
+        for (int i = 0; i < _size; i++) {
+          data[i] = nullptr;
+        }
     }
-    void erase(const string& key);
-    void insert(const TableString& data);
-    TableString* find(const string& key);
-    void print();
-    ~ArrayTable();
+    virtual ~ArrayTable()
+    {
+      for (int i = 0; i < size; i++) {
+        delete [] data[i];
+      }
+      delete [] data;
+    }
+	  
+    TableString& find_str(const std::string& key) = 0;
+    TableBody& find(const std::string& key) = 0;
+	  void insert(const TableString& data) = 0;
+	  void erase(const std::string& key) = 0;
+	  void print() const = 0;
+	  bool is_full() const = 0;
+	  bool reset() = 0;
+	  bool is_tab_ended() const = 0;
+    bool go_next() = 0;
+    TableString* get_value() = 0;
+    TableIterator begin() const = 0;
+    TableIterator end() const = 0; 
 };
 
 

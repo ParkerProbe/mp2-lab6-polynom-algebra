@@ -9,12 +9,13 @@
 
 class Table
 {
-
-
 protected:
-	int size;
+	int data_cnt;
 	virtual TableString& find_str(const std::string& key) = 0;
 public:
+  Table() : data_cnt(0) {}
+	virtual ~Table() {}
+
 	virtual TableBody& find(const std::string& key) = 0;
 	virtual void insert(const TableString& data) = 0;
 	virtual void erase(const std::string& key) = 0;
@@ -39,7 +40,6 @@ public:
 
 
 
-	virtual ~Table() {}
 	virtual bool empty() const
 	{
 		return size == 0;
