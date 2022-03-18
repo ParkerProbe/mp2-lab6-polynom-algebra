@@ -11,12 +11,12 @@ class Table
 {
 protected:
 	int data_cnt;
-	virtual TableString& find_str(const std::string& key) = 0;
+	virtual TableString* find_str(const std::string& key) = 0;
 public:
   Table() : data_cnt(0) {}
 	virtual ~Table() {}
 
-	virtual TableBody& find(const std::string& key) = 0;
+	virtual TableBody* find(const std::string& key) = 0;
 	virtual void insert(const TableString& data) = 0;
 	virtual void erase(const std::string& key) = 0;
 	virtual void print() const = 0;
@@ -25,7 +25,6 @@ public:
 	// Set to first record
 	virtual bool reset() = 0;
 
-	// Is tab ended
 	virtual bool is_tab_ended() const = 0;
 
 	// Next record
@@ -34,7 +33,7 @@ public:
 
 	// Get value of current iterable record
 	virtual TableString* get_value() = 0;
-
+  
 	virtual TableIterator begin() const = 0;
 	virtual TableIterator end() const = 0;
 
@@ -42,14 +41,14 @@ public:
 
 	virtual bool empty() const
 	{
-		return size == 0;
+		return data_cnt == 0;
 	}
 	virtual int get_size() const
 	{
-		return size;
+		return data_cnt;
 	}
 
-	friend std::ostream& operator<<(std::ostream& os, Table& tab)
+	friend std::ostream& operator<<(std::ostream& os, const Table& tab)
 	{
 		std::cout << "Table printing" << std::endl;
 		for (TableIterator it = tab.begin();
@@ -60,6 +59,7 @@ public:
   	}
 		return os;
 	}
+
 
 };
 

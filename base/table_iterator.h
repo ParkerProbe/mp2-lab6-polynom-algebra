@@ -10,14 +10,15 @@ class TableIterator
 private:
     TableString* p;
     
-    TableIterator(TableString* _p) : p(_p)
-        {}
 
   
 public:
     TableIterator(const TableIterator &it) : p(it.p)
         {}
 
+    TableIterator(TableString* _p) : p(_p)
+        {}
+        
     bool operator!=(TableIterator const& other) const
     {
       return p != other.p;

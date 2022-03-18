@@ -156,11 +156,12 @@ public:
 
     List(std::vector<T>& v) : size(0), pFirst(nullptr), pLast(nullptr)
     {
-        if (v.size() == 0)
+        if (v.size() == 0) {
             throw(EqException(error_code::k_EMPTY)
                 for (T tmp : v) {
                     AddNodeList(tmp);
                 }
+        }
     }
 
     T& operator[](int index)

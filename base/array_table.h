@@ -9,38 +9,48 @@
 
 class ArrayTable : public Table
 {
-    TableString** data;
+private:
+    TableString** tbl;
     int size;
     int curr_pos;
 public:
     ArrayTable(int _size = DEFAULT_SIZE)
         : Table(), size(_size), curr_pos(0)
     {
-        data = new TableString*[size];
-        for (int i = 0; i < _size; i++) {
-          data[i] = nullptr;
+        tbl = new TableString*[size];
+        for (int i; i < _size; i++) {
+          tbl[i] = nullptr;
         }
     }
     virtual ~ArrayTable()
     {
-      for (int i = 0; i < size; i++) {
-        delete [] data[i];
+      for (int i; i < size; i++) {
+        delete [] tbl[i];
       }
-      delete [] data;
+      delete [] tbl;
+    }
+
+
+    inline int get_tab_size() const
+    {
+        return size;
     }
 	  
-    TableString& find_str(const std::string& key) = 0;
-    TableBody& find(const std::string& key) = 0;
-	  void insert(const TableString& data) = 0;
-	  void erase(const std::string& key) = 0;
-	  void print() const = 0;
-	  bool is_full() const = 0;
-	  bool reset() = 0;
-	  bool is_tab_ended() const = 0;
-    bool go_next() = 0;
-    TableString* get_value() = 0;
-    TableIterator begin() const = 0;
-    TableIterator end() const = 0; 
+
+    TableString* find_str(const std::string& key);
+    TableBody* find(const std::string& key);
+	  void insert(const TableString& data);
+	  void erase(const std::string& key);
+	  void print() const;
+	  bool is_full() const;
+	  bool reset();
+	  bool is_tab_ended() const;
+    bool go_next();
+    bool set_current_pos(int pos);
+    int get_current_pos() const;
+    TableString* get_value();
+    TableIterator begin() const;
+    TableIterator end() const; 
 };
 
 
