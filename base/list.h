@@ -1,3 +1,9 @@
+/**
+  TODO:
+    [] Fix errors
+
+
+**/
 #ifndef LIST_H_
 #define LIST_H_
 
@@ -317,7 +323,7 @@ public:
     NodeList<T>* get_node(int index) const
     {
         if ((index > size - 1) || (index < 0))
-            throw(EqException(error_code::k_INCORRECT_INDEX);
+            throw(EqException(error_code::k_INCORRECT_INDEX));
         if (index == size - 1) {
             return pLast;
         }
