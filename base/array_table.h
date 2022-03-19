@@ -9,7 +9,7 @@
 
 class ArrayTable : public Table
 {
-private:
+protected:
     TableString** tbl;
     int size;
     int curr_pos;
@@ -19,15 +19,16 @@ public:
     {
         tbl = new TableString*[size];
         for (int i; i < _size; i++) {
-          tbl[i] = nullptr;
+            tbl[i] = nullptr;
         }
     }
     virtual ~ArrayTable()
     {
-      for (int i; i < size; i++) {
-        delete [] tbl[i];
-      }
-      delete [] tbl;
+        // Delete key - not  data
+        for (int i; i < size; i++) {
+            delete [] tbl[i];
+        }
+        delete [] tbl;
     }
 
 

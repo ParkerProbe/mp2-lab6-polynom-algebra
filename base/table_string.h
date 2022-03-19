@@ -13,7 +13,7 @@ struct TableBody
     string poly_string;
     Polynom* poly;
     TableBody()
-        : poly_string("0")
+        : poly_string()
     {}
 };
 //Base element in every table
@@ -24,6 +24,21 @@ struct TableString
     TableString()
         :body(), key("I")
     {}
+
+    int operator==(const TableString& other)
+    {
+        return key == other.key;
+    }
+
+    int operator< (const TableString& other)
+    {
+        return key > other.key;
+    }
+
+    int operator> (const TableString& other)
+    {
+        return key < other.key;
+    }
 };
 
 
