@@ -21,7 +21,7 @@ public:
         
     bool operator!=(TableIterator const& other) const
     {
-      return p != other.p;
+        return p != other.p;
     }
 
     bool operator==(TableIterator const& other) const

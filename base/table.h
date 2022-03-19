@@ -50,11 +50,10 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const Table& tab)
 	{
-		std::cout << "Table printing" << std::endl;
-		for (TableIterator it = tab.begin();
-       it != tab.end(); ++it)
+	    std::cout << "Table printing" << std::endl;
+	    for (TableIterator it = tab.begin(); it != tab.end(); ++it)
   	{
-    		os << " Key" << (*it).key << " Val "
+            os << " Key" << (*it).key << " Val "
 				 << (*it).body.poly_string << std::endl;
   	}
 		return os;
