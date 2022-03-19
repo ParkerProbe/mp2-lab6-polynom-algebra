@@ -52,10 +52,10 @@ public:
 	{
 	    std::cout << "Table printing" << std::endl;
 	    for (TableIterator it = tab.begin(); it != tab.end(); ++it)
-  	{
+  	    {
             os << " Key" << (*it).key << " Val "
-				 << (*it).body.poly_string << std::endl;
-  	}
+                << (*it).body.poly_string << std::endl;
+  	    }
 		return os;
 	}
 
