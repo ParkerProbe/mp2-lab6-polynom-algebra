@@ -32,12 +32,12 @@ struct TableString
 
     int operator< (const TableString& other)
     {
-        return key > other.key;
+        return key < other.key;
     }
 
     int operator> (const TableString& other)
     {
-        return key < other.key;
+        return key > other.key;
     }
 };
 
