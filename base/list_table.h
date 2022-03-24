@@ -7,15 +7,15 @@ class ListTable :public Table
     List<TableString> data;
     virtual TableString* find_str(const std::string& key);
 public:
-    virtual TableBody& find(const std::string& key);
-    virtual void insert(const TableString& data_);
-    virtual void erase(const std::string& key);
-    virtual void print();
-    virtual bool empty()
+    TableBody* find(const std::string& key);
+    void insert(const TableString& data_);
+    void erase(const std::string& key);
+    void print();
+    bool empty()
     {
         return size == 0;
     }
-    virtual int get_size()
+    int get_size()
     {
         return size;
     }
