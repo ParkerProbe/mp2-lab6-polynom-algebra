@@ -42,7 +42,7 @@ public:
     TableBody* find(const std::string& key);
     void insert(const TableString& data);
     void erase(const std::string& key);
-    void print() const;
+    void print();
     bool is_full() const;
     bool reset();
     bool is_tab_ended() const;
@@ -50,8 +50,6 @@ public:
     bool set_current_pos(int pos);
     int get_current_pos() const;
     TableString* get_value();
-    TableIterator begin() const;
-    TableIterator end() const; 
 };
 
 

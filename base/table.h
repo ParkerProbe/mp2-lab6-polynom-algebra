@@ -4,7 +4,6 @@
 
 #include "polynom.h"
 #include "table_string.h"
-#include "table_iterator.h"
 #include <ostream>
 
 class Table
@@ -19,7 +18,7 @@ public:
     virtual TableBody* find(const std::string& key) = 0;
     virtual void insert(const TableString& data) = 0;
     virtual void erase(const std::string& key) = 0;
-    virtual void print() const = 0;
+    virtual void print() = 0;
     virtual bool is_full() const = 0;
 
     // Set to first record
@@ -34,8 +33,7 @@ public:
     // Get value of current iterable record
     virtual TableString* get_value() = 0;
   
-    virtual TableIterator begin() const = 0;
-    virtual TableIterator end() const = 0;
+
 
 
 
@@ -48,12 +46,12 @@ public:
         return data_cnt;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Table& tab)
+    friend std::ostream& operator<<(std::ostream& os, Table& tab)
     {
         std::cout << "Table printing" << std::endl;
-        for (TableIterator it = tab.begin(); it != tab.end(); ++it) {
-            os << " Key" << (*it).key << " Val "
-                << (*it).body.poly_string << std::endl;
+        for (tab.reset(); !tab.is_tab_ended(); tab.go_next()) {
+            os << " Key" << tab.get_value()->key << " Val "
+                << tab.get_value()->body.poly_string << std::endl;
         }
         return os;
     }

@@ -3,19 +3,18 @@
 
 
 #include "table.h"
-#include "stack.h"
 #include <iterator>
 #include <ostream>
+#include "stack.h"
+#include "table_string.h"
 
 struct NodeTree
 {
     TableString data;
     NodeTree* pRight;
     NodeTree* pLeft;
-    NodeTree* pParent;
 };
 
-template <class T>
 class RedBlackTree : public Table
 {
 private:
@@ -23,6 +22,7 @@ private:
     NodeTree* pRoot;
     NodeTree* pCurrent;
     NodeTree** ppRef;
+    
     Stack<NodeTree*> st;
 
     void print_tree_table(std::ostream &os, NodeTree* pNode);
@@ -34,33 +34,22 @@ public:
         : Table() , curr_pos(0),  pRoot(nullptr),
          pCurrent(nullptr), ppRef(nullptr)
         {}
-    void insert(const TableString& d);
-    
-    TableString& find_str(const std::string& key);
-	TableBody& find(const std::string& key);
 
-    void erase(const string& key);
+
+
+
+    TableString* find_str(const std::string& key);
+    TableBody* find(const std::string& key);
+    void insert(const TableString& data);
+    void erase(const std::string& key);
     void print();
-    bool empty();
-    bool is_full();
-
-	bool reset();
-	bool is_tab_ended() const;
+    bool is_full() const;
+    bool reset();
+    bool is_tab_ended() const;
     bool go_next();
-
-    // Left -> Right
-    void Draw();
-
-    //Up -> Down
-    void Show();
-
+    bool set_current_pos(int pos);
+    int get_current_pos() const;
     TableString* get_value();
-
-	TableIterator begin() const;
-	TableIterator end() const;
-
-    ~RedBlackTree();
-
 
 };
 

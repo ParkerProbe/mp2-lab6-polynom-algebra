@@ -38,15 +38,6 @@ TableString* ArrayTable::get_value()
     return tbl[curr_pos];
 }
 
-TableIterator ArrayTable::end() const
-{
-  return TableIterator{nullptr};
-} 
-
-TableIterator ArrayTable::begin() const
-{
-  return TableIterator{tbl[0]};
-}
 
 // Need Exception
 void ArrayTable::erase(const std::string& key)
@@ -61,7 +52,7 @@ void ArrayTable::erase(const std::string& key)
     }
 }
 
-void ArrayTable::print() const
+void ArrayTable::print()
 {
     operator<<(std::cout, *this);
 }
@@ -86,11 +77,10 @@ void ArrayTable::insert(const TableString& data)
 
 TableString* ArrayTable::find_str(const std::string& key)
 {
-    for(TableIterator it = this->begin();
-        it != this->end(); ++it)
+    for((*this).reset(); !(*this).is_tab_ended();(*this).go_next())
     {
-        if((*it).key == key) {
-          return &(*it);
+        if((*this).get_value()->key == key) {
+          return (*this).get_value();
         }
     }
     return nullptr;
@@ -99,12 +89,5 @@ TableString* ArrayTable::find_str(const std::string& key)
 
 TableBody* ArrayTable::find(const std::string& key)
 {
-    for(TableIterator it = this->begin();
-        it != this->end(); ++it)
-    {
-        if((*it).key == key) {
-          return &((*it).body);
-        }
-    }
-    return nullptr;
+    return  &find_str(key)->body;
 }
