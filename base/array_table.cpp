@@ -85,9 +85,3 @@ TableString* ArrayTable::find_str(const std::string& key)
     }
     return nullptr;
 }
-
-
-TableBody* ArrayTable::find(const std::string& key)
-{
-    return  &find_str(key)->body;
-}

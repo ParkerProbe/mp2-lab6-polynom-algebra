@@ -16,11 +16,6 @@ bool RedBlackTree::is_full() const
     return 0;
 }
 
-TableBody* RedBlackTree::find(const std::string& key)
-{
-   return &(this->find_str(key)->body);
-}
-
 
 TableString* RedBlackTree::find_str(const std::string& key)
 {

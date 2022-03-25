@@ -15,11 +15,10 @@ public:
     Table() : data_cnt(0) {}
     virtual ~Table() {}
 
-    virtual TableBody* find(const std::string& key) = 0;
     virtual void insert(const TableString& data) = 0;
     virtual void erase(const std::string& key) = 0;
     virtual void print() = 0;
-    virtual bool is_full() const = 0;
+    inline virtual bool is_full() const = 0;
 
     // Set to first record
     virtual bool reset() = 0;
@@ -34,14 +33,17 @@ public:
     virtual TableString* get_value() = 0;
   
 
+    virtual TableBody* find(const std::string& key)
+    {
+        return &(*this).find_str(key)->body;
+    }
 
-
-
-    virtual bool empty() const
+    inline virtual bool empty() const
     {
         return data_cnt == 0;
     }
-    virtual int get_size() const
+
+    inline virtual int get_size() const
     {
         return data_cnt;
     }

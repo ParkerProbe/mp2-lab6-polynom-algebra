@@ -35,11 +35,7 @@ public:
          pCurrent(nullptr), ppRef(nullptr)
         {}
 
-
-
-
     TableString* find_str(const std::string& key);
-    TableBody* find(const std::string& key);
     void insert(const TableString& data);
     void erase(const std::string& key);
     void print();

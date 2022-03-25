@@ -11,8 +11,6 @@ void SortTable::Sort (TableString** unsrtd_table, int data_cnt)
     std::sort(unsrtd_table[0], unsrtd_table[data_cnt - 1]);
 }
 
-
-
 TableString* SortTable::find_str(const std::string& key)
 {
     int i, i1 = 0, i2 = data_cnt -1;
@@ -34,19 +32,15 @@ TableString* SortTable::find_str(const std::string& key)
         }
     }
     if ((i2 < 0) || (tbl[i2]->key < key))  {
-      i2++;
+        i2++;
     }
     curr_pos = i2;
     if ((i2 < data_cnt) && (tbl[i]->key == key)) {
-      return tbl[i2];
+        return tbl[i2];
     }
     return nullptr;
 }
 
-TableBody* SortTable::find(const std::string& key)
-{
-    return &(*this->find_str(key)).body;
-}
 
 void SortTable::insert(const TableString& data)
 {
@@ -55,13 +49,14 @@ void SortTable::insert(const TableString& data)
     }
     else {
         for (int i = data_cnt; i > curr_pos; i--) {
-          tbl[i] = tbl[i-1];
+            tbl[i] = tbl[i-1];
         }
         tbl[curr_pos] = new TableString(data);
         data_cnt++;
     }
 
 }
+
 void SortTable::erase(const std::string& key)
 {
     TableString* tmp = find_str(key);
@@ -74,5 +69,4 @@ void SortTable::erase(const std::string& key)
         }
         tbl[--data_cnt] = nullptr;
     }
-
 }
