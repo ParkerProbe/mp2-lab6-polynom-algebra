@@ -14,9 +14,15 @@ void ListTable::erase(const std::string& key)
     }
     data.erase_first_found((*tmp));
 }
-TableBody& ListTable::find(const std::string& key)
+TableBody* ListTable::find(const std::string& key)
 {
-    return find_str(key)->body;
+    TableString* tmp = find_str(key);
+    if (tmp == nullptr) {
+        return nullptr;
+    }
+    else {
+        return &(tmp->body);
+    }
 }
 TableString* ListTable::find_str(const std::string& key)
 {
@@ -26,4 +32,5 @@ TableString* ListTable::find_str(const std::string& key)
             return out;
         }
     }
+    return nullptr;
 }
