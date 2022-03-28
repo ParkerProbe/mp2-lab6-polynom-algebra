@@ -23,14 +23,14 @@ bool ArrayTable::reset()
 bool ArrayTable::go_next()
 {
   if(!is_tab_ended()) {
-    curr_pos++;
+      curr_pos++;
   }
   return is_tab_ended();
 }
 
 int ArrayTable::get_current_pos() const
 {
-  return curr_pos;
+    return curr_pos;
 }
 
 TableString* ArrayTable::get_value()
@@ -47,8 +47,8 @@ void ArrayTable::erase(const std::string& key)
         throw(EqException(error_code::k_NOT_FOUND));
     }
     else {
-      tbl[curr_pos] = tbl[data_cnt - 1];
-      tbl[--data_cnt] = nullptr;
+        tbl[curr_pos] = tbl[data_cnt - 1];
+        tbl[--data_cnt] = nullptr;
     }
 }
 
@@ -66,11 +66,11 @@ bool ArrayTable::is_full() const
 void ArrayTable::insert(const TableString& data)
 {
     if(is_full()) {
-      throw(EqException(error_code::k_OUT_OF_MEMORY));
+        throw(EqException(error_code::k_OUT_OF_MEMORY));
     }
     else {
-      tbl[data_cnt] = new TableString(data);
-      data_cnt++;
+        tbl[data_cnt] = new TableString(data);
+        data_cnt++;
     }
 }
 
@@ -80,7 +80,7 @@ TableString* ArrayTable::find_str(const std::string& key)
     for((*this).reset(); !(*this).is_tab_ended();(*this).go_next())
     {
         if((*this).get_value()->key == key) {
-          return (*this).get_value();
+            return (*this).get_value();
         }
     }
     return nullptr;

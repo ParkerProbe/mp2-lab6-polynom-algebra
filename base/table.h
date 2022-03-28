@@ -5,15 +5,18 @@
 #include "polynom.h"
 #include "table_string.h"
 #include <ostream>
+#include <string>
 
 class Table
 {
 protected:
     int data_cnt;
     virtual TableString* find_str(const std::string& key) = 0;
+    
 public:
     Table() : data_cnt(0) {}
     virtual ~Table() {}
+
 
     virtual void insert(const TableString& data) = 0;
     virtual void erase(const std::string& key) = 0;
@@ -30,8 +33,7 @@ public:
     virtual bool go_next() = 0;
 
     // Get value of current iterable record
-    virtual TableString* get_value() = 0;
-  
+    inline virtual TableString* get_value() = 0;
 
     virtual TableBody* find(const std::string& key)
     {

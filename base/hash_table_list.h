@@ -7,33 +7,25 @@
 #include "table_string.h"
 #include <string>
 #include <vector>
+#include "list.h"
 
 class HashTableList : public Table
 {
 private:
-    struct TLink
-    {
-        TableString* rec;
-        TLink* pNext;
-    };
-
     int size;
-
-    int curr_pos;
     int curr_index;
-    TLink* ptr_curr_pos;
-
-    std::vector<TLink*> table;
-
-    int Hash(const std::string& key)
-    {
-        
-    }
+    std::vector<List<TableString*>*> table;
+    ListIterator<TableString*> curr_pos;
+    unsigned int Hash(const std::string& key);
 
 public:
     HashTableList(int _size)
-        :  size(_size), table(_size, nullptr)
-    {}
+        :  size(_size), table(_size, nullptr), curr_pos(table[0]->begin())
+    {
+        for(int i = 0; i < _size; i++) {
+            table[i] = new List<TableString*>;
+        }
+    }
 
     ~HashTableList() = default;
 
@@ -45,8 +37,8 @@ public:
     bool reset();
     bool is_tab_ended() const;
     bool go_next();
-    bool set_current_pos(int pos);
-    int get_current_pos() const;
+    bool set_current_pos(int pos) = delete;
+    int get_current_pos() const = delete;
     TableString* get_value();
 };
 

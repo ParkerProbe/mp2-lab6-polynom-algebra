@@ -1,14 +1,28 @@
 #include "hash_table_list.h"
 #include "eq_exception.h"
+#include "list.h"
 #include "table_string.h"
 
+
+unsigned int HashTableList::Hash(const std::string& key)
+{
+    unsigned long hashval = 0;
+    int len = key.length();
+    for (int i = 0; i < len; i++) {
+        hashval = (hashval << 3) + key[3];
+    }
+    return hashval;
+}
 
 TableString* HashTableList::find_str(const std::string& key)
 {
     int index = Hash(key);
-    for(TLink* p = table[index]; p != nullptr; p = p->pNext) {
-        if(p->rec->key == key) {
-            return p->rec;
+    for(ListIterator<TableString*> it = table[index]->begin();
+        it != table[index]->end(); ++it)
+    {
+        if((*it)->key == key) {
+            curr_pos = it;
+            return (*it);
         }
     }
     return nullptr;
@@ -16,12 +30,16 @@ TableString* HashTableList::find_str(const std::string& key)
 
 void HashTableList::insert(const TableString& data)
 {
-    int index = Hash(data.key);
-    TLink* p = new TLink();
-    p->rec = new TableString(data);
-    p->pNext = table[index];
-    table[index] = p;
-    data_cnt++;
+    if(is_full()) {
+        throw EqException(error_code::k_OUT_OF_MEMORY);
+    }
+    else {
+        int index = Hash(data.key);
+        TableString* tmp = new TableString(data);
+        ListIterator<TableString*> it =  table[index]->begin();
+        table[index]->insert(it, tmp);
+        data_cnt++;
+    }
 }
 
 
@@ -29,24 +47,13 @@ void HashTableList::erase(const std::string& key)
 {
     int index = Hash(key);
 
-    if(table[index] == nullptr) {
+    if((*this).find_str(key) == nullptr) {
         throw(EqException(error_code::k_NOT_FOUND));
     }
-
-    TLink* p = table[index];
-    TLink* pp = nullptr;
-    for(; p != nullptr; p = p->pNext) {
-        if(p->rec->key == key) {
-            if(pp == nullptr) {
-                delete [] p;
-            }
-            else {
-                pp->pNext = p->pNext;
-                delete [] p;
-            }
-        }
-        pp = p;
+    else {
+        table[index]->erase(curr_pos);
     }
+    
     throw EqException(error_code::k_NOT_FOUND);
 
 }
@@ -65,15 +72,14 @@ bool HashTableList::is_full() const
 
 bool  HashTableList::is_tab_ended() const
 {
-    return curr_pos >= data_cnt;
+    return curr_index >= size;
 
 }
 
 bool HashTableList::reset()
 {
-    curr_pos = 0;
+    curr_pos = table[0]->begin();
     curr_index = 0;
-    ptr_curr_pos = table[0];
     return is_tab_ended();
 }
 
@@ -83,17 +89,17 @@ bool HashTableList::go_next()
         return false;
     }
 
-    if(ptr_curr_pos->pNext == nullptr) {
-        curr_pos++;
-        curr_index++;
-        ptr_curr_pos = table[curr_index];
+    if(curr_pos != table[curr_index]->end()) {
+        ++curr_pos;
     }
     else {
-        ptr_curr_pos = ptr_curr_pos->pNext;
-        curr_pos++;
+        curr_index++;
+        curr_pos = table[curr_index]->begin();
     }
     return true;
 }
+
+
 
 
 void HashTableList::print()
@@ -101,18 +107,8 @@ void HashTableList::print()
     operator<<(std::cout, *this);
 }
 
-bool HashTableList::set_current_pos(int pos)
-{
-    curr_pos = ((pos > -1) && (pos < data_cnt)) ? pos : 0;
-    return is_tab_ended(); 
-}
-
-int HashTableList::get_current_pos() const
-{
-    return curr_pos;
-}
 
 TableString*  HashTableList::get_value()
 {
-    return ptr_curr_pos->rec;
+    return (*curr_pos);
 }

@@ -1,7 +1,7 @@
 #ifndef _ARRAY_TABLE_H_
 #define _ARRAY_TABLE_H_
 
-
+// TODO: Memory allocation
 #include "table.h"
 #include <utility>
 

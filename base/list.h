@@ -123,7 +123,9 @@ public:
         }
     }
 
-    void erase_first_found(T p_)// to delete elem from table. It is not normal list method but it helps in tables
+    // To delete elem from table.
+    // It is not normal list method but it helps in tables
+    void erase_first_found(T p_)
     {
         NodeList<T>* p;
         p->key = p_;
