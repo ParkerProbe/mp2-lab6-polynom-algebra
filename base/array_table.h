@@ -13,6 +13,8 @@ protected:
     TableString** tbl;
     int size;
     int curr_pos;
+
+    void MemoryAllocator();
 public:
     ArrayTable(int _size = DEFAULT_SIZE)
         : Table(), size(_size), curr_pos(0)
@@ -32,7 +34,7 @@ public:
     }
 
 
-    inline int get_tab_size() const
+    inline int get_size() const
     {
         return size;
     }

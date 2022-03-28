@@ -12,7 +12,8 @@ private:
 
 public:
     SortTable(int size = DEFAULT_SIZE) : ArrayTable(size) {} ;
-
+    SortTable& operator=(const SortTable& other);
+    SortTable(const ArrayTable &other) { *this = other; }
 
     TableString* find_str(const std::string& key) override ;
     TableBody* find(const std::string& key) override;

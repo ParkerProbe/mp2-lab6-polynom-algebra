@@ -70,3 +70,26 @@ void SortTable::erase(const std::string& key)
         tbl[--data_cnt] = nullptr;
     }
 }
+
+
+SortTable& SortTable::operator=(const SortTable &other)
+{
+    if(tbl != nullptr) {
+        for (int i = 0; i < data_cnt; i++) {
+            delete tbl[i];
+        }
+        delete [] tbl;
+        tbl = nullptr;
+    }
+    size = other.get_size();
+    data_cnt = other.data_cnt;
+    tbl = new TableString*[size];
+    for (int i = 0; i < data_cnt; i++) {
+        tbl[i] = other.tbl[i];
+    }
+    Sort(tbl, data_cnt);
+    curr_pos = 0;
+    return *this;
+
+
+}

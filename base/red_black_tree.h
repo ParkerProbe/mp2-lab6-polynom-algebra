@@ -35,6 +35,8 @@ public:
          pCurrent(nullptr), ppRef(nullptr)
         {}
 
+    int get_size() = delete;
+
     TableString* find_str(const std::string& key);
     void insert(const TableString& data);
     void erase(const std::string& key);

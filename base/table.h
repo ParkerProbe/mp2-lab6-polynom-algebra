@@ -34,6 +34,7 @@ public:
 
     // Get value of current iterable record
     inline virtual TableString* get_value() = 0;
+    inline virtual int get_size() const = 0;
 
     virtual TableBody* find(const std::string& key)
     {
@@ -45,7 +46,7 @@ public:
         return data_cnt == 0;
     }
 
-    inline virtual int get_size() const
+    inline virtual int get_data_count() const
     {
         return data_cnt;
     }

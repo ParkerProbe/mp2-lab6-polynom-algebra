@@ -29,6 +29,11 @@ public:
 
     ~HashTableList() = default;
 
+    int get_size()
+    {
+        return size;
+    }
+
     TableString* find_str(const std::string& key);
     void insert(const TableString& data);
     void erase(const std::string& key);

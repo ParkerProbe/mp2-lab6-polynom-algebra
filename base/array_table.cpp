@@ -2,6 +2,8 @@
 #include "eq_exception.h"
 #include "table.h"
 #include "table_string.h"
+#include <new>
+#include <sys/types.h>
 
 bool ArrayTable::set_current_pos(int pos)
 {
@@ -9,9 +11,27 @@ bool ArrayTable::set_current_pos(int pos)
    return is_tab_ended(); 
 }
 
+void ArrayTable::MemoryAllocator()
+{
+    TableString** ntbl = new TableString*[size * 2];
+    
+    for (int i = 0; i < size; i++) {
+        ntbl[i] = tbl[i];
+    }
+
+    for (int i; i < size; i++) {
+        delete [] tbl[i];
+    }
+    delete [] tbl;
+
+    size *= 2; 
+    tbl = ntbl;
+
+}
+
 bool ArrayTable::is_tab_ended() const
 {
-    return curr_pos >= data_cnt;
+    return data_cnt >= size;
 }
 
 bool ArrayTable::reset()
@@ -66,12 +86,10 @@ bool ArrayTable::is_full() const
 void ArrayTable::insert(const TableString& data)
 {
     if(is_full()) {
-        throw(EqException(error_code::k_OUT_OF_MEMORY));
+       MemoryAllocator();
     }
-    else {
-        tbl[data_cnt] = new TableString(data);
-        data_cnt++;
-    }
+    tbl[data_cnt] = new TableString(data);
+    data_cnt++;
 }
 
 
