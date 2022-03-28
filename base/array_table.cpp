@@ -14,7 +14,7 @@ bool ArrayTable::set_current_pos(int pos)
 void ArrayTable::MemoryAllocator()
 {
     TableString** ntbl = new TableString*[size * 2];
-    
+
     for (int i = 0; i < size; i++) {
         ntbl[i] = tbl[i];
     }
@@ -26,12 +26,11 @@ void ArrayTable::MemoryAllocator()
 
     size *= 2; 
     tbl = ntbl;
-
 }
 
 bool ArrayTable::is_tab_ended() const
 {
-    return data_cnt >= size;
+    return curr_pos >= data_cnt;
 }
 
 bool ArrayTable::reset()
