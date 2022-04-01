@@ -10,22 +10,37 @@ public:
     TableBody* find(const std::string& key);
     void insert(const TableString& data_);
     void erase(const std::string& key);
+    /////////////////////////////////////
     void print();
     bool empty()
     {
-        return size == 0;
+        return data_cnt == 0;
     }
     int get_size()
     {
-        return size;
+        return data_cnt;
     }
-    ListTable()
+    bool is_full()
     {
-        size = 0;
+        try {
+            NodeList<TableString>* tmp = new NodeList<TableString>;
+            delete tmp;
+        }
+        catch (...)
+        {
+            return true;
+        }
+        return false;
+    }
+    ListTable() : data()
+    {
+        data_cnt = 0;
     }
     ListTable(std::vector<TableString> a) : data(a)
     {
-        size = a.size();
+        data_cnt = a.size();
     }
+    ~ListTable()
+    {}
 };
 #endif

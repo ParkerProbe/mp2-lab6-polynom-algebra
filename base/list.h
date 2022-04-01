@@ -31,8 +31,8 @@ class ListIterator
 {
 private:
     friend class List<T>;
-    NodeList<T>* prev_ptr;
-    NodeList<T>* ptr;
+    NodeList<T>* prev_ptr;//���������� �����
+    NodeList<T>* ptr;//������� �����
 
     ListIterator(NodeList<T>* ptr1) : ptr(ptr1), prev_ptr(ptr)
     {}
@@ -123,9 +123,7 @@ public:
         }
     }
 
-    // To delete elem from table.
-    // It is not normal list method but it helps in tables
-    void erase_first_found(T p_)
+    void erase_first_found(T p_)// to delete elem from table. It is not normal list method but it helps in tables
     {
         NodeList<T>* p;
         p->key = p_;
@@ -156,7 +154,7 @@ public:
     List(T* arr) : size(0), pFirst(nullptr), pLast(nullptr)
     {
         if (arr == nullptr)
-            throw(EqException(error_code::k_EMPTY));
+            throw(EqException(error_code::k_EMPTY);
         for (int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
             AddNodeList(arr[i]);
         }
@@ -165,17 +163,17 @@ public:
     List(std::vector<T>& v) : size(0), pFirst(nullptr), pLast(nullptr)
     {
         if (v.size() == 0) {
-            throw(EqException(error_code::k_EMPTY));
-        }
-        for (T tmp : v) {
-            AddNodeList(tmp);
+            throw(EqException(error_code::k_EMPTY)
+                for (T tmp : v) {
+                    AddNodeList(tmp);
+                }
         }
     }
 
     T& operator[](int index)
     {
         if ((index > size - 1) || (index < 0)) {
-            throw(EqException(error_code::k_INCORRECT_INDEX));
+            throw(EqException(error_code::k_INCORRECT_INDEX);
         }
         int n = 0;
 
@@ -187,7 +185,7 @@ public:
             pCurrent = pCurrent->pNext;
             n++;
         }
-        throw(EqException(error_code::k_INCORRECT_INDEX));
+        throw(EqException(error_code::k_INCORRECT_INDEX);
     }
 
     inline bool operator==(const List& other)
@@ -277,7 +275,7 @@ public:
         pLast = pCurrent;
     }
 
-    void clear()
+    void clear()//������ �������� ������
     {
         NodeList<T>* pCurrent = pFirst;
         while (pCurrent != nullptr) {

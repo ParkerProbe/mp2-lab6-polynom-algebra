@@ -28,7 +28,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os,  const Monom& mnm);
     friend std::istream& operator>>(std::istream& is,  Monom& mnm);
 
-    Monom& integral();
+    Monom& integral(char param);
     Monom& derivative(char param);
     Monom& operator=(const Monom& other) = default;
     Monom& operator+=(const Monom& other);
@@ -78,7 +78,7 @@ public:
       double calculate_in_point(double x, double y, double z);
       void optimize_polynom();
 
-      Polynom& integral();
+      Polynom& integral(char param);
       Polynom& derivative(char param);
 
       Polynom& operator=(const Polynom& other) = default;

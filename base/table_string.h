@@ -1,12 +1,12 @@
 #ifndef _LIST_H_
 #define _LIST_H_
 
-#include <ostream>
 #include <string>
 
 #include "polynom.h"
 
 using std::string;
+
 
 //Protects against key damage
 struct TableBody
@@ -40,6 +40,7 @@ struct TableString
     {
         return key > other.key;
     }
+    friend std::ostream& operator<<(std::ostream& os, const TableString& ts);
 };
 
 

@@ -7,6 +7,8 @@
 #include "polynom.h"
 #include "array_table.h"
 #include "list_table.h"
+#include "sorted_array_table.h"
+#include "hash_table_list.h"
 #include <conio.h>
 
 class Interface
@@ -21,7 +23,10 @@ class Interface
         k_CHAIN_HASH_TABLE,
         k_LIST_HASH_TABLE,
     };
+    const int k_table_size;
     Table_num mode;
+    // 0 Arr, 1 Sort, 2 List, 3 Tree, 4 Chain-Hash, 5 List-Hash
+    Table** tab;
 private:
     /*void table_select();
     void add();
@@ -41,8 +46,17 @@ private:
     void polinom_menu();
     void print();
 public:
-    Interface() :mode(Table_num::k_TABLE)
-    {}
+    Interface() :mode(Table_num::k_TABLE), k_table_size(6)
+    {
+        tab = new Table * [k_table_size];
+        tab[0] = new ArrayTable;
+        tab[1] = new SortTable;
+        tab[2] = new ListTable;
+        tab[3] = new RedBlackTree;
+        //////////////////////////////////////////////////
+        tab[5] = new HashTableList;
+
+    }
     void menu();
 };
 #endif

@@ -82,12 +82,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="array_table.cpp" />
+    <ClCompile Include="hash_table_list.cpp" />
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="list_table.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="monom.cpp" />
-    <ClCompile Include="polinom.cpp" />
-    <ClCompile Include="sample_polinom.cpp" />
+    <ClCompile Include="polynom.cpp" />
+    <ClCompile Include="postfix.cpp" />
+    <ClCompile Include="red_black_tree.cpp" />
+    <ClCompile Include="sorted_array_table.cpp" />
+    <ClCompile Include="table_string.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array_table.h" />
