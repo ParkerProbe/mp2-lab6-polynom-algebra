@@ -6,7 +6,7 @@
 #include <iterator>
 #include <ostream>
 #include "table_string.h"
-
+#include "stack.h"
 
 enum RBTColor { Black, Red };
 
@@ -56,7 +56,7 @@ public:
     RedBlackTree(): curr_pos(0), root(nullptr), current(nullptr)
       {}
 
-	~RedBlackTree() {
+    ~RedBlackTree() {
         destroy(root);
     }
 
