@@ -17,7 +17,7 @@ public:
 
     TableString* find_str(const std::string& key) override ;
     TableBody* find(const std::string& key) override;
-    void insert(const TableString& data) override;
+    void insert(TableString& data) override;
     void erase(const std::string& key) override;
 };
 #endif

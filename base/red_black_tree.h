@@ -5,61 +5,64 @@
 #include "table.h"
 #include <iterator>
 #include <ostream>
-#include "stack.h"
 #include "table_string.h"
 
-         
 
+enum RBTColor { Black, Red };
+
+struct  RBTNode
+{
+    TableString* data;
+    RBTColor color;
+    RBTNode * left;
+    RBTNode* right;
+    RBTNode * parent;
+    RBTNode(TableString* data_, RBTColor c, RBTNode* p, RBTNode*l, RBTNode*r) :
+        data(data_), color(c), parent(p), left(l), right(r) { };
+};
 
 class RedBlackTree : public Table
 {
 private:
-    enum RBTColor { Black, Red };
 
-    struct  RBTNode
-    {
-      TableString* data;
-      RBTColor color;
-      RBTNode * left;
-      RBTNode* right;
-      RBTNode * parent;
-      RBTNode(TableString* data_, RBTColor c, RBTNode* p, RBTNode*l, RBTNode*r) :
-        data(data_), color(c), parent(p), left(l), right(r) { };
-    };
+    
    
-    void leftRotate(RBTNode* &root, RBTNode* x);
-    void rightRotate(RBTNode* &root, RBTNode* y);
+    void left_rotate(RBTNode* &root, RBTNode* x);
+    void right_rotate(RBTNode* &root, RBTNode* y);
 
-    void insert(RBTNode* &root, RBTNode* node);
+    void insert_in(RBTNode* &root, RBTNode* node);
     void insert_fix_up(RBTNode* &root, RBTNode* node);
-    void destory(RBTNode* &node);
+    void destroy(RBTNode* &node);
 
     void remove(RBTNode*& root, RBTNode*node);
     void remove_fix_up(RBTNode* &root, RBTNode* node, RBTNode*parent);
 
-    RBTNode* search(RBTNode*node, TableString* data_) const;
-    void print(RBTNode* node)const;
-    void preOrder(RBTNode* tree)const;
-    void inOrder(RBTNode* tree)const;
-    void postOrder(RBTNode* tree)const;
-
-
-
+    RBTNode* search(RBTNode*node, const std::string& key) const;
+    
+    // void pre_order(RBTNode* tree)const;
+    // void in_order(RBTNode* tree)const;
+    // void post_order(RBTNode* tree)const;
 
     int curr_pos;
 
-    	RBTNode *root;
+    RBTNode *root;
+    RBTNode *current;
+
+    Stack<RBTNode*> st;
+
 
 public:
     
-    RedBlackTree(): curr_pos(0)
+    RedBlackTree(): curr_pos(0), root(nullptr), current(nullptr)
       {}
 
-	  ~RedBlackTree();
+	~RedBlackTree() {
+        destroy(root);
+    }
 
 
     TableString* find_str(const std::string& key);
-    void insert(const TableString& data);
+    void insert(TableString& data);
     void erase(const std::string& key);
     bool is_full() const;
     bool reset();

@@ -18,7 +18,7 @@ public:
     Table() : data_cnt(0) {}
     virtual ~Table() {}
 
-    virtual void insert(const TableString& data) = 0;
+    virtual void insert(TableString& data) = 0;
     virtual void erase(const std::string& key) = 0;
     // HOW TO PRINT: print_header(); print other TableString's
     inline virtual bool is_full() const = 0;
@@ -90,7 +90,7 @@ public:
 
 
 
-    void print( Table& tab)
+    void print(Table& tab)
     {
         cout << "Table printing" << std::endl;
         for (tab.reset(); !tab.is_tab_ended(); tab.go_next()) {

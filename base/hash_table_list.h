@@ -35,7 +35,7 @@ public:
     }
 
     TableString* find_str(const std::string& key);
-    void insert(const TableString& data);
+    void insert(TableString& data);
     void erase(const std::string& key);
     void print();
     bool is_full() const;

@@ -42,16 +42,17 @@ TableString* SortTable::find_str(const std::string& key)
 }
 
 
-void SortTable::insert(const TableString& data)
+void SortTable::insert(TableString& data)
 {
-    if(is_full()) {
+    if (is_full()) {
         throw (EqException(error_code::k_OUT_OF_MEMORY));
     }
+
     else {
         for (int i = data_cnt; i > curr_pos; i--) {
             tbl[i] = tbl[i-1];
         }
-        tbl[curr_pos] = new TableString(data);
+        tbl[curr_pos] = &data;
         data_cnt++;
     }
 
@@ -74,7 +75,7 @@ void SortTable::erase(const std::string& key)
 
 SortTable& SortTable::operator=(const SortTable &other)
 {
-    if(tbl != nullptr) {
+    if (tbl != nullptr) {
         for (int i = 0; i < data_cnt; i++) {
             delete tbl[i];
         }

@@ -17,10 +17,10 @@ unsigned int HashTableList::Hash(const std::string& key)
 TableString* HashTableList::find_str(const std::string& key)
 {
     int index = Hash(key);
-    for(ListIterator<TableString*> it = table[index]->begin();
+    for (ListIterator<TableString*> it = table[index]->begin();
         it != table[index]->end(); ++it)
     {
-        if((*it)->key == key) {
+        if ((*it)->key == key) {
             curr_pos = it;
             return (*it);
         }
@@ -28,16 +28,15 @@ TableString* HashTableList::find_str(const std::string& key)
     return nullptr;
 }
 
-void HashTableList::insert(const TableString& data)
+void HashTableList::insert(TableString& data)
 {
-    if(is_full()) {
+    if (is_full()) {
         throw EqException(error_code::k_OUT_OF_MEMORY);
     }
     else {
         int index = Hash(data.key);
-        TableString* tmp = new TableString(data);
         ListIterator<TableString*> it =  table[index]->begin();
-        table[index]->insert(it, tmp);
+        table[index]->insert(it, &data);
         data_cnt++;
     }
 }
@@ -47,7 +46,7 @@ void HashTableList::erase(const std::string& key)
 {
     int index = Hash(key);
 
-    if((*this).find_str(key) == nullptr) {
+    if ((*this).find_str(key) == nullptr) {
         throw(EqException(error_code::k_NOT_FOUND));
     }
     else {
@@ -85,11 +84,11 @@ bool HashTableList::reset()
 
 bool HashTableList::go_next()
 {
-    if(is_tab_ended()) {
+    if (is_tab_ended()) {
         return false;
     }
 
-    if(curr_pos != table[curr_index]->end()) {
+    if (curr_pos != table[curr_index]->end()) {
         ++curr_pos;
     }
     else {
@@ -99,13 +98,6 @@ bool HashTableList::go_next()
     return true;
 }
 
-
-
-
-void HashTableList::print()
-{
-    operator<<(std::cout, *this);
-}
 
 
 TableString*  HashTableList::get_value()
