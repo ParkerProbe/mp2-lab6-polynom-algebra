@@ -62,7 +62,7 @@ public:
 
 
     TableString* find_str(const std::string& key);
-    void insert(TableString& data);
+    void insert(const std::string& key, TableBody& data);
     void erase(const std::string& key);
     bool is_full() const;
     bool reset();

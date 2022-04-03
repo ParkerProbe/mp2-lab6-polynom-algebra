@@ -75,12 +75,12 @@ bool ArrayTable::is_full() const
 }
 
 
-void ArrayTable::insert(TableString& data)
+void ArrayTable::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
        MemoryAllocator();
     }
-    tbl[data_cnt] = &data;
+    tbl[data_cnt] = new TableString(key, data);
     data_cnt++;
 }
 

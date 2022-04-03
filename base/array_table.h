@@ -3,6 +3,7 @@
 
 // TODO: Memory allocation
 #include "table.h"
+#include "table_string.h"
 #include <utility>
 
 #define DEFAULT_SIZE 25
@@ -41,7 +42,7 @@ public:
     
 
     TableString* find_str(const std::string& key);
-    void insert(TableString& data);
+    void insert(const std::string& key, TableBody& data);
     void erase(const std::string& key);
     bool is_full() const;
     bool reset();

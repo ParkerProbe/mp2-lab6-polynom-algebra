@@ -27,9 +27,10 @@ void RedBlackTree::left_rotate(RBTNode* &root, RBTNode* x) {
     x->parent = y;
 };
 
-void RedBlackTree::insert(TableString& data)
+void RedBlackTree::insert(const std::string& key, TableBody& data)
 {
-    RBTNode *z = new RBTNode(&data, Red, NULL, NULL, NULL);
+    TableString* tmp = new TableString(key, data);
+    RBTNode *z = new RBTNode(tmp, Red, NULL, NULL, NULL);
     insert_in(root, z);
 };
 

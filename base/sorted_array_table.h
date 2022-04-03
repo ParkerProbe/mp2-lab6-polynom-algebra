@@ -15,10 +15,10 @@ public:
     SortTable& operator=(const SortTable& other);
     SortTable(const ArrayTable &other) { *this = other; }
 
-    TableString* find_str(const std::string& key) override ;
-    TableBody* find(const std::string& key) override;
-    void insert(TableString& data) override;
-    void erase(const std::string& key) override;
+    TableString* find_str(const std::string& key);
+    TableBody* find(const std::string& key);
+    void insert(const std::string& key, TableBody& data);
+    void erase(const std::string& key);
 };
 #endif
 

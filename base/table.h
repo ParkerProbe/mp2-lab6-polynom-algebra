@@ -5,6 +5,7 @@
 #include "polynom.h"
 #include "table_string.h"
 #include <ostream>
+#include <string>
 
 
 using std::cout;
@@ -18,7 +19,7 @@ public:
     Table() : data_cnt(0) {}
     virtual ~Table() {}
 
-    virtual void insert(TableString& data) = 0;
+    virtual void insert(const std::string& key, TableBody& data) = 0;
     virtual void erase(const std::string& key) = 0;
     // HOW TO PRINT: print_header(); print other TableString's
     inline virtual bool is_full() const = 0;

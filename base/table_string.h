@@ -26,21 +26,30 @@ struct TableString
         :body(), key("I")
     {}
 
+    TableString(string key_, TableBody& body_)
+        : key(key_), body(body_)
+        {}
+    ~TableString() = default;
+
+    TableString& operator=(const TableString& other) = default; 
+
     int operator==(const TableString& other)
     {
         return key == other.key;
     }
 
-    int operator< (const TableString& other)
+    int operator<(const TableString& other)
     {
         return key < other.key;
     }
 
-    int operator> (const TableString& other)
+    int operator>(const TableString& other)
     {
         return key > other.key;
     }
-    friend std::ostream& operator<<(std::ostream& os, const TableString& ts);
+
+
+    // friend std::ostream& operator<<(std::ostream& os, const TableString& ts);
 };
 
 
