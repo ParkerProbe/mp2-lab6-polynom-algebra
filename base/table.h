@@ -4,7 +4,6 @@
 
 #include "polynom.h"
 #include "table_string.h"
-#include "table_iterator.h"
 #include <ostream>
 
 
@@ -19,11 +18,9 @@ public:
     Table() : data_cnt(0) {}
     virtual ~Table() {}
 
-    virtual TableBody* find(const std::string& key) = 0;
     virtual void insert(const TableString& data) = 0;
     virtual void erase(const std::string& key) = 0;
     // HOW TO PRINT: print_header(); print other TableString's
-    virtual void print() const = 0;
     inline virtual bool is_full() const = 0;
 
     void print_header()
@@ -72,10 +69,7 @@ public:
     virtual bool go_next() = 0;
 
     // Get value of current iterable record
-   inline virtual TableString* get_value() = 0;
-  
-    virtual TableIterator begin() const = 0;
-    virtual TableIterator end() const = 0;
+    inline virtual TableString* get_value() = 0;
 
 
 
@@ -83,22 +77,27 @@ public:
     {
         return data_cnt == 0;
     }
+
     inline virtual int get_data_count() const
     {
         return data_cnt;
     }
 
-
-    /*friend std::ostream& operator<<(std::ostream& os, const Table& tab)
+    virtual TableBody* find(const std::string& key)
     {
-        std::cout << "Table printing" << std::endl;
-        for (TableIterator it = tab.begin(); it != tab.end(); ++it) {
-            os << " Key" << (*it).key << " Val "
-                << (*it).body.poly_string << std::endl;
-        }
-        return os;
-    }*/
+        return &(*this).find_str(key)->body;
+    }
 
+
+
+    void print( Table& tab)
+    {
+        cout << "Table printing" << std::endl;
+        for (tab.reset(); !tab.is_tab_ended(); tab.go_next()) {
+            cout << " Key" << tab.get_value() << " Val "
+                << tab.get_value() << std::endl;
+        }
+    }
 
 };
 

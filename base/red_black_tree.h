@@ -8,39 +8,59 @@
 #include "stack.h"
 #include "table_string.h"
 
-struct NodeTree
-{
-    TableString data;
-    NodeTree* pRight;
-    NodeTree* pLeft;
-};
+         
+
 
 class RedBlackTree : public Table
 {
 private:
-    int curr_pos;
-    NodeTree* pRoot;
-    NodeTree* pCurrent;
-    NodeTree** ppRef;
-    
-    Stack<NodeTree*> st;
+    enum RBTColor { Black, Red };
 
-    void print_tree_table(std::ostream &os, NodeTree* pNode);
-    void draw_tree(NodeTree* pNode, int level);
-    void delete_tree(NodeTree* pNode);
+    struct  RBTNode
+    {
+      TableString* data;
+      RBTColor color;
+      RBTNode * left;
+      RBTNode* right;
+      RBTNode * parent;
+      RBTNode(TableString* data_, RBTColor c, RBTNode* p, RBTNode*l, RBTNode*r) :
+        data(data_), color(c), parent(p), left(l), right(r) { };
+    };
+   
+    void leftRotate(RBTNode* &root, RBTNode* x);
+    void rightRotate(RBTNode* &root, RBTNode* y);
+
+    void insert(RBTNode* &root, RBTNode* node);
+    void insert_fix_up(RBTNode* &root, RBTNode* node);
+    void destory(RBTNode* &node);
+
+    void remove(RBTNode*& root, RBTNode*node);
+    void remove_fix_up(RBTNode* &root, RBTNode* node, RBTNode*parent);
+
+    RBTNode* search(RBTNode*node, TableString* data_) const;
+    void print(RBTNode* node)const;
+    void preOrder(RBTNode* tree)const;
+    void inOrder(RBTNode* tree)const;
+    void postOrder(RBTNode* tree)const;
+
+
+
+
+    int curr_pos;
+
+    	RBTNode *root;
 
 public:
-    RedBlackTree()
-        : Table() , curr_pos(0),  pRoot(nullptr),
-         pCurrent(nullptr), ppRef(nullptr)
-        {}
+    
+    RedBlackTree(): curr_pos(0)
+      {}
 
-    int get_size() = delete;
+	  ~RedBlackTree();
+
 
     TableString* find_str(const std::string& key);
     void insert(const TableString& data);
     void erase(const std::string& key);
-    void print();
     bool is_full() const;
     bool reset();
     bool is_tab_ended() const;

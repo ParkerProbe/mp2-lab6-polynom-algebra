@@ -1,6 +1,11 @@
 #include "gtest.h"
 #include "list.h"
 
+// #include "../gtest/gtest.h"
+// #include "../base/list.h"
+
+
+
 // LIST TESTS
 
 TEST(List, can_create_list)
@@ -64,7 +69,7 @@ TEST(List, method_get_return_value)
 TEST(List, can_check_for_empty)
 {
   List<int> List;
-  EXPECT_TRUE(List.IsEmpty());
+  EXPECT_TRUE(List.is_empty());
 }
 
 TEST(List, two_lists_with_different_sizes_are_not_equal)
@@ -89,7 +94,7 @@ TEST(List, can_return_size_of_list)
   for (int i = 0; i < 3; i++) {
       List.add(i);
   }
-  EXPECT_EQ(3, List.GetSize());
+  EXPECT_EQ(3, List.get_size());
 }
 
 TEST(List, method_del_delete_all_values_of_list)
@@ -106,14 +111,14 @@ TEST(List, can_erace_elem_by_iterator)
 {
   List<int> List;
   List.add(10);
-  List<int>::iterator i = List.begin();
+  ListIterator<int> i = List.begin();
   ASSERT_NO_THROW(List.erase(i));
 }
 
 TEST(List, can_insert_elem_by_iterator)
 {
   List<int> List;
-  List<int>::iterator i = List.begin();
+  ListIterator<int> i = List.begin();
   List.insert(i, 3);
   EXPECT_EQ(1, List.get_size());
 }
@@ -123,14 +128,14 @@ TEST(List, can_insert_elem_by_iterator)
 TEST(Iterator, can_create_iterator)
 {
   List<int> List;
-  ASSERT_NO_THROW(List<int>::iterator it = List.begin());
+  ASSERT_NO_THROW(ListIterator<int> i = List.begin());
 }
 
 TEST(Iterator, can_create_copied_iterator)
 {
   List<int> List;
-  List<int>::iterator i1 = List.begin();
-  ASSERT_NO_THROW(List<int>::iterator i2(i1));
+  ListIterator<int> i1 = List.begin();
+  ASSERT_NO_THROW(ListIterator<int> i2(i1));
 }
 
 TEST(Iterator, can_assign_iterator)
@@ -145,7 +150,7 @@ TEST(Iterator, can_dereference_iterator)
 {
   List<int> List;
   List.add(1);
-  List<int>::iterator i = List.begin();
+  ListIterator<int> i = List.begin();
   EXPECT_EQ(1, *(i));
 }
 
@@ -154,7 +159,7 @@ TEST(Iterator, can_increment_iterator)
   List<int> List;
   List.add(1);
   List.add(2);
-  List<int>::iterator i = List.begin();
+  ListIterator<int> i = List.begin();
   ++i;
   EXPECT_EQ(2, *(i));
 }

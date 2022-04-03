@@ -71,11 +71,6 @@ void ArrayTable::erase(const std::string& key)
     }
 }
 
-void ArrayTable::print()
-{
-    operator<<(std::cout, *this);
-}
-
 bool ArrayTable::is_full() const
 {
     return data_cnt >= size;

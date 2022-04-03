@@ -137,8 +137,3 @@ bool RedBlackTree::set_current_pos(int pos)
     curr_pos = ((pos > -1) && (pos < data_cnt)) ? pos : 0;
     return is_tab_ended();
 }
-
-void RedBlackTree::print()
-{
-    operator<<(std::cout, *this);
-}
