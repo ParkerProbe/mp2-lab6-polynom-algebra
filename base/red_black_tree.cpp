@@ -286,7 +286,6 @@ void RedBlackTree::remove_fix_up(RBTNode* &root, RBTNode* node,RBTNode*parent)
     }
 }
 
-
 TableString* RedBlackTree::find_str(const std::string& key)
 {
     RBTNode* tmp = search(root, key);
@@ -305,8 +304,6 @@ RBTNode* RedBlackTree::search(RBTNode* node, const std::string& key) const
         else
             return search(node->left, key);
 }
-
-
 
 void RedBlackTree::right_rotate(RBTNode*&root, RBTNode*y) {
     RBTNode*x = y->left;
@@ -331,7 +328,6 @@ void RedBlackTree::right_rotate(RBTNode*&root, RBTNode*y) {
     y->parent = x;
 };
 
-
 bool RedBlackTree::is_full() const
 {
     try {
@@ -343,10 +339,6 @@ bool RedBlackTree::is_full() const
     }
     return 0;
 }
-
-
-
-
 
 bool RedBlackTree::reset()
 {

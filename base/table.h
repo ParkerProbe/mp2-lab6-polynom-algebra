@@ -21,9 +21,9 @@ public:
 
     virtual void insert(const std::string& key, TableBody& data) = 0;
     virtual void erase(const std::string& key) = 0;
-    // HOW TO PRINT: print_header(); print other TableString's
     inline virtual bool is_full() const = 0;
 
+    // HOW TO PRINT: print_header(); print other TableString's
     void print_header()
     {
         ///
@@ -61,18 +61,17 @@ public:
 
 
     // Set to first record
+    // Return is_tab_ended
     virtual bool reset() = 0;
 
     virtual bool is_tab_ended() const = 0;
 
     // Next record
-    // return false for last record
+    // Return is_tab_ended
     virtual bool go_next() = 0;
 
     // Get value of current iterable record
     inline virtual TableString* get_value() = 0;
-
-
 
     inline virtual bool empty() const
     {
@@ -89,14 +88,12 @@ public:
         return &(*this).find_str(key)->body;
     }
 
-
-
     void print(Table& tab)
     {
         cout << "Table printing" << std::endl;
         for (tab.reset(); !tab.is_tab_ended(); tab.go_next()) {
-            cout << " Key" << tab.get_value() << " Val "
-                << tab.get_value() << std::endl;
+            cout << " Key" << tab.get_value()->key << " Val "
+                << tab.get_value()->body.poly_string << std::endl;
         }
     }
 
