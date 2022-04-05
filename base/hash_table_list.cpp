@@ -28,15 +28,16 @@ TableString* HashTableList::find_str(const std::string& key)
     return nullptr;
 }
 
-void HashTableList::insert(TableString& data)
+void HashTableList::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
         throw EqException(error_code::k_OUT_OF_MEMORY);
     }
     else {
-        int index = Hash(data.key);
+        int index = Hash(key);
         ListIterator<TableString*> it =  table[index]->begin();
-        table[index]->insert(it, &data);
+        TableString* ts = new TableString(key, data);
+        table[index]->insert(it, ts);
         data_cnt++;
     }
 }
@@ -72,13 +73,13 @@ bool HashTableList::is_full() const
 bool  HashTableList::is_tab_ended() const
 {
     return curr_index >= size;
-
 }
 
 bool HashTableList::reset()
 {
     curr_pos = table[0]->begin();
     curr_index = 0;
+    curr_pos_num = 0;
     return is_tab_ended();
 }
 
@@ -90,17 +91,40 @@ bool HashTableList::go_next()
 
     if (curr_pos != table[curr_index]->end()) {
         ++curr_pos;
+        curr_pos_num++;
     }
     else {
         curr_index++;
         curr_pos = table[curr_index]->begin();
+        curr_pos_num++;
     }
     return true;
 }
 
+bool HashTableList::set_current_pos(int pos)
+{
+    if(!((pos > -1) && (pos < data_cnt))) {
+        return false;
+    }
 
+    int cnt = 0;
+    for((*this).reset(); !(*this).is_tab_ended(); (*this).go_next()) {
+        if(cnt == pos) {
+            break;
+        }
+        else {
+            cnt++;
+        }
+    }
+    return is_tab_ended();
+}
 
 TableString*  HashTableList::get_value()
 {
     return (*curr_pos);
+}
+
+int HashTableList::hash_string(const std::string &key)
+{
+    return Hash(key);
 }

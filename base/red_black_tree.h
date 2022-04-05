@@ -24,19 +24,13 @@ struct  RBTNode
 class RedBlackTree : public Table
 {
 private:
-
-    
-   
     void left_rotate(RBTNode* &root, RBTNode* x);
     void right_rotate(RBTNode* &root, RBTNode* y);
-
     void insert_in(RBTNode* &root, RBTNode* node);
     void insert_fix_up(RBTNode* &root, RBTNode* node);
     void destroy(RBTNode* &node);
-
     void remove(RBTNode*& root, RBTNode*node);
     void remove_fix_up(RBTNode* &root, RBTNode* node, RBTNode*parent);
-
     RBTNode* search(RBTNode*node, const std::string& key) const;
     
     // void pre_order(RBTNode* tree)const;
@@ -44,13 +38,9 @@ private:
     // void post_order(RBTNode* tree)const;
 
     int curr_pos;
-
     RBTNode *root;
     RBTNode *current;
-
     Stack<RBTNode*> st;
-
-
 public:
     
     RedBlackTree(): curr_pos(0), root(nullptr), current(nullptr)
@@ -59,7 +49,6 @@ public:
     ~RedBlackTree() {
         destroy(root);
     }
-
 
     TableString* find_str(const std::string& key);
     void insert(const std::string& key, TableBody& data);
