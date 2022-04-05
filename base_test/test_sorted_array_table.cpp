@@ -1,9 +1,9 @@
 
-// #include <gtest.h>
-// #include "sorted_array_table.h"
+#include <gtest.h>
+#include "sorted_array_table.h"
 
-#include "../gtest/gtest.h"
-#include "../base/sorted_array_table.h"
+// #include "../gtest/gtest.h"
+// #include "../base/sorted_array_table.h"
 
 TEST(SortTable, can_create_table)
 {

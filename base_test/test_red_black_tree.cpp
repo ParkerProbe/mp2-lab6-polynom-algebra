@@ -1,8 +1,8 @@
-// #include <gtest.h>
-// #include "red_black_tree.h"
+#include <gtest.h>
+#include "red_black_tree.h"
 
-#include "../gtest/gtest.h"
-#include "../base/red_black_tree.h"
+// #include "../gtest/gtest.h"
+// #include "../base/red_black_tree.h"
 
 
 

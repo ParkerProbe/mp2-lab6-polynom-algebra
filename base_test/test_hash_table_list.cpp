@@ -1,8 +1,8 @@
-// #include <gtest.h>
-// #include "hash_table_list.h"
+#include <gtest.h>
+#include "hash_table_list.h"
 
-#include "../gtest/gtest.h"
-#include "../base/hash_table_list.h"
+// #include "../gtest/gtest.h"
+// #include "../base/hash_table_list.h"
 
 
 
