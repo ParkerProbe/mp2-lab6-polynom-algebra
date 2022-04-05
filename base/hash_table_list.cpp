@@ -28,10 +28,15 @@ TableString* HashTableList::find_str(const std::string& key)
     return nullptr;
 }
 
-void HashTableList::insert(const std::string& key, TableBody& data)
+bool HashTableList::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
         throw EqException(error_code::k_OUT_OF_MEMORY);
+    }
+
+    TableString* tmp = find_str(key);
+    if (tmp == nullptr) {
+        return false;
     }
     else {
         int index = Hash(key);
@@ -43,19 +48,17 @@ void HashTableList::insert(const std::string& key, TableBody& data)
 }
 
 
-void HashTableList::erase(const std::string& key)
+bool HashTableList::erase(const std::string& key)
 {
     int index = Hash(key);
 
     if ((*this).find_str(key) == nullptr) {
-        throw(EqException(error_code::k_NOT_FOUND));
+        return false;
     }
     else {
         table[index]->erase(curr_pos);
+        return true;
     }
-    
-    throw EqException(error_code::k_NOT_FOUND);
-
 }
 
 bool HashTableList::is_full() const

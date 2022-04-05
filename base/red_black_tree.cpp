@@ -30,7 +30,7 @@ void RedBlackTree::left_rotate(RBTNode* &root, RBTNode* x) {
 void RedBlackTree::insert(const std::string& key, TableBody& data)
 {
     TableString* tmp = new TableString(key, data);
-    RBTNode *z = new RBTNode(tmp, Red, NULL, NULL, NULL);
+    RBTNode *z = new RBTNode(tmp, Red, nullptr, nullptr, nullptr);
     insert_in(root, z);
 };
 
@@ -38,8 +38,8 @@ void RedBlackTree::insert(const std::string& key, TableBody& data)
 void RedBlackTree::insert_in(RBTNode* &root, RBTNode* node)
 {
     RBTNode *x = root;
-    RBTNode *y = NULL;
-    while (x != NULL)
+    RBTNode *y = nullptr;
+    while (x != nullptr)
     {
         y = x;
         if (node->data->key > x->data->key) {
@@ -50,7 +50,7 @@ void RedBlackTree::insert_in(RBTNode* &root, RBTNode* node)
         }
     }
     node->parent = y;
-    if(y!=NULL) {
+    if(y!=nullptr) {
         if (node->data->key > y->data->key) {
             y->right = node;
         }
@@ -74,7 +74,7 @@ void RedBlackTree::insert_fix_up(RBTNode* &root, RBTNode* node)
         RBTNode*gparent = parent->parent;
         if (gparent->left == parent) {
             RBTNode*uncle = gparent->right;
-            if (uncle != NULL && uncle->color == Red) {
+            if (uncle != nullptr && uncle->color == Red) {
                 parent->color = Black;
                 uncle->color = Black;
                 gparent->color = Red;
@@ -94,7 +94,7 @@ void RedBlackTree::insert_fix_up(RBTNode* &root, RBTNode* node)
         }
         else {
             RBTNode*uncle = gparent->left;
-            if (uncle != NULL && uncle->color == Red) {
+            if (uncle != nullptr && uncle->color == Red) {
                 gparent->color = Red;
                 parent->color = Black;
                 uncle->color = Black;
@@ -122,7 +122,7 @@ void RedBlackTree::insert_fix_up(RBTNode* &root, RBTNode* node)
 // Уничтожить красные и черные деревья
 void RedBlackTree::destroy(RBTNode* &node) 
 {
-    if (node == NULL) {
+    if (node == nullptr) {
         return;
     }
     destroy(node->left);
@@ -132,11 +132,15 @@ void RedBlackTree::destroy(RBTNode* &node)
 }
 
 
-void RedBlackTree::erase(const std::string& key)
+bool RedBlackTree::erase(const std::string& key)
 {
     RBTNode *deletenode = search(root, key);
-    if (deletenode != NULL) {
+    if (deletenode != nullptr) {
         remove(root, deletenode);
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
@@ -144,13 +148,13 @@ void RedBlackTree::remove(RBTNode*&root, RBTNode*node)
 {
     RBTNode *child, *parent;
     RBTColor color;
-    if (node->left != NULL && node->right != NULL) {
+    if (node->left != nullptr && node->right != nullptr) {
         RBTNode *replace = node;
         replace = node->right;
-        while (replace->left != NULL) {
+        while (replace->left != nullptr) {
             replace = replace->left;
         }
-        if (node->parent != NULL) {
+        if (node->parent != nullptr) {
             if (node->parent->left == node) {
                 node->parent->left = replace;
             }
@@ -171,7 +175,7 @@ void RedBlackTree::remove(RBTNode*&root, RBTNode*node)
             parent = replace;
         }
         else {
-            if (child != NULL) {
+            if (child != nullptr) {
                 child->parent = parent;
             }
             parent->left = child;
@@ -190,7 +194,7 @@ void RedBlackTree::remove(RBTNode*&root, RBTNode*node)
         delete node;
         return;
     }
-    if (node->left != NULL) {
+    if (node->left != nullptr) {
         child = node->left;
     }
     else {
@@ -295,7 +299,7 @@ TableString* RedBlackTree::find_str(const std::string& key)
 
 RBTNode* RedBlackTree::search(RBTNode* node, const std::string& key) const
 {
-    if (node == NULL || node->data->key == key) {
+    if (node == nullptr || node->data->key == key) {
         return node;
     }
     else
@@ -308,12 +312,12 @@ RBTNode* RedBlackTree::search(RBTNode* node, const std::string& key) const
 void RedBlackTree::right_rotate(RBTNode*&root, RBTNode*y) {
     RBTNode*x = y->left;
     y->left = x->right;
-    if (x->right != NULL) {
+    if (x->right != nullptr) {
         x->right->parent = y;
     }
 
     x->parent = y->parent;
-    if (y->parent == NULL) {
+    if (y->parent == nullptr) {
         root = x;
     }
     else {
@@ -408,14 +412,14 @@ bool RedBlackTree::set_current_pos(int pos)
 }
 
 // void RedBlackTree::preOrder() {
-//     if (root == NULL)
+//     if (root == nullptr)
 //         cout << "empty RedBlackTree\n";
 //     else
 //         preOrder(root);
 // };
          
 // void RedBlackTree::preOrder(RBTNode* tree)const {
-//         if (tree != NULL) {
+//         if (tree != nullptr) {
 //             cout << tree->key << " ";
 //             preOrder(tree->left);
 //             preOrder(tree->right);
@@ -423,14 +427,14 @@ bool RedBlackTree::set_current_pos(int pos)
 //     }
 
 // void RedBlackTree::inOrder() {
-//     if (root == NULL)
+//     if (root == nullptr)
 //         cout << "empty RedBlackTree\n";
 //     else
 //         inOrder(root);
 // };
          
 // void RedBlackTree::inOrder(RBTNode* tree)const {
-//     if (tree != NULL) {
+//     if (tree != nullptr) {
 //         inOrder(tree->left);
 //         cout << tree->key << " ";
 //         inOrder(tree->right);
@@ -438,14 +442,14 @@ bool RedBlackTree::set_current_pos(int pos)
 // }
 
 // void RedBlackTree::postOrder() {
-//     if (root == NULL)
+//     if (root == nullptr)
 //         cout << "empty RedBlackTree\n";
 //     else
 //         postOrder(root);
 // };
         
 // void RedBlackTree::postOrder(RBTNode* tree)const {
-//     if (tree != NULL) {
+//     if (tree != nullptr) {
 //         postOrder(tree->left);
 //         postOrder(tree->right);
 //         cout << tree->key << " ";

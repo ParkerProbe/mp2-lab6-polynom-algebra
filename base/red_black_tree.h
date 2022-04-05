@@ -51,8 +51,8 @@ public:
     }
 
     TableString* find_str(const std::string& key);
-    void insert(const std::string& key, TableBody& data);
-    void erase(const std::string& key);
+    bool insert(const std::string& key, TableBody& data);
+    bool erase(const std::string& key);
     bool is_full() const;
     bool reset();
     bool is_tab_ended() const;

@@ -57,11 +57,11 @@ TableString* ArrayTable::get_value()
     return tbl[curr_pos];
 }
 
-void ArrayTable::erase(const std::string& key)
+bool ArrayTable::erase(const std::string& key)
 {
     TableString* tmp = find_str(key);
     if (tmp == nullptr) {
-        throw(EqException(error_code::k_NOT_FOUND));
+        return false;
     }
     else {
         tbl[curr_pos] = tbl[data_cnt - 1];
@@ -75,13 +75,20 @@ bool ArrayTable::is_full() const
 }
 
 
-void ArrayTable::insert(const std::string& key, TableBody& data)
+bool ArrayTable::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
        MemoryAllocator();
     }
-    tbl[data_cnt] = new TableString(key, data);
-    data_cnt++;
+    TableString* tmp = find_str(key);
+    if (tmp != nullptr) {
+        tbl[data_cnt] = new TableString(key, data);
+        data_cnt++;
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 

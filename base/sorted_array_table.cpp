@@ -42,33 +42,38 @@ TableString* SortTable::find_str(const std::string& key)
 }
 
 
-void SortTable::insert(const std::string& key, TableBody& data)
+bool SortTable::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
         throw (EqException(error_code::k_OUT_OF_MEMORY));
     }
 
+    TableString* tmp = find_str(key);
+    if (tmp == nullptr) {
+        return false;
+    }
     else {
         for (int i = data_cnt; i > curr_pos; i--) {
             tbl[i] = tbl[i-1];
         }
         tbl[curr_pos] = new TableString(key, data);
         data_cnt++;
+        return true;
     }
-
 }
 
-void SortTable::erase(const std::string& key)
+bool SortTable::erase(const std::string& key)
 {
     TableString* tmp = find_str(key);
     if (tmp == nullptr) {
-        throw (EqException(error_code::k_NOT_FOUND));
+        return false;
     }
     else {
         for (int i = curr_pos; i < data_cnt; i++) {
             tbl[i] = tbl[i + 1];
         }
         tbl[--data_cnt] = nullptr;
+        return true;
     }
 }
 
