@@ -89,7 +89,7 @@ public:
     iterator insert(iterator iter, const T& val)
     {
         if (iter.ptr == pFirst) {
-            AddNodeList(val);
+            add(val);
             return iterator{ nullptr };
         }
 
@@ -157,7 +157,7 @@ public:
         if (arr == nullptr)
             throw(EqException(error_code::k_EMPTY));
         for (int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
-            AddNodeList(arr[i]);
+            add(arr[i]);
         }
     }
 
@@ -167,7 +167,7 @@ public:
             throw(EqException(error_code::k_EMPTY));
         }
         for (T tmp : v) {
-            AddNodeList(tmp);
+            add(tmp);
         }
     }
     
@@ -277,7 +277,7 @@ public:
         pLast = pCurrent;
     }
 
-    void clear()//������ �������� ������
+    void clear()
     {
         NodeList<T>* pCurrent = pFirst;
         while (pCurrent != nullptr) {
