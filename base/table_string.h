@@ -16,15 +16,22 @@ class TableBody
 private:
     string poly_string;
     Polynom* poly;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 55a71b49e09385f1870914eb62041ece58185c9b
 public:
     TableBody()
         : poly_string(), poly(nullptr)
     {}
+<<<<<<< HEAD
     TableBody(const Polynom& poly_)
     {
         poly = new Polynom(poly_);
         poly_string = poly_.str();
     }
+=======
+>>>>>>> 55a71b49e09385f1870914eb62041ece58185c9b
 
     friend class TableString;
 
@@ -45,8 +52,12 @@ public:
 //Base element in every table
 class TableString
 {
+<<<<<<< HEAD
 //private:
 public:
+=======
+private:
+>>>>>>> 55a71b49e09385f1870914eb62041ece58185c9b
     string key;
     TableBody body;
 public:
@@ -56,6 +67,7 @@ public:
 
     TableString(string key_, TableBody& body_)
         : key(key_), body(body_)
+<<<<<<< HEAD
     {
         const int k_MAX_NAME = 16;
         //const int k_MAX_POLY_STRING = 102;
@@ -74,6 +86,10 @@ public:
         }
     }
 
+=======
+        {}
+    
+>>>>>>> 55a71b49e09385f1870914eb62041ece58185c9b
     TableString(const TableString& other) = default;
     ~TableString() = default;
 
@@ -94,19 +110,32 @@ public:
         return key > other.key;
     }
 
+<<<<<<< HEAD
     inline string get_key() const
+=======
+    inline string GetKey() const
+>>>>>>> 55a71b49e09385f1870914eb62041ece58185c9b
     {
         return key;
     }
 
+<<<<<<< HEAD
     inline Polynom* get_polynom() const
+=======
+    inline Polynom* GetPolynom() const
+>>>>>>> 55a71b49e09385f1870914eb62041ece58185c9b
     {
         return body.poly;
     }
 
     void print(std::ostream& os) const
+<<<<<<< HEAD
     {
         os << key << " " << body.poly_string << std::endl;
+=======
+    { 
+        os << key << " " << body.poly_string << std:: endl;
+>>>>>>> 55a71b49e09385f1870914eb62041ece58185c9b
     }
 
     friend std::ostream& operator<<(std::ostream& os, const TableString& ts);
