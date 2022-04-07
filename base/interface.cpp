@@ -1,5 +1,7 @@
 #include "interface.h"
 using std::string;
+using std::cout;
+using std::cin;
 bool Interface::are_sure()
 {
     int ans;
@@ -26,7 +28,7 @@ void Interface::menu()
         input -= '0';
         switch (input) {
         case 1: {
-            polinom_menu();
+            polynom_menu();
         }
         case 2: {
             table_menu();
@@ -126,11 +128,13 @@ void Interface::table_menu()
 //} while (input);
 
 ////////////////////////////////////////////////////////
-void Interface::polinom_menu()
+void Interface::polynom_menu()
 {
     const int k_com_num = 5;
     string commands[k_com_num] = { "1. ADD POLYNOM", "2. CALCULATE THE EXPRESSION", 
         "0. RETURN TO MAIN MENU" };
+    for (int i = 0; i < k_com_num; i++)
+        std::cout << commands[i] << "\n";
     int input;
     do {
         input = _getch();
@@ -144,8 +148,27 @@ void Interface::polinom_menu()
         }
         case 2: {
             string expression;
-            
+            cout << "ENTER EXPTRESSION WITHOUT SPACES AND DELIMITERS\n";
+            cin >> expression;
+            TPostfix postfix;
+            postfix.set_infix(expression);
+            Polynom tmp = postfix.calculate();
+            cout << "THE RESULT IS " << tmp << endl;
+            cout << "DO YOU WANT TO SAVE THE POLYNOM? Y - YES, ANYTHING ELSE - NO";
+            if (are_sure())
+            {
+                TableBody save(tmp);
+                cout<<"PRESS THE NAME OF POLYNOM. "
+                for (int i = 0; i < Interface::k_table_size; i++)
+                    tab[i]->insert();
+            }
         }
         }
     } while (input);
+}
+
+void Interface::print_error(error_code ec)
+{
+    EqException tmp(ec);
+    cout<<"ERROR NUMBER "<<tmp.get_error()<<". - "<<tmp.get_comment();
 }

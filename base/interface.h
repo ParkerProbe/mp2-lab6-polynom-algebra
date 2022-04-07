@@ -9,6 +9,7 @@
 #include "list_table.h"
 #include "sorted_array_table.h"
 #include "hash_table_list.h"
+#include "postfix.h"
 #include <conio.h>
 
 class Interface
@@ -43,8 +44,14 @@ private:
     void find();
     void insert();
     void erase();
-    void polinom_menu();
+    void polynom_menu();
     void print();
+
+   /* catch (EqException exc)
+    {
+        print_error(exc.get_error);
+    }*/
+    void print_error(error_code ec);
 public:
     Interface() :mode(Table_num::k_TABLE), k_table_size(6)
     {
@@ -54,8 +61,8 @@ public:
         tab[2] = new ListTable;
         tab[3] = new RedBlackTree;
         //////////////////////////////////////////////////
-        tab[5] = new HashTableList;
-
+        tab[4] = new HashTableDouble(100);
+        tab[5] = new HashTableList(100);
     }
     void menu();
 };

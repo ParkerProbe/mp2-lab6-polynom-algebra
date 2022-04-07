@@ -5,7 +5,7 @@
 #include <string>
 #include <type_traits>
 #include "algorithm"
-
+#include <fstream>
 #include "list.h"
 
 #define BASE 10
@@ -14,22 +14,23 @@
 class Monom
 {
 private:
-  double coef;
-  int deg;
+    double coef;
+    int deg;
 public:
     Monom() : coef(0.0), deg(0)
-      {}
+    {}
 
     Monom(double coef, int degree) : coef(coef), deg(degree)
-      {}
+    {}
 
     Monom(const Monom& other) = default;
 
-    friend std::ostream& operator<<(std::ostream& os,  const Monom& mnm);
-    friend std::istream& operator>>(std::istream& is,  Monom& mnm);
+    friend std::ostream& operator<<(std::ostream& os, const Monom& mnm);
+    friend std::istream& operator>>(std::istream& is, Monom& mnm);
+    std::string str() const;
 
-    Monom& integral(char param);
-    Monom& derivative(char param);
+    Monom integral(char param);
+    Monom derivative(char param);
     Monom& operator=(const Monom& other) = default;
     Monom& operator+=(const Monom& other);
     Monom& operator*=(double num);
@@ -40,55 +41,56 @@ public:
 
     inline int get_deg() const
     {
-      return deg;
+        return deg;
     }
 
     inline double get_coef() const
     {
-      return coef;
+        return coef;
     }
-  };
+};
 
-  Monom operator+(const Monom& lhs, const Monom& rhs);
-  Monom operator*(const Monom& lhs, const Monom& rhs);
-  Monom operator*(double lhs, const Monom& rhs);
-  Monom operator*(const Monom& lhs, double rhs);
-  Monom operator-(const Monom& lhs, const Monom& rhs);
+Monom operator+(const Monom& lhs, const Monom& rhs);
+Monom operator*(const Monom& lhs, const Monom& rhs);
+Monom operator*(double lhs, const Monom& rhs);
+Monom operator*(const Monom& lhs, double rhs);
+Monom operator-(const Monom& lhs, const Monom& rhs);
 
 
-  class Polynom
-  {
-  private:
-      List<Monom> polynom;
+class Polynom
+{
+private:
+    List<Monom> polynom;
 
-  public:
+public:
 
-      Polynom() : polynom() {}
-      Polynom(const List<Monom>& pl) : polynom(pl) {}
-      Polynom(std::string  polynom_str);
-      Polynom(const Polynom& other) = default;
+    Polynom() : polynom() {}
+    Polynom(const List<Monom>& pl) : polynom(pl) {}
+    Polynom(std::string  polynom_str);
+    Polynom(const Polynom& other) = default;
 
-      friend std::ostream& operator<<(std::ostream& os,  const Polynom& pl);
-      friend std::istream& operator>>(std::istream& is,  Polynom& pl);
+    friend std::ostream& operator<<(std::ostream& os, const Polynom& pl);
+    friend std::istream& operator>>(std::istream& is, Polynom& pl);
+    std::string str() const;
+    //This block strongly depends on the preferences of a particular developer
 
-      //This block strongly depends on the preferences of a particular developer
 
-      void add_monom(const Monom& monom);
-      Polynom sort(const Polynom& pl) const;
-      double calculate_in_point(double x, double y, double z);
-      void optimize_polynom();
+    void add_monom(const Monom& monom);
+    Polynom sort(const Polynom& pl) const;
+    double calculate_in_point(double x, double y, double z);
+    void optimize_polynom();
 
-      Polynom& integral(char param);
-      Polynom& derivative(char param);
+    Polynom integral(char param);
+    Polynom derivative(char param);
 
-      Polynom& operator=(const Polynom& other) = default;
-      Polynom& operator+=(const Polynom& other);
-      Polynom& operator*=(const Polynom& other);
-      Polynom& operator*=(double num);
-      Polynom& operator-=(Polynom& other);
+    Polynom& operator=(const Polynom& other) = default;
+    Polynom& operator+=(const Polynom& other);
+    Polynom& operator*=(const Polynom& other);
+    Polynom& operator*=(double num);
+    Polynom& operator-=(Polynom& other);
 
-      void write_to_file(std::string path) const;
-      void read_from_file(std::string path);
+    void write_to_file(std::string path) const;
+    void read_from_file(std::string path);
 };
 
 Polynom operator+(const Polynom& lhs, const Polynom& rhs);

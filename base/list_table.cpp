@@ -1,18 +1,22 @@
 #include "list_table.h"
-void ListTable::insert(const TableString& data_)
+//void insert(const std::string& key, TableBody& data)
+bool ListTable::insert(const std::string& key, TableBody& data_)
 {
-    if (find_str(data_.key) == nullptr) {
-        return;
+    if (!find_str(key))/*!= nullptr*/ {
+        return false;
     }
-    data.add(data_);
+    TableString tmp(key, data_);
+    data.add(tmp);
+    return true;
 }
-void ListTable::erase(const std::string& key)
+bool ListTable::erase(const std::string& key)
 {
     TableString* tmp;
-    if ((tmp = find_str(key)) == nullptr) {
-        return;
+    if (find_str(key) == nullptr) {
+        return false;
     }
     data.erase_first_found((*tmp));
+    return true;
 }
 TableBody* ListTable::find(const std::string& key)
 {

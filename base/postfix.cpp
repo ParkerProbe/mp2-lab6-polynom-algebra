@@ -2,21 +2,15 @@
 #include "stack.h"
 #include <iostream>
 
-int TPostfix::prior(char a)
+int TPostfix::prior(string a)
 {
-	switch (a)
-	{
-	case 'd':return 3;
-	case 'I':return 3;
-	case '*':return 3;
-	case '/':return 3;
-	case '+':return 2;
-	case '-':return 2;
-	case '(':return 1;
-	case ')':return 1;
-	case ' ':return -1;
-	default:return 0;
-	}
+	if (a == "dx" || a == "dy" || a == "dz" || a == "Ix" || a == "Iy" || a == "Iz" || a == "*_" || a == "/_")
+		return 3;
+	if (a == "+_" || a == "-_")
+		return 2;
+	if (a == "(_" || a == ")_")
+		return 1;
+	return 0;
 }
 
 string TPostfix::to_postfix()
@@ -24,92 +18,143 @@ string TPostfix::to_postfix()
 	sc.set_size(infix.size());
 	sd.set_size(infix.size());
 	char tmp;
+	string con;
 	for (int i = 0; i < infix.size(); i++)\
 	{
+		con.clear();
 		tmp = infix[i];
-		if (prior(tmp) == 0)
-			postfix += tmp;
+		if ((tmp == 'd' || tmp == 'I') && ((infix[i + 1] == 'x') || (infix[i + 1] == 'y') || (infix[i + 1] == 'z')))
+		{
+			con += tmp;
+			con += infix[i + 1];
+			i++;
+		}
 		else
 		{
-			if ((prior(tmp) == 2) || (prior(tmp) == 3))
+			con += tmp;
+			con += '_';
+			if (prior(con) == 0)
 			{
-				if (postfix != "")
-					postfix += "|";
-				if (sc.is_empty() == true)
-					sc.add(tmp);
+				postfix += tmp;
+				continue;
+			}
+		}
+		if ((prior(con) == 2) || (prior(con) == 3))
+		{
+			if (postfix != "")
+				postfix += "|";
+			if (sc.is_empty() == true)
+				sc.add(con);
+			else
+			{
+				if (prior(con) > prior(sc.info_top()))
+				{
+					sc.add(con);
+				}
 				else
 				{
-					if (prior(tmp) > prior(sc.info_top()))
+					while (prior(con) <= prior(sc.info_top()))
 					{
-						sc.add(tmp);
+						postfix += sc.get_top();
+						postfix += "|";
+						if (sc.is_empty() == true)
+							break;
 					}
-					else
-					{
-						while (prior(tmp) <= prior(sc.info_top()))
-						{
-							postfix += sc.get_top();
-							postfix += "|";
-							if (sc.is_empty() == true)
-								break;
-						}
-						sc.add(tmp);
-					}
+					sc.add(con);
 				}
 			}
-			else
-				if (tmp == '(')
-					sc.add(tmp);
-				else
-					if (tmp == ')')
-					{
-						postfix += "|";
-						while (sc.info_top() != '(')
-						{
-							postfix += sc.get_top();
-							postfix += "|";
-
-						}
-						sc.get_top();
-					}
 		}
+		else
+			if (tmp == '(')
+				sc.add(con);
+			else
+				if (tmp == ')')
+				{
+					postfix += "|";
+					while (sc.info_top() != "(_")
+					{
+						postfix += sc.get_top();
+						postfix += "|";
+
+					}
+					sc.get_top();
+				}
+
 	}
+	if (tmp != ')')
+		postfix += "|";
 	while (sc.is_empty() != true)
 	{
 		postfix += sc.get_top();
 		postfix += "|";
 	}
-	postfix += "_";
+
 	return postfix;
 }
-double TPostfix::calculate()
+
+Polynom TPostfix::calculate()
 {
 	Polynom a, b;
-	for (int i = 0; postfix[i] != '_'; i++)
+	string con;
+	double k;
+	for (int i = 0; i < postfix.size() - 1; i++)
 	{
-		switch (postfix[i])
+		con.clear();
+		while (postfix[i] != '|')
 		{
-		case'+':a = sd.get_top(); b = sd.get_top();
+			con += postfix[i];
+			i++;
+		}
+		if (con == "+_")
+		{
+			a = sd.get_top(); b = sd.get_top();
 			sd.add(a + b);
-			break;
-		case'-': a = sd.get_top();
+			continue;
+		}
+		if (con == "-_")
+		{
+			a = sd.get_top();
 			if (sd.is_empty() == true)
-				sd.add( -a);
+				sd.add(a-=a);
 			else
 			{
 				b = sd.get_top();
 				sd.add(b - a);
 			}
-			break;
-		case'*': a = sd.get_top(); b = sd.get_top();
+			continue;
+		}
+		if (con == "*_")
+		{
+			a = sd.get_top(); b = sd.get_top();
 			sd.add(a * b);
-			break;
-		case'/':a = sd.get_top(); b = sd.get_top();
-			sd.add(b / a);
-			break;
-		default:
-			a = p[postfix[i] - 65];
-			sd.add(a);
-			break;
+			continue;
+		}
+		if (con == "/_")
+		{
+			a = sd.get_top(); b = sd.get_top();
+//			sd.add(b / a);
+			continue;
+		}
+		if (con == "dx" || con == "dy" || con == "dz")
+		{
+			a = sd.get_top();
+			sd.add(a.derivative(con[1]));
+			continue;
+
+		}
+		if (con == "Ix" || con == "Iy" || con == "Iz")
+		{
+			a = sd.get_top();
+			sd.add(a.integral(con[1]));
+			continue;
+		}
+		if (con[0] > 47 && con[0] < 58)
+		{
+			Polynom v(con);
+			//k = atof(con.c_str());
+		//получить полином из таблицы
+		//a = con;
+			sd.add(v);
 		}
 	}
 	a = sd.get_top();
@@ -119,5 +164,10 @@ double TPostfix::calculate()
 	}
 	return a;
 }
+
+
+
+
+
 
 

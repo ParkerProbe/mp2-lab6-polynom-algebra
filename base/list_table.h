@@ -6,21 +6,22 @@ class ListTable :public Table
 {
     List<TableString> data;
     virtual TableString* find_str(const std::string& key);
+    ListIterator<TableString> cur_pos;
 public:
     TableBody* find(const std::string& key);
-    void insert(const TableString& data_);
-    void erase(const std::string& key);
-    /////////////////////////////////////
+    bool insert(const std::string& key, TableBody& data_);
+    bool erase(const std::string& key);
     void print();
+
     bool empty()
     {
         return data_cnt == 0;
     }
-    int get_size()
+    int get_data_count()
     {
         return data_cnt;
     }
-    bool is_full()
+    inline bool is_full() const
     {
         try {
             NodeList<TableString>* tmp = new NodeList<TableString>;
@@ -32,11 +33,46 @@ public:
         }
         return false;
     }
-    ListTable() : data()
+
+    // go to first position of table, returns is_tab_ended()
+    bool reset()
+    {
+        if (is_tab_ended()) {
+            return true;
+        }
+        cur_pos = data.begin();
+        return false;
+    }
+    // return cur_pos == data.end();
+    bool is_tab_ended() const
+    {
+        return cur_pos == data.end();
+    }
+    // go to next position, returns is_tab_ended
+    bool go_next()
+    {
+        if (is_tab_ended()) {
+            return true;
+        }
+        else{
+            cur_pos++;
+            return true;
+        }
+    }
+    TableString* get_value()
+    {
+        if (is_tab_ended()) {
+            return nullptr;
+        }
+        return &(*cur_pos);
+    }
+
+
+    ListTable() : data(), cur_pos(data.begin())
     {
         data_cnt = 0;
     }
-    ListTable(std::vector<TableString> a) : data(a)
+    ListTable(std::vector<TableString> a) : data(a), cur_pos(data.begin())
     {
         data_cnt = a.size();
     }

@@ -7,6 +7,7 @@
 #include <ostream>
 #include <sstream>
 #include <string>
+#include <fstream>
 
 Monom& Monom::operator+=(const Monom& other)
 {
@@ -145,6 +146,104 @@ std::istream& operator>>(std::istream& is, Monom& mnm)
     return is;
 }
 
+std::string Monom::str()const
+{
+    std::string tmp;
+    if (coef > 0)
+        tmp.push_back('+');
+    std::ostringstream os;
+    os << coef;
+    int tmp_deg = deg;
+    int c = tmp_deg % 10;
+    tmp_deg /= 10;
+    int b = tmp_deg % 10;
+    tmp_deg /= 10;
+    int a = tmp_deg % 10;
+    if (a > 0)
+    {
+        os << 'x';
+        if (a != 1)
+            os << a;
+    }
+    if (b > 0)
+    {
+        os << 'y';
+        if (b != 1)
+            os << b;
+    }
+    if (c > 0)
+    {
+        os << 'z';
+        if (c != 1)
+            os << c;
+    }
+    tmp += os.str();
+    return tmp;
+}
+
+Monom Monom::integral(char param)
+{
+    Monom tmp(*this);
+    if (param == 'x')
+    {
+        if (deg / 100 != 9)
+        {
+            tmp.deg += 100;
+            tmp.coef = tmp.coef / (deg / 100);
+        }
+    }
+    if (param == 'y')
+    {
+        if ((deg % 100) % 10 != 9)
+        {
+            tmp.deg += 10;
+            tmp.coef = tmp.coef / ((deg % 100) % 10);
+        }
+    }
+    if (param == 'z')
+    {
+        if (deg % 10 != 9)
+        {
+            tmp.deg += 1;
+            tmp.coef = tmp.coef / (deg % 10);
+        }
+    }
+    return tmp;
+}
+
+Monom Monom::derivative(char param)
+{
+    Monom tmp(*this);
+    if (param == 'x')
+    {
+        if (deg / 100 != 0)
+        {
+            tmp.deg -= 100;
+            tmp.coef = tmp.coef * (deg / 100);
+        }
+        else tmp.coef = 0;
+    }
+    if (param == 'y')
+    {
+        if ((deg % 100) % 10 != 0)
+        {
+            tmp.deg -= 10;
+            tmp.coef = tmp.coef * ((deg % 100) % 10);
+        }
+        else tmp.coef = 0;
+    }
+    if (param == 'z')
+    {
+        if (deg % 10 != 0)
+        {
+            tmp.deg -= 1;
+            tmp.coef = tmp.coef * (deg % 10);
+        }
+        else tmp.coef = 0;
+    }
+    return tmp;
+}
+
 Monom operator+(const Monom& lhs, const Monom& rhs)
 {
     Monom tmp(lhs);
@@ -170,12 +269,6 @@ Monom operator*(double lhs, const Monom& rhs)
 }
 
 Monom operator*(const Monom& lhs, double rhs)
-{
-    Monom tmp(lhs);
-    return (tmp *= rhs);
-}
-
-Monom operator/(const Monom& lhs, const Monom& rhs)
 {
     Monom tmp(lhs);
     return (tmp *= rhs);
@@ -288,6 +381,19 @@ std::istream& operator>>(std::istream& is, Polynom& pl)
     return is;
 }
 
+std::string Polynom::str()const
+{
+    std::string tmp{ "" };
+    Monom tp;
+    for (List<Monom>::iterator it = polynom.begin();
+        it != polynom.end(); ++it)
+    {
+        tp = *it;
+        tmp += tp.str();
+    }
+    return tmp;
+}
+
 
 Polynom Polynom::sort(const Polynom& pl) const
 {
@@ -343,6 +449,36 @@ void Polynom::optimize_polynom()
 
     if (polynom.get_size() == 0)
         polynom.add({ 0,0 });
+}
+
+Polynom  Polynom::integral(char param)
+{
+    Polynom tmp;
+    Monom tp;
+    for (List<Monom>::iterator it = polynom.begin();
+        it != polynom.end(); ++it)
+    {
+        tp = *it;
+        tp.integral(param);
+        if (tp.get_coef() != 0)
+        tmp.add_monom(tp);
+    }
+    return tmp;
+}
+
+Polynom  Polynom::derivative(char param)
+{
+    Polynom tmp;
+    Monom tp;
+    for (List<Monom>::iterator it = polynom.begin();
+        it != polynom.end(); ++it)
+    {
+        tp = *it;
+        tp.derivative(param);
+        if (tp.get_coef()!=0)
+        tmp.add_monom(tp);
+    }
+    return tmp;
 }
 
 Polynom& Polynom::operator+=(const Polynom& other)
