@@ -6,7 +6,7 @@
 #include <cstddef>
 #include <string>
 
-void SortTable::Sort (TableString** unsrtd_table, int data_cnt)
+void SortTable::sort(TableString** unsrtd_table, int data_cnt)
 {
     std::sort(unsrtd_table[0], unsrtd_table[data_cnt - 1]);
 }
@@ -40,7 +40,6 @@ TableString* SortTable::find_str(const std::string& key)
     }
     return nullptr;
 }
-
 
 bool SortTable::insert(const std::string& key, TableBody& data)
 {
@@ -93,7 +92,7 @@ SortTable& SortTable::operator=(const SortTable &other)
     for (int i = 0; i < data_cnt; i++) {
         tbl[i] = other.tbl[i];
     }
-    Sort(tbl, data_cnt);
+    sort(tbl, data_cnt);
     curr_pos = 0;
     return *this;
 

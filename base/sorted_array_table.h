@@ -8,7 +8,7 @@
 class SortTable : public ArrayTable
 {
 private:
-    void Sort (TableString** unsrtd_table, int data_cnt);
+    void sort(TableString** unsrtd_table, int data_cnt);
 
 public:
     SortTable(int size = DEFAULT_SIZE) : ArrayTable(size) {} ;

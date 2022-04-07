@@ -11,7 +11,7 @@ bool ArrayTable::set_current_pos(int pos)
    return is_tab_ended(); 
 }
 
-void ArrayTable::MemoryAllocator()
+void ArrayTable::memory_allocator()
 {
     TableString** ntbl = new TableString*[size * 2];
 
@@ -78,7 +78,7 @@ bool ArrayTable::is_full() const
 bool ArrayTable::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
-       MemoryAllocator();
+       memory_allocator();
     }
     TableString* tmp = find_str(key);
     if (tmp != nullptr) {

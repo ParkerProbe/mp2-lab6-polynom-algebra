@@ -15,7 +15,7 @@ protected:
     int size;
     int curr_pos;
 
-    void MemoryAllocator();
+    void memory_allocator();
 public:
     ArrayTable(int _size = DEFAULT_SIZE)
         : Table(), size(_size), curr_pos(0)
