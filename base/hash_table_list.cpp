@@ -45,6 +45,7 @@ bool HashTableList::insert(const std::string& key, TableBody& data)
         table[index]->insert(it, ts);
         data_cnt++;
     }
+    return true;
 }
 
 
