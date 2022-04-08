@@ -5,7 +5,7 @@ using std::cin;
 bool Interface::are_sure()
 {
     int ans;
-    std::cout << "Are you sure? Press Y if yes, press anything else if no\n";
+    std::cout << "PRESS Y IF YES, PRESS ANYTHING ELSE IF NO\n";
     ans = _getch();
     if (ans == 'Y' || ans == 'y')
         return true;
@@ -34,12 +34,13 @@ void Interface::menu()
             table_menu();
         }
         case 3: {
+            cout << "YOU REALLY WANT TO EXIT?\n";
             if (are_sure())
                 std::cout << "GOODBYE, HAVE A NICE DAY!\n";
             return;
         }
         default: {
-            throw EqException(error_code::k_UNDEFINED_EXCEPTION);
+            throw EqException(error_codes::k_UNDEFINED_EXCEPTION);
         }
         }
     } while (true);
@@ -57,7 +58,7 @@ void Interface::table_menu()
     if (is_tab_not_chosen())
         goto choose_tab;
     for (int i = 0; i < k_com_num; i++)
-        std::cout << commands[i] << "\n";
+        cout << commands[i] << "\n";
     int local_input;
     do {
         input = _getch();
@@ -110,7 +111,7 @@ void Interface::table_menu()
                 mode = Table_num::k_LIST_HASH_TABLE;
             }
             default: {
-                throw EqException(error_code::k_UNDEFINED_EXCEPTION);
+                throw EqException(error_codes::k_UNDEFINED_EXCEPTION);
             }
             }
         }
@@ -152,23 +153,43 @@ void Interface::polynom_menu()
             cin >> expression;
             TPostfix postfix;
             postfix.set_infix(expression);
-            Polynom tmp = postfix.calculate();
+            Polynom tmp = postfix.calculate(tab);
             cout << "THE RESULT IS " << tmp << endl;
-            cout << "DO YOU WANT TO SAVE THE POLYNOM? Y - YES, ANYTHING ELSE - NO";
+            cout << "DO YOU WANT TO SAVE THE POLYNOM?" << endl;
             if (are_sure())
             {
                 TableBody save(tmp);
-                cout<<"PRESS THE NAME OF POLYNOM. "
+                cout << "PRESS THE NAME OF POLYNOM. DO NOT USE SUCH LETTERS: I,d,x,y,z. USE ONLY LETTERS";
+                cout << "MAX LENGTH OF NAME IS 16 SYMBOLS" << endl;
+                string name;
+                cin >> name;
                 for (int i = 0; i < Interface::k_table_size; i++)
-                    tab[i]->insert();
+                {
+                    if (tab[i]->insert(name, save)) {
+                        cout << "INSERTION PROBLEM" << endl;
+                    }
+                }
+
             }
         }
         }
     } while (input);
 }
 
-void Interface::print_error(error_code ec)
+void Interface::print_error(error_codes ec)
 {
     EqException tmp(ec);
     cout<<"ERROR NUMBER "<<tmp.get_error()<<". - "<<tmp.get_comment();
+}
+void Interface::find()
+{
+
+}
+void Interface::insert()
+{
+
+}
+void Interface::erase()
+{
+
 }

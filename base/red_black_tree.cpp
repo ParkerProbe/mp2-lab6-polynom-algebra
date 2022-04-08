@@ -380,7 +380,9 @@ bool RedBlackTree::go_next()
             current = st.get_top();
         }
         curr_pos++;
+        return true;//////////////////////
     } 
+    return true;///////////////////////////
 }
 
 bool RedBlackTree::is_tab_ended() const

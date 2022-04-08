@@ -31,7 +31,7 @@ TableString* HashTableList::find_str(const std::string& key)
 bool HashTableList::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
-        throw EqException(error_code::k_OUT_OF_MEMORY);
+        throw EqException(error_codes::k_OUT_OF_MEMORY);
     }
 
     TableString* tmp = find_str(key);

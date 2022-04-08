@@ -9,6 +9,8 @@
 #include "list_table.h"
 #include "sorted_array_table.h"
 #include "hash_table_list.h"
+#include "hash_table_double.h"
+#include "eq_exception.h"
 #include "postfix.h"
 #include <conio.h>
 
@@ -51,7 +53,7 @@ private:
     {
         print_error(exc.get_error);
     }*/
-    void print_error(error_code ec);
+    void print_error(error_codes ec);
 public:
     Interface() :mode(Table_num::k_TABLE), k_table_size(6)
     {
@@ -61,7 +63,7 @@ public:
         tab[2] = new ListTable;
         tab[3] = new RedBlackTree;
         //////////////////////////////////////////////////
-        tab[4] = new HashTableDouble(100);
+       // tab[4] = new HashTableDouble(100);
         tab[5] = new HashTableList(100);
     }
     void menu();

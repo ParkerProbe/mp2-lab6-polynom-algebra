@@ -55,7 +55,7 @@ public:
             return true;
         }
         else{
-            cur_pos++;
+            ++cur_pos;
             return true;
         }
     }

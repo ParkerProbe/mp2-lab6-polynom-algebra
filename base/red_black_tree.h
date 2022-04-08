@@ -40,7 +40,7 @@ private:
     int curr_pos;
     RBTNode *root;
     RBTNode *current;
-    Stack<RBTNode*> st;
+    TStack<RBTNode*> st;
 public:
     
     RedBlackTree(): curr_pos(0), root(nullptr), current(nullptr)

@@ -5,7 +5,7 @@
 
 #define MAX_COMMENT_LEN 256
 
-enum error_code
+enum error_codes
 {
     k_NO_ERROR,
     k_NEGATIVE_VALUE,
@@ -29,12 +29,12 @@ private:
     void operator=(const EqException& other) = delete;
 
     // code of error
-    error_code error;
+    error_codes error;
     const std::string k_set_comment[15] = { "NO ERROR", "NEGATIVE VALUE", "OVERFLOW", "OUT OF MEMORY", "NOT FOUND", "EMPTY", "INCORRECT_INDEX", "WRONG OPERATION PLACEMENT", "WRONG BRACKETS QUANTITY", "INCORRECT OPERATION", "CALCULATE EMPTY EXPRESSION", "FILE SYSTEM ERROR", "USING RESERVED NAME", "USING PUNCTUATION MARKS", "UNDEFINED EXCEPTION"};
 
 public:
-    // create exception using error_code::<something>
-    EqException(error_code error_)
+    // create exception using error_codes::<something>
+    EqException(error_codes error_)
         : error(error_)
     {}
     EqException()

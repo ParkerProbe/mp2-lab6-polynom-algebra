@@ -57,7 +57,7 @@ void TStack<T>::add(T tmp)
 template <class T>
 T TStack<T>::get_top()
 {
-    if (empty() == true)
+    if (is_empty() == true)
     {
         throw 0;
     }
@@ -66,7 +66,7 @@ T TStack<T>::get_top()
 template <class T>
 T TStack<T>::info_top()
 {
-    if (empty() == true)
+    if (is_empty() == true)
     {
         throw 0;
     }

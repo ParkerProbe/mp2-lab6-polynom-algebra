@@ -12,7 +12,7 @@
 Monom& Monom::operator+=(const Monom& other)
 {
     if (deg != other.deg)
-        throw EqException(error_code::k_INCORRECT_OPERATION);
+        throw EqException(error_codes::k_INCORRECT_OPERATION);
     coef += other.coef;
     return *this;
 }
@@ -20,7 +20,7 @@ Monom& Monom::operator+=(const Monom& other)
 Monom& Monom::operator-=(const Monom& other)
 {
     if (deg != other.deg)
-        throw EqException(error_code::k_INCORRECT_OPERATION);
+        throw EqException(error_codes::k_INCORRECT_OPERATION);
     coef -= other.coef;
     return *this;
 }
@@ -569,7 +569,7 @@ void Polynom::write_to_file(std::string path) const
     std::ofstream out;
     out.open(path);
     if (!out.is_open())
-        throw EqException(error_code::k_FILE_SYSTEM_ERROR);
+        throw EqException(error_codes::k_FILE_SYSTEM_ERROR);
     operator<<(out, *this);
     out.close();
 }
@@ -579,7 +579,7 @@ void Polynom::read_from_file(std::string path)
     std::ifstream in;
     in.open(path);
     if (!in.is_open())
-        throw EqException(error_code::k_FILE_SYSTEM_ERROR);
+        throw EqException(error_codes::k_FILE_SYSTEM_ERROR);
     operator>>(in, *this);
     in.close();
 }
@@ -587,7 +587,7 @@ void Polynom::read_from_file(std::string path)
 double Polynom::calculate_in_point(double x, double y, double z)
 {
     if (polynom.get_size() == 0) {
-        throw EqException(error_code::k_CALCULATE_EMPTY_EXPRESSION);
+        throw EqException(error_codes::k_CALCULATE_EMPTY_EXPRESSION);
     }
 
     int a, b, c;

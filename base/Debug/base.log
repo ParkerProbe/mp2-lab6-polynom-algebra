@@ -1,5 +1,7 @@
-﻿  interface.cpp
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(64,23): warning C4018: <: несоответствие типов со знаком и без знака
+﻿  red_black_tree.cpp
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(45,1): warning C4099: TableString: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(44): message : см. объявление "TableString"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(62,27): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,27): warning C4309: инициализация: усечение константного значения
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,40): warning C4309: инициализация: усечение константного значения
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,30): warning C4309: инициализация: усечение константного значения
@@ -10,131 +12,7 @@ C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,44): warning C430
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,62): warning C4309: инициализация: усечение константного значения
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(48,27): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(38): warning C5037: "TStack<T>::TStack": внешнее определение члена шаблона класса не может иметь аргументы по умолчанию
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\list_table.h(58,20): error C2676: бинарный "++": "ListIterator<T>" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
-          with
-          [
-              T=TableString
-          ]
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.h(54,33): error C2872: error_code: неоднозначный символ
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\eq_exception.h(8,6): message : может быть "error_code"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\system_error(122,7): message : или       "std::error_code"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.h(64,1): error C2027: использование неопределенного типа "HashTableDouble"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(37): message : см. объявление "HashTableDouble"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.cpp(42,41): error C2872: error_code: неоднозначный символ
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\eq_exception.h(8,6): message : может быть "error_code"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\system_error(122,7): message : или       "std::error_code"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.cpp(42,64): error C2872: error_code: неоднозначный символ
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\eq_exception.h(8,6): message : может быть "error_code"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\system_error(122,7): message : или       "std::error_code"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.cpp(113,45): error C2872: error_code: неоднозначный символ
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\eq_exception.h(8,6): message : может быть "error_code"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\system_error(122,7): message : или       "std::error_code"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.cpp(113,68): error C2872: error_code: неоднозначный символ
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\eq_exception.h(8,6): message : может быть "error_code"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\system_error(122,7): message : или       "std::error_code"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.cpp(162,17): error C2143: синтаксическая ошибка: отсутствие ";" перед "for"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.cpp(163,36): error C2660: Table::insert: функция не принимает 0 аргументов
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(22,18): message : см. объявление "Table::insert"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\interface.cpp(170,40): error C2872: error_code: неоднозначный символ
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\eq_exception.h(8,6): message : может быть "error_code"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\system_error(122,7): message : или       "std::error_code"
-  list_table.cpp
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(64,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,27): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,30): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,56): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,32): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,44): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,62): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(48,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\list_table.h(58,20): error C2676: бинарный "++": "ListIterator<T>" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
-          with
-          [
-              T=TableString
-          ]
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\list_table.cpp(44,75): error C2676: бинарный "++": "ListIterator<T>" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
-          with
-          [
-              T=TableString
-          ]
-  postfix.cpp
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(38): warning C5037: "TStack<T>::TStack": внешнее определение члена шаблона класса не может иметь аргументы по умолчанию
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.cpp(22,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.cpp(100,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.cpp(99,9): warning C4101: k: неиспользованная локальная переменная
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(60,9): error C2672: "std::empty": не найдена соответствующая перегруженная функция
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(59): message : во время компиляции функции-члена класс шаблон "T TStack<T>::get_top(void)"
-          with
-          [
-              T=std::string
-          ]
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.cpp(58): message : выполняется компиляция ссылки на экземпляр шаблон функции "T TStack<T>::get_top(void)"
-          with
-          [
-              T=std::string
-          ]
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.h(16): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "TStack<std::string>"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(60,1): error C2780: bool std::empty(std::initializer_list<_Elem>) noexcept: требует аргументов: 1, имеется: 0
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(2227): message : см. объявление "std::empty"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(60,1): error C2780: bool std::empty(const _Ty (&)[_Size]) noexcept: требует аргументов: 1, имеется: 0
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(2222): message : см. объявление "std::empty"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(60,1): error C2780: unknown-type std::empty(const _Container &): требует аргументов: 1, имеется: 0
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(2217): message : см. объявление "std::empty"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(69,9): error C2672: "std::empty": не найдена соответствующая перегруженная функция
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(68): message : во время компиляции функции-члена класс шаблон "T TStack<T>::info_top(void)"
-          with
-          [
-              T=std::string
-          ]
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.cpp(50): message : выполняется компиляция ссылки на экземпляр шаблон функции "T TStack<T>::info_top(void)"
-          with
-          [
-              T=std::string
-          ]
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(69,1): error C2780: bool std::empty(std::initializer_list<_Elem>) noexcept: требует аргументов: 1, имеется: 0
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(2227): message : см. объявление "std::empty"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(69,1): error C2780: bool std::empty(const _Ty (&)[_Size]) noexcept: требует аргументов: 1, имеется: 0
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(2222): message : см. объявление "std::empty"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(69,1): error C2780: unknown-type std::empty(const _Container &): требует аргументов: 1, имеется: 0
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\xutility(2217): message : см. объявление "std::empty"
-  red_black_tree.cpp
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(64,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,27): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,30): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,56): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,32): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,44): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,62): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(48,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(38): warning C5037: "TStack<T>::TStack": внешнее определение члена шаблона класса не может иметь аргументы по умолчанию
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\red_black_tree.cpp(31,1): error C2556: void RedBlackTree::insert(const std::string &,TableBody &): перегруженная функция отличается от "bool RedBlackTree::insert(const std::string &,TableBody &)" только возвращаемым типом
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\red_black_tree.h(54): message : см. объявление "RedBlackTree::insert"
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\red_black_tree.cpp(30,20): error C2371: RedBlackTree::insert: переопределение; различные базовые типы
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\red_black_tree.h(54): message : см. объявление "RedBlackTree::insert"
-  sorted_array_table.cpp
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(64,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,27): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,30): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,56): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,32): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,44): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,62): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(48,27): warning C4018: <: несоответствие типов со знаком и без знака
-  table_string.cpp
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(64,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(4,23): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(4,36): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(5,26): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(5,36): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(5,52): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(6,28): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(6,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(6,58): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.cpp(22,23): warning C4018: <: несоответствие типов со знаком и без знака
-  Создание кода...
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\red_black_tree.cpp(346,27): warning C4101: e: неиспользованная локальная переменная
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(80): warning C4715: TStack<RBTNode *>::is_empty: значение возвращается не при всех путях выполнения
+postfix.obj : error LNK2019: ссылка на неразрешенный внешний символ "class Polynom __cdecl operator-(class Polynom const &,class Polynom const &)" (??G@YA?AVPolynom@@ABV0@0@Z) в функции "public: class Polynom __thiscall TPostfix::calculate(class Table * *)" (?calculate@TPostfix@@QAE?AVPolynom@@PAPAVTable@@@Z).
+C:\Users\Андрей\mp2-lab6-polynom-algebra\Debug\base.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

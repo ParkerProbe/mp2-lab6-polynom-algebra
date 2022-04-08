@@ -92,7 +92,7 @@ string TPostfix::to_postfix()
 	return postfix;
 }
 
-Polynom TPostfix::calculate()
+Polynom TPostfix::calculate(Table** tab)
 {
 	Polynom a, b;
 	string con;
@@ -115,7 +115,7 @@ Polynom TPostfix::calculate()
 		{
 			a = sd.get_top();
 			if (sd.is_empty() == true)
-				sd.add(a-=a);
+				sd.add(a *= -1);
 			else
 			{
 				b = sd.get_top();
@@ -129,12 +129,12 @@ Polynom TPostfix::calculate()
 			sd.add(a * b);
 			continue;
 		}
-		if (con == "/_")
-		{
-			a = sd.get_top(); b = sd.get_top();
-//			sd.add(b / a);
-			continue;
-		}
+//		if (con == "/_")
+//		{
+//			a = sd.get_top(); b = sd.get_top();
+////			sd.add(b / a);
+//			continue;
+//		}
 		if (con == "dx" || con == "dy" || con == "dz")
 		{
 			a = sd.get_top();
@@ -151,11 +151,11 @@ Polynom TPostfix::calculate()
 		if (con[0] > 47 && con[0] < 58)
 		{
 			Polynom v(con);
-			//k = atof(con.c_str());
-		//получить полином из таблицы
-		//a = con;
 			sd.add(v);
 		}
+		else
+		a = *tab[5]->find(con)->poly;/////////////////////////////////
+
 	}
 	a = sd.get_top();
 	if (sd.is_empty() != true)

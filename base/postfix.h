@@ -3,6 +3,7 @@
 
 #include <string>
 #include "stack.h"
+#include "table.h"
 #include "polynom.h"
 
 
@@ -36,7 +37,7 @@ public:
 	string get_postfix() { return postfix; }
 	string to_postfix();
 	// gets variables and calculates following postfix form
-	Polynom calculate();
+	Polynom calculate(Table** t);
 };
 
 #endif

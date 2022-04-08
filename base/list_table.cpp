@@ -41,6 +41,6 @@ TableString* ListTable::find_str(const std::string& key)
 void ListTable::print()
 {
     print_header();
-    for (ListIterator<TableString> it = data.begin(); it != data.end(); it++)
+    for (ListIterator<TableString> it = data.begin(); it != data.end(); ++it)
         std::cout << *it;
 }

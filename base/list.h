@@ -155,7 +155,7 @@ public:
     List(T* arr) : size(0), pFirst(nullptr), pLast(nullptr)
     {
         if (arr == nullptr)
-            throw(EqException(error_code::k_EMPTY));
+            throw(EqException(error_codes::k_EMPTY));
         for (int i = 0; i < sizeoff(arr) / sizeoff(arr[0]); i++) {
             add(arr[i]);
         }
@@ -164,7 +164,7 @@ public:
     List(std::vector<T>& v) : size(0), pFirst(nullptr), pLast(nullptr)
     {
         if (v.size() == 0) {
-            throw(EqException(error_code::k_EMPTY));
+            throw(EqException(error_codes::k_EMPTY));
         }
         for (T tmp : v) {
             add(tmp);
@@ -175,7 +175,7 @@ public:
     T& operator[](int index)
     {
         if ((index > size - 1) || (index < 0)) {
-            throw(EqException(error_code::k_INCORRECT_INDEX));
+            throw(EqException(error_codes::k_INCORRECT_INDEX));
         }
         int n = 0;
 
@@ -187,7 +187,7 @@ public:
             pCurrent = pCurrent->pNext;
             n++;
         }
-        throw(EqException(error_code::k_INCORRECT_INDEX));
+        throw(EqException(error_codes::k_INCORRECT_INDEX));
     }
 
     inline bool operator==(const List& other)
@@ -325,7 +325,7 @@ public:
     NodeList<T>* get_node(int index) const
     {
         if ((index > size - 1) || (index < 0))
-            throw(EqException(error_code::k_INCORRECT_INDEX));
+            throw(EqException(error_codes::k_INCORRECT_INDEX));
         if (index == size - 1) {
             return pLast;
         }
