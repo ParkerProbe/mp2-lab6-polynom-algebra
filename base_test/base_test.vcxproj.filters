@@ -48,5 +48,16 @@
     <ClCompile Include="test_stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\base\list_table.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_table_string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\base\list_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

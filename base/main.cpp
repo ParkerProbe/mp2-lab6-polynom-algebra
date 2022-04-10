@@ -1,6 +1,9 @@
-
+#include "interface.h"
 
 int main()
 {
-  return 0;
+    Interface interface1;
+    interface1.menu();
+    system("pause");
+    return 0;
 }

@@ -1,9 +1,9 @@
 
-// #include <gtest.h>
-// #include "array_table.h"
+ #include <gtest.h>
+ #include "array_table.h"
 
- #include "../gtest/gtest.h"
- #include "../base/array_table.h"
+ /*#include "../gtest/gtest.h"
+ #include "../base/array_table.h"*/
 
 TEST(ArrayTable, can_create_table)
 {
