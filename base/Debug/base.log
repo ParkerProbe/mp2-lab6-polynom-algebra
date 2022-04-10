@@ -1,18 +1,117 @@
-﻿  red_black_tree.cpp
+﻿  array_table.cpp
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(45,1): warning C4099: TableString: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(44): message : см. объявление "TableString"
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(62,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,27): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(32,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,30): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,27): warning C4309: инициализация: усечение константного значения
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,56): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,32): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,44): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,62): warning C4309: инициализация: усечение константного значения
-C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(48,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,30): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,56): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,32): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,44): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,62): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(49,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(95,14): warning C4101: b: неиспользованная локальная переменная
+  hash_table_list.cpp
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(45,1): warning C4099: TableString: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(44): message : см. объявление "TableString"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(62,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,27): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,30): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,56): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,32): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,44): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,62): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(49,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(95,14): warning C4101: b: неиспользованная локальная переменная
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\hash_table_list.cpp(69,27): warning C4101: e: неиспользованная локальная переменная
+  interface.cpp
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(45,1): warning C4099: TableString: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(44): message : см. объявление "TableString"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(62,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,27): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,30): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,56): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,32): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,44): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,62): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(49,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(95,14): warning C4101: b: неиспользованная локальная переменная
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(38): warning C5037: "TStack<T>::TStack": внешнее определение члена шаблона класса не может иметь аргументы по умолчанию
+  list_table.cpp
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(45,1): warning C4099: TableString: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(44): message : см. объявление "TableString"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(62,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,27): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,30): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,56): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,32): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,44): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,62): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(49,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(95,14): warning C4101: b: неиспользованная локальная переменная
+  postfix.cpp
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(38): warning C5037: "TStack<T>::TStack": внешнее определение члена шаблона класса не может иметь аргументы по умолчанию
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(45,1): warning C4099: TableString: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(44): message : см. объявление "TableString"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(62,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,27): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,30): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,56): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,32): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,44): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,62): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(49,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(95,14): warning C4101: b: неиспользованная локальная переменная
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.cpp(22,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.cpp(100,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\postfix.cpp(99,9): warning C4101: k: неиспользованная локальная переменная
+  red_black_tree.cpp
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(45,1): warning C4099: TableString: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(44): message : см. объявление "TableString"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(62,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,27): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,30): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,56): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,32): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,44): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,62): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(49,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(95,14): warning C4101: b: неиспользованная локальная переменная
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(38): warning C5037: "TStack<T>::TStack": внешнее определение члена шаблона класса не может иметь аргументы по умолчанию
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\red_black_tree.cpp(346,27): warning C4101: e: неиспользованная локальная переменная
+  sorted_array_table.cpp
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(45,1): warning C4099: TableString: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(44): message : см. объявление "TableString"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table_string.h(62,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,27): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(33,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,30): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,40): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(34,56): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,32): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,44): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(35,62): warning C4309: инициализация: усечение константного значения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(49,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\table.h(95,14): warning C4101: b: неиспользованная локальная переменная
+  Создание кода...
 C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(80): warning C4715: TStack<RBTNode *>::is_empty: значение возвращается не при всех путях выполнения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(80): warning C4715: TStack<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::is_empty: значение возвращается не при всех путях выполнения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\stack.h(80): warning C4715: TStack<Polynom>::is_empty: значение возвращается не при всех путях выполнения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\list_table.cpp(18): warning C4700: использована неинициализированная локальная переменная "tmp"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\list.h(130): warning C4700: использована неинициализированная локальная переменная "p"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\hash_table_list.cpp(48): warning C4715: HashTableList::insert: значение возвращается не при всех путях выполнения
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\array_table.cpp(22): warning C4700: использована неинициализированная локальная переменная "i"
+C:\Users\Андрей\mp2-lab6-polynom-algebra\base\array_table.cpp(70): warning C4715: ArrayTable::erase: значение возвращается не при всех путях выполнения
 postfix.obj : error LNK2019: ссылка на неразрешенный внешний символ "class Polynom __cdecl operator-(class Polynom const &,class Polynom const &)" (??G@YA?AVPolynom@@ABV0@0@Z) в функции "public: class Polynom __thiscall TPostfix::calculate(class Table * *)" (?calculate@TPostfix@@QAE?AVPolynom@@PAPAVTable@@@Z).
 C:\Users\Андрей\mp2-lab6-polynom-algebra\Debug\base.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

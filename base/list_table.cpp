@@ -7,16 +7,21 @@ bool ListTable::insert(const std::string& key, TableBody& data_)
     }
     TableString tmp(key, data_);
     data.add(tmp);
+    data_cnt++;
     return true;
 }
 bool ListTable::erase(const std::string& key)
-{
+{////////////////////////////////
     TableString* tmp;
-    if (find_str(key) == nullptr) {
+    tmp = find_str(key);
+    if (tmp == nullptr) {
         return false;
     }
-    data.erase_first_found((*tmp));
-    return true;
+    else
+    {
+        data_cnt--;
+        data.erase_first_found(*tmp);
+    }
 }
 TableBody* ListTable::find(const std::string& key)
 {
@@ -38,9 +43,9 @@ TableString* ListTable::find_str(const std::string& key)
     }
     return nullptr;
 }
-void ListTable::print()
-{
-    print_header();
-    for (ListIterator<TableString> it = data.begin(); it != data.end(); ++it)
-        std::cout << *it;
-}
+//void ListTable::print()
+//{
+//    print_header();
+//    for (ListIterator<TableString> it = data.begin(); it != data.end(); ++it)
+//        std::cout << *it;
+//}

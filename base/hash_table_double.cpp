@@ -66,7 +66,7 @@ bool HashTableDouble::erase(const std::string& key)
 void HashTableDouble::insert(const TableString& data)
 {
     if (is_full()) {
-        throw EqException(error_code::k_OUT_OF_MEMORY);
+        throw EqException(error_codes::k_OUT_OF_MEMORY);
     }
     int i = 0;
     int h1 = Hash1(data.key);

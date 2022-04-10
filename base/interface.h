@@ -18,13 +18,13 @@ class Interface
 {
     enum Table_num
     {
-        k_TABLE,
         k_ARRAY_TABLE,
         k_SORTED_ARRAY_TABLE,
         k_LIST_TABLE,
         k_RED_BLACK_TREE,
         k_CHAIN_HASH_TABLE,
         k_LIST_HASH_TABLE,
+        k_TABLE,
     };
     const int k_table_size;
     Table_num mode;
@@ -48,12 +48,7 @@ private:
     void erase();
     void polynom_menu();
     void print();
-
-   /* catch (EqException exc)
-    {
-        print_error(exc.get_error);
-    }*/
-    void print_error(error_codes ec);
+    void print_error(EqException eq);
 public:
     Interface() :mode(Table_num::k_TABLE), k_table_size(6)
     {

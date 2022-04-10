@@ -11,7 +11,7 @@ public:
     TableBody* find(const std::string& key);
     bool insert(const std::string& key, TableBody& data_);
     bool erase(const std::string& key);
-    void print();
+ //   void print();
 
     bool empty()
     {

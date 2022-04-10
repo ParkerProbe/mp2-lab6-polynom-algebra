@@ -13,6 +13,7 @@ using std::cout;
 class Table
 {
 protected:
+    //quantity of elements
     int data_cnt;
     virtual TableString* find_str(const std::string& key) = 0;
 public:
@@ -88,13 +89,18 @@ public:
         return &(*this).find_str(key)->body;
     }
 
-    void print(Table& tab)
+    void print(Table* tab)
     {
-        cout << "Table printing" << std::endl;
+        print_header();
+        bool b;
+        for (tab->reset(); !tab->is_tab_ended(); tab->go_next()) {
+            cout << *tab->get_value();
+        }
+       /* cout << "Table printing" << std::endl;
         for (tab.reset(); !tab.is_tab_ended(); tab.go_next()) {
             cout << " Key" << tab.get_value()->key << " Val "
                 << tab.get_value()->body.poly_string << std::endl;
-        }
+        }*/
     }
 
 };
