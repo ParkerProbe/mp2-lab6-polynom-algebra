@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-04-07T17:58:34.071Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36 Edg/100.0.1185.29" etag="gkZ96RcfUEozBHdymfiU" version="17.4.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-10T06:28:54.675Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36" etag="lAcjz8coJy0jPys0ThSd" version="17.4.1" type="github">
   <diagram name="Page-1" id="42789a77-a242-8287-6e28-9cd8cfd52e62">
     <mxGraphModel dx="1038" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" background="none" math="0" shadow="0">
       <root>
@@ -318,17 +318,20 @@
             <mxPoint x="527.5" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ob3So-rM5bVcGHjbNZR2-1" value="Полезные команды Git" style="swimlane;" vertex="1" parent="1">
+        <mxCell id="ob3So-rM5bVcGHjbNZR2-1" value="Полезные команды Git" style="swimlane;" parent="1" vertex="1">
           <mxGeometry x="109.99" y="890" width="340" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="ob3So-rM5bVcGHjbNZR2-2" value="git pull - получение изменений из удалённого репозитория" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="ob3So-rM5bVcGHjbNZR2-1">
-          <mxGeometry y="60" width="340" height="20" as="geometry" />
+        <mxCell id="ob3So-rM5bVcGHjbNZR2-2" value="git pull - получение изменений из удалённого репозитория" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="ob3So-rM5bVcGHjbNZR2-1" vertex="1">
+          <mxGeometry y="110" width="340" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="ob3So-rM5bVcGHjbNZR2-3" value="&lt;span style=&quot;font-family: , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;roboto&amp;#34; , &amp;#34;helvetica neue&amp;#34; , &amp;#34;geneva&amp;#34; , &amp;#34;noto sans armenian&amp;#34; , &amp;#34;noto sans bengali&amp;#34; , &amp;#34;noto sans cherokee&amp;#34; , &amp;#34;noto sans devanagari&amp;#34; , &amp;#34;noto sans ethiopic&amp;#34; , &amp;#34;noto sans georgian&amp;#34; , &amp;#34;noto sans hebrew&amp;#34; , &amp;#34;noto sans kannada&amp;#34; , &amp;#34;noto sans khmer&amp;#34; , &amp;#34;noto sans lao&amp;#34; , &amp;#34;noto sans osmanya&amp;#34; , &amp;#34;noto sans tamil&amp;#34; , &amp;#34;noto sans telugu&amp;#34; , &amp;#34;noto sans thai&amp;#34; , &amp;#34;arial&amp;#34; , &amp;#34;tahoma&amp;#34; , &amp;#34;verdana&amp;#34; , sans-serif ; font-size: 13px ; text-align: left ; background-color: rgb(255 , 255 , 255)&quot;&gt;git config pull.rebase false - исполняется перед pull, &lt;br&gt;чтобы &quot;умнее&quot; копировать&amp;nbsp;файлы&lt;br&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="ob3So-rM5bVcGHjbNZR2-1">
-          <mxGeometry x="10" y="30" width="320" height="30" as="geometry" />
+        <mxCell id="ob3So-rM5bVcGHjbNZR2-3" value="&lt;span style=&quot;font-family: , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;roboto&amp;#34; , &amp;#34;helvetica neue&amp;#34; , &amp;#34;geneva&amp;#34; , &amp;#34;noto sans armenian&amp;#34; , &amp;#34;noto sans bengali&amp;#34; , &amp;#34;noto sans cherokee&amp;#34; , &amp;#34;noto sans devanagari&amp;#34; , &amp;#34;noto sans ethiopic&amp;#34; , &amp;#34;noto sans georgian&amp;#34; , &amp;#34;noto sans hebrew&amp;#34; , &amp;#34;noto sans kannada&amp;#34; , &amp;#34;noto sans khmer&amp;#34; , &amp;#34;noto sans lao&amp;#34; , &amp;#34;noto sans osmanya&amp;#34; , &amp;#34;noto sans tamil&amp;#34; , &amp;#34;noto sans telugu&amp;#34; , &amp;#34;noto sans thai&amp;#34; , &amp;#34;arial&amp;#34; , &amp;#34;tahoma&amp;#34; , &amp;#34;verdana&amp;#34; , sans-serif ; font-size: 13px ; text-align: left ; background-color: rgb(255 , 255 , 255)&quot;&gt;git config pull.rebase false&amp;nbsp;&lt;br&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="ob3So-rM5bVcGHjbNZR2-1" vertex="1">
+          <mxGeometry x="85" y="35" width="170" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="ob3So-rM5bVcGHjbNZR2-4" value="git push origin &amp;lt;название ветки&amp;gt; - отправка" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="ob3So-rM5bVcGHjbNZR2-1">
-          <mxGeometry x="45.000000000000014" y="80" width="250" height="20" as="geometry" />
+        <mxCell id="ob3So-rM5bVcGHjbNZR2-4" value="git push origin &amp;lt;название ветки&amp;gt; - отправка" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="ob3So-rM5bVcGHjbNZR2-1" vertex="1">
+          <mxGeometry x="45.000000000000014" y="130" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="AWpl9kLncXGkB7XlnCSv-1" value="&lt;span style=&quot;font-size: 13px ; text-align: left ; background-color: rgb(255 , 255 , 255)&quot;&gt;исполняется перед pull,&lt;/span&gt;&lt;br style=&quot;font-size: 13px ; text-align: left&quot;&gt;&lt;span style=&quot;font-size: 13px ; text-align: left ; background-color: rgb(255 , 255 , 255)&quot;&gt;чтобы &quot;умнее&quot; копировать&amp;nbsp;файлы&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="ob3So-rM5bVcGHjbNZR2-1">
+          <mxGeometry x="60.000000000000014" y="55" width="220" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
