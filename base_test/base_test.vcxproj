@@ -83,7 +83,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\base\array_table.cpp" />
+    <ClCompile Include="..\base\hash_table_double.cpp" />
+    <ClCompile Include="..\base\hash_table_list.cpp" />
+    <ClCompile Include="..\base\interface.cpp" />
     <ClCompile Include="..\base\list_table.cpp" />
+    <ClCompile Include="..\base\polynom.cpp" />
+    <ClCompile Include="..\base\postfix.cpp" />
+    <ClCompile Include="..\base\red_black_tree.cpp" />
+    <ClCompile Include="..\base\sorted_array_table.cpp" />
+    <ClCompile Include="..\base\table_string.cpp" />
     <ClCompile Include="test_array_table.cpp" />
     <ClCompile Include="test_eq_exception.cpp" />
     <ClCompile Include="test_hash_table_list.cpp" />
@@ -98,7 +107,20 @@
     <ClCompile Include="test_table_string.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\base\array_table.h" />
+    <ClInclude Include="..\base\eq_exception.h" />
+    <ClInclude Include="..\base\hash_table_double.h" />
+    <ClInclude Include="..\base\hash_table_list.h" />
+    <ClInclude Include="..\base\interface.h" />
+    <ClInclude Include="..\base\list.h" />
     <ClInclude Include="..\base\list_table.h" />
+    <ClInclude Include="..\base\polynom.h" />
+    <ClInclude Include="..\base\postfix.h" />
+    <ClInclude Include="..\base\red_black_tree.h" />
+    <ClInclude Include="..\base\sorted_array_table.h" />
+    <ClInclude Include="..\base\stack.h" />
+    <ClInclude Include="..\base\table.h" />
+    <ClInclude Include="..\base\table_string.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

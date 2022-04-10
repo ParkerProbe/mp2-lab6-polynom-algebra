@@ -104,6 +104,7 @@
     <ClInclude Include="polynom.h" />
     <ClInclude Include="postfix.h" />
     <ClInclude Include="red_black_tree.h" />
+    <ClInclude Include="sorted_array_table.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="table_string.h" />

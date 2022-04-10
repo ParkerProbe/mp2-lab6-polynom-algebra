@@ -67,6 +67,7 @@ bool ArrayTable::erase(const std::string& key)
         tbl[curr_pos] = tbl[data_cnt - 1];
         tbl[--data_cnt] = nullptr;
     }
+    return true;
 }
 
 bool ArrayTable::is_full() const
@@ -81,7 +82,7 @@ bool ArrayTable::insert(const std::string& key, TableBody& data)
        memory_allocator();
     }
     TableString* tmp = find_str(key);
-    if (tmp != nullptr) {
+    if (tmp == nullptr) {
         tbl[data_cnt] = new TableString(key, data);
         data_cnt++;
         return true;

@@ -494,7 +494,7 @@ Polynom& Polynom::operator+=(const Polynom& other)
     return *this;
 }
 
-Polynom& Polynom::operator-=(Polynom& other)
+Polynom& Polynom::operator-=(const Polynom& other)
 {
     List<Monom>::iterator iter_lhs = polynom.begin();
     List<Monom>::iterator iter_rhs = other.polynom.begin();
@@ -540,7 +540,7 @@ Polynom operator+(const Polynom& lhs, const Polynom& rhs)
     return temp += rhs;
 }
 
-Polynom operator-(Polynom& lhs, Polynom& rhs)
+Polynom operator-(const Polynom& lhs, const Polynom& rhs)
 {
     Polynom temp(lhs);
     return temp -= rhs;

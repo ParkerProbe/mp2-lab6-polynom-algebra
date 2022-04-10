@@ -86,5 +86,8 @@
     <ClInclude Include="hash_table_double.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sorted_array_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

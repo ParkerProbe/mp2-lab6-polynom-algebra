@@ -16,7 +16,6 @@ public:
     SortTable(const ArrayTable &other) { *this = other; }
 
     TableString* find_str(const std::string& key);
-    TableBody* find(const std::string& key);
     bool insert(const std::string& key, TableBody& data);
     bool erase(const std::string& key);
 };

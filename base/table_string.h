@@ -44,10 +44,9 @@ struct TableBody
 struct TableString
 {
     //private:
-public:
     string key;
     TableBody body;
-public:
+
     TableString()
         :body(), key(" ")
     {}

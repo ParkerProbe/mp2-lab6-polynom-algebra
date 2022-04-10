@@ -61,6 +61,7 @@ bool HashTableDouble::erase(const std::string& key)
         flag[h1] = -1;
         size--;
     }
+    return true;//////////////////////////////////////
 }
 
 void HashTableDouble::insert(const TableString& data)

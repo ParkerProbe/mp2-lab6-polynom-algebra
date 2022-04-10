@@ -87,7 +87,7 @@ public:
     Polynom& operator+=(const Polynom& other);
     Polynom& operator*=(const Polynom& other);
     Polynom& operator*=(double num);
-    Polynom& operator-=(Polynom& other);
+    Polynom& operator-=(const Polynom& other);
 
     void write_to_file(std::string path) const;
     void read_from_file(std::string path);

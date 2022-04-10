@@ -21,14 +21,14 @@ public:
         : Table(), size(_size), curr_pos(0)
     {
         tbl = new TableString*[size];
-        for (int i; i < _size; i++) {
+        for (int i = 0; i < _size; i++) {
             tbl[i] = nullptr;
         }
     }
     virtual ~ArrayTable()
     {
         // Delete key - not  data
-        for (int i; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             delete [] tbl[i];
         }
         delete [] tbl;
