@@ -41,6 +41,21 @@ TableString* SortTable::find_str(const std::string& key)
     return nullptr;
 }
 
+TableBody* SortTable::find(const std::string& key)
+{
+    TableString* tmp = (*this).find_str(key);
+    if (tmp == nullptr) {
+        return nullptr;
+    }
+    else {
+        return &tmp->body;
+    }
+}
+
+
+
+
+
 bool SortTable::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {

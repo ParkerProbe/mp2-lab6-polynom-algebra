@@ -40,17 +40,17 @@ public:
         return size;
     }
     
-
-    TableString* find_str(const std::string& key);
-    bool insert(const std::string& key, TableBody& data);
-    bool erase(const std::string& key);
-    bool is_full() const;
-    bool reset();
-    bool is_tab_ended() const;
-    bool go_next();
-    bool set_current_pos(int pos);
-    int get_current_pos() const;
-    TableString* get_value();
+    virtual TableBody* find(const std::string& key);
+    virtual TableString* find_str(const std::string& key);
+    virtual bool insert(const std::string& key, TableBody& data);
+    virtual bool erase(const std::string& key);
+    virtual bool is_full() const;
+    virtual bool reset();
+    virtual bool is_tab_ended() const;
+    virtual bool go_next();
+    virtual bool set_current_pos(int pos);
+    virtual int get_current_pos() const;
+    virtual TableString* get_value();
 };
 
 

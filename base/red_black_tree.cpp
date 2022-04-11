@@ -122,9 +122,6 @@ void RedBlackTree::insert_fix_up(RBTNode* &root, RBTNode* node)
     root->color = Black;
 }
 
-
-
-// Уничтожить красные и черные деревья
 void RedBlackTree::destroy(RBTNode* &node) 
 {
     if (node == nullptr) {
@@ -231,9 +228,9 @@ void RedBlackTree::remove(RBTNode*&root, RBTNode*node)
 
 }
 
-void RedBlackTree::remove_fix_up(RBTNode* &root, RBTNode* node,RBTNode*parent)
+void RedBlackTree::remove_fix_up(RBTNode* &root, RBTNode* node, RBTNode*parent)
 {
-    RBTNode*othernode;
+    RBTNode* othernode;
     while ((!node) || node->color == Black && node != RedBlackTree::root) {
         if (parent->left == node) {
             othernode = parent->right;
@@ -300,6 +297,19 @@ TableString* RedBlackTree::find_str(const std::string& key)
     RBTNode* tmp = search(root, key);
     return tmp->data;
 
+}
+
+
+
+TableBody* RedBlackTree::find(const std::string& key)
+{
+    TableString* tmp = (*this).find_str(key);
+    if (tmp == nullptr) {
+        return nullptr;
+    }
+    else {
+        return &tmp->body;
+    }
 }
 
 RBTNode* RedBlackTree::search(RBTNode* node, const std::string& key) const
@@ -380,9 +390,9 @@ bool RedBlackTree::go_next()
             current = st.get_top();
         }
         curr_pos++;
-        return true;//////////////////////
+        return true;
     } 
-    return true;///////////////////////////
+    return false;
 }
 
 bool RedBlackTree::is_tab_ended() const

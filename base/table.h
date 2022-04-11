@@ -15,7 +15,6 @@ class Table
 protected:
     //quantity of elements
     int data_cnt;
-    virtual TableString* find_str(const std::string& key) = 0;
 public:
     Table() : data_cnt(0) {}
     virtual ~Table() {}
@@ -23,6 +22,9 @@ public:
     virtual bool insert(const std::string& key, TableBody& data) = 0;
     virtual bool erase(const std::string& key) = 0;
     inline virtual bool is_full() const = 0;
+    virtual TableBody* find(const std::string& key) = 0;
+    virtual TableString* find_str(const std::string& key) = 0;
+
 
     // HOW TO PRINT: print_header(); print other TableString's
     void print_header()
@@ -82,11 +84,6 @@ public:
     inline virtual int get_data_count() const
     {
         return data_cnt;
-    }
-
-    virtual TableBody* find(const std::string& key)
-    {
-        return &(*this).find_str(key)->body;
     }
 
     void print(Table* tab)

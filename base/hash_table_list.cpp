@@ -9,7 +9,7 @@ unsigned int HashTableList::Hash(const std::string& key)
     unsigned long hashval = 0;
     int len = key.length();
     for (int i = 0; i < len; i++) {
-        hashval = (hashval << 3) + key[3];
+        hashval = (hashval << 3) + key[i];
     }
     return hashval;
 }
@@ -20,13 +20,25 @@ TableString* HashTableList::find_str(const std::string& key)
     for (ListIterator<TableString*> it = table[index]->begin();
         it != table[index]->end(); ++it)
     {
-        if ((*it)->key == key) {
+        if ((*it)->get_key() == key) {
             curr_pos = it;
             return (*it);
         }
     }
     return nullptr;
 }
+
+TableBody* HashTableList::find(const std::string& key)
+{
+    TableString* tmp = (*this).find_str(key);
+    if (tmp == nullptr) {
+        return nullptr;
+    }
+    else {
+        return &tmp->body;
+    }
+}
+
 
 bool HashTableList::insert(const std::string& key, TableBody& data)
 {
@@ -41,8 +53,8 @@ bool HashTableList::insert(const std::string& key, TableBody& data)
     else {
         int index = Hash(key);
         ListIterator<TableString*> it =  table[index]->begin();
-        TableString* ts = new TableString(key, data);
-        table[index]->insert(it, ts);
+        TableString* tmp = new TableString(key, data);
+        table[index]->insert(it, tmp);
         data_cnt++;
     }
     return true;
@@ -68,13 +80,13 @@ bool HashTableList::is_full() const
         TableString* pNode = new TableString();
     }
     catch(std::bad_alloc& e) {
-        return 1;
+        return false;
     }
     
-    return 0;
+    return true;
 }
 
-bool  HashTableList::is_tab_ended() const
+bool HashTableList::is_tab_ended() const
 {
     return curr_index >= size;
 }
@@ -131,4 +143,10 @@ TableString*  HashTableList::get_value()
 int HashTableList::hash_string(const std::string &key)
 {
     return Hash(key);
+}
+
+
+int HashTableList::get_current_pos() const
+{
+    return curr_pos_num;
 }

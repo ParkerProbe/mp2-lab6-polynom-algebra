@@ -50,7 +50,9 @@ public:
         destroy(root);
     }
 
+
     TableString* find_str(const std::string& key);
+    TableBody* find(const std::string& key);
     bool insert(const std::string& key, TableBody& data);
     bool erase(const std::string& key);
     bool is_full() const;

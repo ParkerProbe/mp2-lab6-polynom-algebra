@@ -20,29 +20,31 @@ private:
     int curr_pos_num;
     std::vector<List<TableString*>*> table;
     ListIterator<TableString*> curr_pos;
+
     unsigned int Hash(const std::string& key);
 
 public:
     HashTableList(int _size = DEFAULT_SIZE)
         :  size(_size), curr_index(0), curr_pos_num(0),
-        table(_size, nullptr), curr_pos(table[0]->begin())
+        table(_size, nullptr)
     {
         for(int i = 0; i < _size; i++) {
             table[i] = new List<TableString*>;
         }
+        curr_pos = table[0]->begin();
     }
 
     ~HashTableList() = default;
 
-    int get_size()
+    inline int get_size()
     {
         return size;
     }
 
+    TableBody* find(const std::string& key);
     TableString* find_str(const std::string& key);
     bool insert(const std::string& key, TableBody& data);
     bool erase(const std::string& key);
-    void print();
     bool is_full() const;
     bool reset();
     bool is_tab_ended() const;

@@ -102,3 +102,14 @@ TableString* ArrayTable::find_str(const std::string& key)
     }
     return nullptr;
 }
+
+TableBody* ArrayTable::find(const std::string& key)
+{
+    TableString* tmp = (*this).find_str(key);
+    if (tmp == nullptr) {
+        return nullptr;
+    }
+    else {
+        return &tmp->body;
+    }
+}

@@ -15,6 +15,7 @@ public:
     SortTable& operator=(const SortTable& other);
     SortTable(const ArrayTable &other) { *this = other; }
 
+    TableBody* find(const std::string& key);
     TableString* find_str(const std::string& key);
     bool insert(const std::string& key, TableBody& data);
     bool erase(const std::string& key);

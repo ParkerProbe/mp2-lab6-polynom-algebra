@@ -37,6 +37,8 @@ private:
     ListIterator(NodeList<T>* ptr1) : ptr(ptr1), prev_ptr(ptr)
     {}
 public:
+    ListIterator() : prev_ptr(nullptr), ptr(nullptr)
+    {}
     ListIterator(const ListIterator& it) : ptr(it.ptr), prev_ptr(it.prev_ptr)
     {}
 
