@@ -24,6 +24,10 @@ struct TableBody
         poly_string = poly_.str();
     }
 
+    ~TableBody()
+    {
+        ;
+    }
    /* friend class TableString;
 
 
@@ -41,12 +45,13 @@ struct TableBody
 };
 
 //Base element in every table
-struct TableString
+class TableString
 {
+private:
     //private:
     string key;
     TableBody body;
-
+public:
     TableString()
         :body(), key(" ")
     {}

@@ -7,8 +7,11 @@
 
 bool ArrayTable::set_current_pos(int pos)
 {
-   curr_pos = ((pos > -1) && (pos < data_cnt)) ? pos : false;
-   return is_tab_ended(); 
+    if ((pos > -1) && (pos < data_cnt)) {
+        curr_pos = pos;
+        return true;
+    }
+   return false; 
 }
 
 void ArrayTable::memory_allocator()
@@ -20,7 +23,7 @@ void ArrayTable::memory_allocator()
     }
 
     for (int i = 0; i < size; i++) {
-        delete [] tbl[i];
+        delete tbl[i];
     }
     delete [] tbl;
 
