@@ -103,6 +103,7 @@
     <ClCompile Include="test_polinom.cpp" />
     <ClCompile Include="test_postfix.cpp" />
     <ClCompile Include="test_red_black_tree.cpp" />
+    <ClCompile Include="test_sorted_array_table.cpp" />
     <ClCompile Include="test_stack.cpp" />
     <ClCompile Include="test_table_string.cpp" />
   </ItemGroup>

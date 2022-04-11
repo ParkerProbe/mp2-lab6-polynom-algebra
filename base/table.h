@@ -7,6 +7,7 @@
 #include <ostream>
 #include <string>
 
+#define DEFAULT_SIZE 100
 
 using std::cout;
 

@@ -63,7 +63,7 @@ bool SortTable::insert(const std::string& key, TableBody& data)
     }
 
     TableString* tmp = find_str(key);
-    if (tmp == nullptr) {
+    if (tmp != nullptr) {
         return false;
     }
     else {

@@ -9,7 +9,7 @@
 #include <vector>
 #include "list.h"
 
-#define DEFAULT_SIZE 25
+
 
 
 class HashTableList : public Table

@@ -47,7 +47,7 @@ bool HashTableList::insert(const std::string& key, TableBody& data)
     }
 
     TableString* tmp = find_str(key);
-    if (tmp == nullptr) {
+    if (tmp != nullptr) {
         return false;
     }
     else {
@@ -70,6 +70,7 @@ bool HashTableList::erase(const std::string& key)
     }
     else {
         table[index]->erase(curr_pos);
+        data_cnt--;
         return true;
     }
 }
@@ -78,12 +79,13 @@ bool HashTableList::is_full() const
 {
     try {
         TableString* pNode = new TableString();
+        delete pNode;
     }
     catch(...) {
-        return false;
+        return true;
     }
     
-    return true;
+    return false;
 }
 
 bool HashTableList::is_tab_ended() const
@@ -96,25 +98,38 @@ bool HashTableList::reset()
     curr_pos = table[0]->begin();
     curr_index = 0;
     curr_pos_num = 0;
-    return is_tab_ended();
+    bool is_end = false;
+    if (table[0]->get_size() == 0) {
+        is_end = go_next();
+        curr_pos_num = 0;
+    }
+    return is_end;
 }
 
 bool HashTableList::go_next()
 {
     if (is_tab_ended()) {
-        return false;
+        return true;
     }
 
-    if (curr_pos != table[curr_index]->end()) {
-        ++curr_pos;
+    int p_curr_index = curr_index;
+    if ( ++curr_pos == table[curr_index]->end()) {
+        curr_index++;
+        while (table[curr_index]->get_size() == 0) {
+            curr_index++;
+            if (is_tab_ended()) {
+                curr_index = p_curr_index;
+                return true; //is_tab_ended()
+            }
+        }
         curr_pos_num++;
+        curr_pos = table[curr_index]->begin();
     }
     else {
-        curr_index++;
-        curr_pos = table[curr_index]->begin();
         curr_pos_num++;
     }
-    return true;
+
+    return is_tab_ended();
 }
 
 bool HashTableList::set_current_pos(int pos)
@@ -132,7 +147,7 @@ bool HashTableList::set_current_pos(int pos)
             cnt++;
         }
     }
-    return is_tab_ended();
+    return true;
 }
 
 TableString*  HashTableList::get_value()

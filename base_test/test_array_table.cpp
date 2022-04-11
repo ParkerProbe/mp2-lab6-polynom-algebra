@@ -5,6 +5,7 @@
  /*#include "../gtest/gtest.h"
  #include "../base/array_table.h"*/
 //
+
 TEST(ArrayTable, can_create_table)
 {
 	ASSERT_NO_THROW(ArrayTable tab);
@@ -16,6 +17,7 @@ TEST(ArrayTable, can_insert_elem_in_tab)
     TableBody rec;
 
     EXPECT_EQ(tab.insert("1", rec), true);
+    EXPECT_EQ(tab.get_data_count(), 1);
 }
 
 TEST(ArrayTable, can_insert_elem_in_tab_when_its_not_empty)
@@ -23,8 +25,9 @@ TEST(ArrayTable, can_insert_elem_in_tab_when_its_not_empty)
     ArrayTable tab(2);
     TableBody rec1;
     tab.insert("1", rec1);
-    
+
     EXPECT_EQ(tab.insert("2", rec1), true);
+    EXPECT_EQ(tab.get_data_count(), 2);
 }
 
 TEST(ArrayTable, cant_insert_elem_with_same_key)
@@ -34,6 +37,7 @@ TEST(ArrayTable, cant_insert_elem_with_same_key)
     tab.insert("1", rec1);
 
     EXPECT_EQ(tab.insert("1", rec1), false);
+    EXPECT_EQ(tab.get_data_count(), 1);
 }
 
 TEST(ArrayTable, cant_find_when_is_empty)
@@ -67,6 +71,7 @@ TEST(ArrayTable, cant_delete_elem_when_its_empty)
     ArrayTable tab(2);
 
     EXPECT_EQ(tab.erase("1"), false);
+    EXPECT_EQ(tab.get_data_count(), 0);
 }
 
 TEST(ArrayTable, can_delete_existing_elem)
@@ -86,6 +91,7 @@ TEST(ArrayTable, cant_delete_non_existing_elem)
     tab.insert("1", rec1);
 
     EXPECT_EQ(tab.erase("2"), false);
+    EXPECT_EQ(tab.get_data_count(), 1);
 }
 
 TEST(ArrayTable, can_go_next)
@@ -192,6 +198,7 @@ TEST(ArrayTable, cant_set_current_pos)
 
     tab.set_current_pos(3);
 
+
     EXPECT_EQ(tab.set_current_pos(3), false);
 }
 
@@ -200,6 +207,7 @@ TEST(ArrayTable, can_get_value)
     ArrayTable tab(2);
     TableBody rec1;
     tab.insert("1", rec1);
+    tab.reset();
 
     EXPECT_EQ(tab.get_value()->get_key(), "1");
 }

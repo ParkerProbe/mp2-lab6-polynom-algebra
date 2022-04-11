@@ -24,24 +24,7 @@ struct TableBody
         poly_string = poly_.str();
     }
 
-    ~TableBody()
-    {
-        ;
-    }
-   /* friend class TableString;
-
-
-    friend std::ostream& operator<<(std::ostream& os, const TableString& ts);*/
-
- /*   friend class ArrayTable;
-    friend class Table;
-    friend class HashTableList;
-    friend class HashTableDouble;
-    friend class HashTableDouble;
-    friend class Interface;
-    friend class ListTable;
-    friend class RedBlackTree;
-    friend class SortTable;*/
+    ~TableBody() = default;
 };
 
 //Base element in every table
@@ -53,7 +36,7 @@ private:
     TableBody body;
 public:
     TableString()
-        :body(), key(" ")
+        :key("I"), body()
     {}
 
     TableString(string key_, TableBody& body_)
