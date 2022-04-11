@@ -26,7 +26,7 @@ private:
 public:
     HashTableList(int _size = DEFAULT_SIZE)
         :  size(_size), curr_index(0), curr_pos_num(0),
-        table(_size, nullptr)
+        table(_size, nullptr), curr_pos()
     {
         for(int i = 0; i < _size; i++) {
             table[i] = new List<TableString*>;
