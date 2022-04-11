@@ -19,7 +19,7 @@ void ArrayTable::memory_allocator()
         ntbl[i] = tbl[i];
     }
 
-    for (int i; i < size; i++) {
+    for (int i = 0; i < size; i++) {
         delete [] tbl[i];
     }
     delete [] tbl;

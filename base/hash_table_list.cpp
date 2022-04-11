@@ -79,7 +79,7 @@ bool HashTableList::is_full() const
     try {
         TableString* pNode = new TableString();
     }
-    catch(std::bad_alloc& e) {
+    catch(...) {
         return false;
     }
     

@@ -353,7 +353,7 @@ bool RedBlackTree::is_full() const
         TableString* ts = new TableString();
         RBTNode* rbtnode = new RBTNode(ts, Black, nullptr, nullptr, nullptr);
     }
-    catch(std::bad_alloc& e) {
+    catch(...) {
         return 1;
     }
     return 0;
