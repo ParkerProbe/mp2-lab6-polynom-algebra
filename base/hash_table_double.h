@@ -1,3 +1,5 @@
+
+
 #ifndef __HASHTABLEDOUBLE_H__
 #define __HASHTABLEDOUBLE_H__
 
@@ -13,12 +15,14 @@ private:
     int size;// количество эл-в в таблице
     int size_all_non_nullptr;//кол-во эл-в вместе с удаленными
     int* flag;//массив состояния элементов таблицы
+    int curr_index;
     TableString** table;
     unsigned int Hash1(const std::string& key);
     unsigned int Hash2(const std::string& key);
 public:
-    HashTableDouble(int _size)
+    HashTableDouble(int _size = 50)
     {
+        curr_index = 0;
         default_size = _size;
         size = 0;
         size_all_non_nullptr = 0;
@@ -41,10 +45,15 @@ public:
     }
 
     TableString* find_str(const std::string& key);
-    void insert(const TableString& data);
+    bool insert(const std::string& key, TableBody& data);
     bool erase(const std::string& key);
-    void print();
+    //void print();
+    TableBody* find(const std::string& key);
     bool is_full() const;
+    bool reset();
+    bool is_tab_ended() const;
+    bool go_next();
+    TableString* get_value();
 };
 
 

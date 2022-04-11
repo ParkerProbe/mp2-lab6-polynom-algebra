@@ -49,8 +49,8 @@ private:
     void polynom_menu();
     void print();
     void print_error(EqException eq);
-public:
-    Interface() :mode(Table_num::k_TABLE), k_table_size(6)
+public:///////////////////////////////////
+    Interface() :mode(Table_num::k_TABLE), k_table_size/*(4)*/(6)
     {
         tab = new Table * [k_table_size];
         tab[0] = new ArrayTable;
@@ -58,7 +58,7 @@ public:
         tab[2] = new ListTable;
         tab[3] = new RedBlackTree;
         //////////////////////////////////////////////////
-       // tab[4] = new HashTableDouble(100);
+        tab[4] = new HashTableDouble(100);
         tab[5] = new HashTableList(100);
     }
     void menu();

@@ -36,7 +36,13 @@ TableString* HashTableDouble::find_str(const std::string& key)
         h1 = (h1 + h2) % default_size;
         k++;
     }
+    return nullptr;
+}
 
+TableBody* HashTableDouble::find(const std::string& key)
+{
+    if ((*this).find_str(key) != nullptr)
+        return &(*this).find_str(key)->body;
     return nullptr;
 }
 
@@ -60,24 +66,25 @@ bool HashTableDouble::erase(const std::string& key)
     {
         flag[h1] = -1;
         size--;
+        return true;
     }
-    return true;//////////////////////////////////////
+    return false;
 }
 
-void HashTableDouble::insert(const TableString& data)
+bool HashTableDouble::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
         throw EqException(error_codes::k_OUT_OF_MEMORY);
     }
     int i = 0;
-    int h1 = Hash1(data.key);
-    int h2 = Hash2(data.key);
-    TableString* tmp = new TableString(data);
+    int h1 = Hash1(key);
+    int h2 = Hash2(key);
+    TableString* tmp = new TableString(key, data);
     int first_deleted = -1; // ���������� ������ ���������� (���������) �������
     while (first_deleted == -1 && flag[h1] != 0 && i < default_size)
     {
-        if (table[h1]->key == data.key && flag[h1] == 1)
-            return; // ����� ������� ��� ����
+        if (table[h1]->key == key && flag[h1] == 1)
+            return false; // ����� ������� ��� ����
         if (flag[h1] == -1) // ������� ����� ��� ������ ��������
             first_deleted = h1;
         h1 = (h1 + h2) % default_size;
@@ -94,16 +101,54 @@ void HashTableDouble::insert(const TableString& data)
         table[first_deleted] = tmp;
         size++;
     }
+    return true;
 }
 
 bool HashTableDouble::is_full() const
 {
-    try {
-        TableString* pNode = new TableString();
-    }
-    catch (std::bad_alloc& e) {
+    if (default_size - size > default_size/2)
         return 1;
-    }
-
+    else
     return 0;
 }
+
+bool  HashTableDouble::is_tab_ended() const
+{
+    return curr_index >= default_size;
+}
+
+bool HashTableDouble::reset()
+{
+    if (size != 0)
+    {
+        int i = 0;
+        curr_index = 0;
+        while (flag[curr_index + i] != 1 && curr_index + i < default_size)
+            i++;
+        curr_index = curr_index + i;
+        return is_tab_ended();
+    }
+    curr_index = 0;
+    return is_tab_ended();
+}
+
+bool HashTableDouble::go_next()
+{
+    if (is_tab_ended()) {
+        return false;
+    }
+    int i = 1;
+    while (flag[curr_index + i] != 1 && curr_index + i<default_size)
+        i++;
+    curr_index= curr_index + i;
+    if (is_tab_ended()) {
+        return false;
+    }
+    return true;
+}
+
+TableString* HashTableDouble::get_value()
+{
+    return table[curr_index];
+}
+

@@ -5,7 +5,7 @@ using std::cin;
 bool Interface::are_sure()
 {
     int ans;
-    std::cout << "PRESS Y IF YES, PRESS ANYTHING ELSE IF NO\n";
+    std::cout << "PRESS Y IF YES, PRESS ANYTHING ELSE IF NO\n\n";
     ans = _getch();
     if (ans == 'Y' || ans == 'y')
         return true;
@@ -14,33 +14,36 @@ bool Interface::are_sure()
 }
 bool Interface::is_tab_not_chosen()
 {
-    return mode != Table_num::k_TABLE;
+    return mode == Table_num::k_TABLE;
 }
 void Interface::menu()
 {
     const int k_com_num = 3;
     string commands[k_com_num] = { "1. OPERATIONS WITH POLYNOMS", "2. OPERATIONS WITH TABLES", "0. EXIT" };
     int input;
-    for (int i = 0; i < k_com_num; i++)
-        std::cout << commands[i];
     do {
+        for (int i = 0; i < k_com_num; i++)
+            std::cout << commands[i] << endl;
+        cout << endl;
         input = _getch();
         input -= '0';
         switch (input) {
         case 1: {
             polynom_menu();
+            break;
         }
         case 2: {
             table_menu();
+            break;
         }
-        case 3: {
+        case 0: {
             cout << "YOU REALLY WANT TO EXIT?\n";
             if (are_sure())
+            {
                 std::cout << "GOODBYE, HAVE A NICE DAY!\n";
-            return;
-        }
-        default: {
-            throw EqException(error_codes::k_UNDEFINED_EXCEPTION);
+                return;
+            }
+            break;
         }
         }
     } while (true);
@@ -57,17 +60,18 @@ void Interface::table_menu()
         "5. HASH TABLE (CHAIN METHOD)", "6. LIST HASH TABLE" };
     for (int i = 0; i < k_com_num; i++)
         cout << commands[i] << "\n";
+    cout << "\n";
     int local_input;
     do {
         input = _getch();
         input -= '0';
         if (is_tab_not_chosen())
-            if (input != 4)
+            if (input != 4 && input > 0 && input < 6)
             {
-                cout << "TABLE IS NOT CHOSEN!" << endl;
-                input = 4;
+                cout << "TABLE IS NOT CHOSEN!" << endl << "CHOOSE TABLE: \n" << endl;
+                goto choose_tab;
             }
-        switch (input)
+ inp:       switch (input)
         {
         case 1: {
             Interface::find();
@@ -81,7 +85,7 @@ void Interface::table_menu()
             Interface::erase();
             break;
         }
-        case 4: {
+ choose_tab:       case 4: {
             for (int i = 0; i < k_tables_num; i++)
                 std::cout << tables[i] << "\n";
             do {
@@ -92,29 +96,39 @@ void Interface::table_menu()
             {
             case 1: {
                 mode = Table_num::k_ARRAY_TABLE;
+                cout << endl << tables[0] << " HAD CHOSEN" << endl << endl;
+                goto inp;
                 break;
             }
             case 2: {
                 mode = Table_num::k_SORTED_ARRAY_TABLE;
+                cout << endl << tables[1] << " HAD CHOSEN" << endl << endl;
+                goto inp;
                 break;
             }
             case 3: {
                 mode = Table_num::k_LIST_TABLE;
+                cout << endl << tables[2] << " HAD CHOSEN" << endl << endl;
+                goto inp;
                 break;
             }
             case 4: {
                 mode = Table_num::k_RED_BLACK_TREE;
+                cout << endl << tables[3] << " HAD CHOSEN" << endl << endl;
+                goto inp;
                 break;
             }
             case 5: {
                 mode = Table_num::k_CHAIN_HASH_TABLE;
+                cout << endl << tables[4] << " HAD CHOSEN" << endl << endl;
+                goto inp;
                 break;
             }
             case 6: {
                 mode = Table_num::k_LIST_HASH_TABLE;
-            }
-            default: {
-                throw EqException(error_codes::k_UNDEFINED_EXCEPTION);
+                cout << endl << tables[5] << " HAD CHOSEN" << endl << endl;
+                goto inp;
+                break;
             }
             }
         }
@@ -134,7 +148,7 @@ void Interface::table_menu()
 ////////////////////////////////////////////////////////
 void Interface::polynom_menu()
 {
-    const int k_com_num = 5;
+    const int k_com_num = 2;
     string commands[k_com_num] = { "1. CALCULATE THE EXPRESSION", 
         "0. RETURN TO MAIN MENU" };
     for (int i = 0; i < k_com_num; i++)
@@ -186,6 +200,8 @@ void Interface::polynom_menu()
                 print_error(eq);
             }
         }
+        case 0:
+            break;
         }
     } while (input);
 }
