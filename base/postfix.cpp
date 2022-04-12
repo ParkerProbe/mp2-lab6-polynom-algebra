@@ -41,8 +41,9 @@ string TPostfix::to_postfix()
 		}
 		if ((prior(con) == 2) || (prior(con) == 3))
 		{
-			if (postfix != "")
-				postfix += "|";
+			if (postfix.size() != 0)
+				if (postfix[postfix.size() - 1] != '|')
+					postfix += "|";
 			if (sc.is_empty() == true)
 				sc.add(con);
 			else
@@ -115,7 +116,7 @@ Polynom TPostfix::calculate(Table** tab)
 		{
 			a = sd.get_top();
 			if (sd.is_empty() == true)
-				sd.add(a *= -1);
+					sd.add(a *= -1);
 			else
 			{
 				b = sd.get_top();
@@ -154,8 +155,10 @@ Polynom TPostfix::calculate(Table** tab)
 			sd.add(v);
 		}
 		else
-		a = *tab[5]->find(con)->poly;/////////////////////////////////
-
+		{
+			a = *tab[4]->find(con)->poly;/////////////////////////////////
+			sd.add(a);
+		}
 	}
 	a = sd.get_top();
 	if (sd.is_empty() != true)

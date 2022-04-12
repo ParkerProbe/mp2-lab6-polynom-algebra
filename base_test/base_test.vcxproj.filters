@@ -24,9 +24,6 @@
     <ClCompile Include="test_list_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test_monom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="test_array_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,6 +79,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="test_sorted_array_table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_hash_table_double.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

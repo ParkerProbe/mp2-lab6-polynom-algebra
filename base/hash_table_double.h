@@ -29,7 +29,10 @@ public:
         table = new TableString * [default_size];
         flag = new int [default_size];
         for (int i = 0; i < default_size; i++)
+        {
+            flag[i] = 0;
             table[i] = nullptr;
+        }
     }
 
     ~HashTableDouble()

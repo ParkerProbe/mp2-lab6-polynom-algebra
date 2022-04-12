@@ -189,7 +189,7 @@ Monom Monom::integral(char param)
         if (deg / 100 != 9)
         {
             tmp.deg += 100;
-            tmp.coef = tmp.coef / (deg / 100);
+            tmp.coef = tmp.coef / (tmp.deg / 100);
         }
     }
     if (param == 'y')
@@ -197,7 +197,7 @@ Monom Monom::integral(char param)
         if ((deg % 100) % 10 != 9)
         {
             tmp.deg += 10;
-            tmp.coef = tmp.coef / ((deg % 100) % 10);
+            tmp.coef = tmp.coef / ((tmp.deg % 100) % 10);
         }
     }
     if (param == 'z')
@@ -205,7 +205,7 @@ Monom Monom::integral(char param)
         if (deg % 10 != 9)
         {
             tmp.deg += 1;
-            tmp.coef = tmp.coef / (deg % 10);
+            tmp.coef = tmp.coef / (tmp.deg % 10);
         }
     }
     return tmp;
@@ -460,8 +460,8 @@ Polynom  Polynom::integral(char param)
     {
         tp = *it;
         tp.integral(param);
-        if (tp.get_coef() != 0)
-        tmp.add_monom(tp);
+        if (tp.integral(param).get_coef() != 0)
+        tmp.add_monom(tp.integral(param));
     }
     return tmp;
 }
@@ -475,8 +475,8 @@ Polynom  Polynom::derivative(char param)
     {
         tp = *it;
         tp.derivative(param);
-        if (tp.get_coef()!=0)
-        tmp.add_monom(tp);
+        if (tp.derivative(param).get_coef()!=0)
+        tmp.add_monom(tp.derivative(param));
     }
     return tmp;
 }
@@ -533,6 +533,22 @@ Polynom& Polynom::operator*=(const Polynom& other)
     return *this;
 }
 
+bool operator==(const Polynom& rhs, const Polynom& lhs)
+{
+    if (rhs.polynom.get_size() != lhs.polynom.get_size())
+        return false;
+    List<Monom>::iterator iter_lhs = rhs.polynom.begin();
+    List<Monom>::iterator iter_rhs = lhs.polynom.begin();
+    for (; iter_lhs != lhs.polynom.end() || iter_rhs != rhs.polynom.end(); ++iter_lhs, ++iter_rhs) {
+        if (((*iter_lhs).get_deg()) != ((*iter_rhs).get_deg())) {
+            return false;
+        }
+        if ((*iter_lhs).get_coef() != (*iter_rhs).get_coef()) {
+            return false;
+        }
+    }
+    return true;
+} 
 
 Polynom operator+(const Polynom& lhs, const Polynom& rhs)
 {

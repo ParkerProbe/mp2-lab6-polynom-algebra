@@ -2,30 +2,31 @@
 //void insert(const std::string& key, TableBody& data)
 bool ListTable::insert(const std::string& key, TableBody& data_)
 {
-    if (!find_str(key))/*!= nullptr*/ {
+    TableString* ts = find_str(key);
+    if (ts != nullptr) {
         return false;
     }
     TableString tmp(key, data_);
-    data.add(tmp);
+    data.insert(data.begin(), tmp);
     data_cnt++;
     return true;
 }
 bool ListTable::erase(const std::string& key)
-{////////////////////////////////
-    TableString* tmp;
-    tmp = find_str(key);
-    if (tmp == nullptr) {
-        return false;
+{
+    ListIterator<TableString> it = data.begin();
+    for (; it != data.end(); ++it) {
+        if ((*it).key == key)
+        {
+            data_cnt--;
+            data.erase(it);
+            return true;
+        }
     }
-    else
-    {
-        data_cnt--;
-        data.erase_first_found(*tmp);
-    }
+    return false;
 }
 TableBody* ListTable::find(const std::string& key)
 {
-    TableString* tmp = find_str(key);
+    TableString* tmp = (*this).find_str(key);
     if (tmp == nullptr) {
         return nullptr;
     }
@@ -35,17 +36,13 @@ TableBody* ListTable::find(const std::string& key)
 }
 TableString* ListTable::find_str(const std::string& key)
 {
+    for (ListIterator<TableString> it = data.begin(); it != data.end(); ++it) {
+        ;
+    }
     for (TableString tmp : data) {
         if (tmp.key == key) {
-            TableString* out = new TableString(tmp);
-            return out;
+            return &tmp;
         }
     }
     return nullptr;
 }
-//void ListTable::print()
-//{
-//    print_header();
-//    for (ListIterator<TableString> it = data.begin(); it != data.end(); ++it)
-//        std::cout << *it;
-//}

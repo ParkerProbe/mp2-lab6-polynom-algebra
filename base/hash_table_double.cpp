@@ -29,21 +29,15 @@ TableString* HashTableDouble::find_str(const std::string& key)
     int k = 0;
     int h1 = Hash1(key);
     int h2 = Hash2(key);
-    while (table[h1] != nullptr && k < default_size)
+    while (k < default_size)
     {
+        if (table[h1] == nullptr)
+            return nullptr;
         if ((table[h1]->key == key) && (flag[h1] == 1))
             return table[h1];
         h1 = (h1 + h2) % default_size;
         k++;
     }
-    return nullptr;
-}
-
-TableBody* HashTableDouble::find(const std::string& key)
-{
-    if ((*this).find_str(key) != nullptr)
-        return &(*this).find_str(key)->body;
-    return nullptr;
 }
 
 bool HashTableDouble::erase(const std::string& key)
@@ -52,9 +46,11 @@ bool HashTableDouble::erase(const std::string& key)
     int f = 0;
     int h1 = Hash1(key);
     int h2 = Hash2(key);
-    while (table[h1] != nullptr && k < default_size)
+    while (k < default_size)
     {
-        if (table[h1]->key == key)
+        if (table[h1] == nullptr)
+            return false;
+        if ((table[h1]->key == key) && (flag[h1] == 1))
         {
             f = 1;
             break;
@@ -93,12 +89,14 @@ bool HashTableDouble::insert(const std::string& key, TableBody& data)
     if (flag[h1] == 0) // ���� �� ������� ����������� �����, ������� ����� Node
     {
         table[h1] = tmp;
+        flag[h1] = 1;
         size_all_non_nullptr++;
         size++;
     }
-    else
+    else if(first_deleted!=-1)
     {
         table[first_deleted] = tmp;
+        flag[first_deleted] == 1;
         size++;
     }
     return true;
@@ -106,7 +104,7 @@ bool HashTableDouble::insert(const std::string& key, TableBody& data)
 
 bool HashTableDouble::is_full() const
 {
-    if (default_size - size > default_size/2)
+    if (size > default_size/2)
         return 1;
     else
     return 0;
@@ -150,5 +148,12 @@ bool HashTableDouble::go_next()
 TableString* HashTableDouble::get_value()
 {
     return table[curr_index];
+}
+
+TableBody* HashTableDouble::find(const std::string& key)
+{
+    if ((*this).find_str(key)!= nullptr)
+    return &(*this).find_str(key)->body;
+    return nullptr;
 }
 

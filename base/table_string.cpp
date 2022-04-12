@@ -18,7 +18,8 @@ std::ostream& operator<<(std::ostream& os, const TableString& ts)
     for (int i = ts.key.size(); i < 16; i++)
         os << ' ';
     os << vert;
-    os << ts.body.poly_string;
+    for (int i = 0; i < ts.body.poly_string.size() && i < 101; i++)
+        os << ts.body.poly_string[i];
     for (int i = 0; i < 101 - ts.body.poly_string.size(); i++)
         os << ' ';
     os << vert;

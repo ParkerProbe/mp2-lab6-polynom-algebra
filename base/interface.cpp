@@ -50,19 +50,19 @@ void Interface::menu()
 }
 void Interface::table_menu()
 {
-    const int k_com_num = 5;
+    const int k_com_num = 6;
     string commands[k_com_num] = { "1. FIND ELEMENT", "2. INSERT ELEMENT", "3. DELETE ELEMENT", 
-        "4. CHOOSE TABLE", "0. RETURN TO MAIN MENU" };
+        "4. CHOOSE TABLE", "5. DISPLAY THE TABLE", "0. RETURN TO MAIN MENU" };
     int input;
-    const int k_tables_num = 6;
+    const int k_tables_num = 7;
     string tables[k_tables_num] = { "1. UNSORTED ARRAY TABLE",
         "2. SORTED ARRAY TABLE","3. LIST TABLE", "4. RED-BLACK TREE",
-        "5. HASH TABLE (CHAIN METHOD)", "6. LIST HASH TABLE" };
-    for (int i = 0; i < k_com_num; i++)
-        cout << commands[i] << "\n";
-    cout << "\n";
+        "5. HASH TABLE (CHAIN METHOD)", "6. LIST HASH TABLE" ,"0. RETURN TO OPERATIONS WITH TABLES"};
     int local_input;
     do {
+        for (int i = 0; i < k_com_num; i++)
+            cout << commands[i] << "\n";
+        cout << "\n";
         input = _getch();
         input -= '0';
         if (is_tab_not_chosen())
@@ -97,43 +97,61 @@ void Interface::table_menu()
             case 1: {
                 mode = Table_num::k_ARRAY_TABLE;
                 cout << endl << tables[0] << " HAD CHOSEN" << endl << endl;
-                goto inp;
+                if (input != 4)
+                    goto inp;
                 break;
             }
             case 2: {
                 mode = Table_num::k_SORTED_ARRAY_TABLE;
                 cout << endl << tables[1] << " HAD CHOSEN" << endl << endl;
-                goto inp;
+                if (input != 4)
+                    goto inp;
                 break;
             }
             case 3: {
                 mode = Table_num::k_LIST_TABLE;
                 cout << endl << tables[2] << " HAD CHOSEN" << endl << endl;
-                goto inp;
+                if (input != 4)
+                    goto inp;
                 break;
             }
             case 4: {
                 mode = Table_num::k_RED_BLACK_TREE;
                 cout << endl << tables[3] << " HAD CHOSEN" << endl << endl;
-                goto inp;
+                if (input != 4)
+                    goto inp;
                 break;
             }
             case 5: {
                 mode = Table_num::k_CHAIN_HASH_TABLE;
                 cout << endl << tables[4] << " HAD CHOSEN" << endl << endl;
-                goto inp;
+                if (input != 4)
+                    goto inp;
                 break;
             }
             case 6: {
                 mode = Table_num::k_LIST_HASH_TABLE;
                 cout << endl << tables[5] << " HAD CHOSEN" << endl << endl;
-                goto inp;
+                if (input != 4)
+                    goto inp;
+                break;
+            }
+            case 0: {
+                if (is_tab_not_chosen()) {
+                    cout << "TABLE IS NOT CHOSEN!" << endl << "CHOOSE TABLE: \n" << endl;
+                    goto choose_tab;
+                }
                 break;
             }
             }
+            break;
+        }
+        case 5: {
+            print();
+            break;
         }
         case 0: {
-            break;
+            return;
         }
         }
     } while (input != '0');
@@ -153,6 +171,7 @@ void Interface::polynom_menu()
         "0. RETURN TO MAIN MENU" };
     for (int i = 0; i < k_com_num; i++)
         std::cout << commands[i] << "\n";
+    cout << endl;
     int input;
     do {
         input = _getch();
@@ -174,10 +193,17 @@ void Interface::polynom_menu()
         //}
         case 1: {
             string expression;
-            cout << "ENTER EXPTRESSION WITHOUT SPACES AND DELIMITERS\n";
+            cout << "PRINT EXPTRESSION WITHOUT SPACES AND DELIMITERS\n";
+            cout << "PRINT 0, IF YOU WANT TO RETURN TO OPERATIONS WITH TABLES" << endl;
             cin >> expression;
+            if (expression == "0")
+            {
+                cout << endl;
+                return;
+            }
             try { TPostfix postfix; 
             postfix.set_infix(expression);
+            postfix.to_postfix();
             Polynom tmp = postfix.calculate(tab);
             cout << "THE RESULT IS " << tmp << endl;
             cout << "DO YOU WANT TO SAVE THE POLYNOM?" << endl;
@@ -199,9 +225,11 @@ void Interface::polynom_menu()
             catch (EqException eq) {
                 print_error(eq);
             }
-        }
-        case 0:
             break;
+        }
+        case 0: {
+            return;
+        }
         }
     } while (input);
 }
@@ -213,16 +241,32 @@ void Interface::print_error(EqException eq)
 void Interface::find()
 {
     string key;
-    cout << "PRINT NAME OF POLYNOM" << endl;
+    cout << "PRINT NAME OF POLYNOM" << endl << "PRINT 0, IF YOU WANT TO RETURN TO OPERATIONS WITH TABLES" << endl;
     cin >> key;
-    if (tab[mode]->find(key) == nullptr)
-        cout << "THERE IS NO POLYNOMIAL WITH THAT NAME" << endl;
+    if (key == "0")
+    {
+        cout << endl;
+        return;
+    }
+    TableBody* tmp = tab[mode]->find(key);
+    if (tmp == nullptr) {
+        cout << "THERE IS NO POLYNOM WITH THAT NAME" << endl << endl;
+        return;
+    }
+    else {
+        cout << (*tmp).poly_string << endl << endl;
+    }
 }
 void Interface::insert()
 {
     string key;
-    cout << "PRINT NAME OF POLYNOM" << endl;
+    cout << "PRINT NAME OF POLYNOM" << endl << "PRINT 0, IF YOU WANT TO RETURN TO OPERATIONS WITH TABLES" << endl;
     cin >> key;
+    if (key == "0")
+    {
+        cout << endl;
+        return;
+    }
     cout << "PRINT POLYNOM" << endl;
     string poly_;
     cin >> poly_;
@@ -238,28 +282,35 @@ void Interface::insert()
         print_error(eq);
     }
     TableBody tmp(p);
-//    TableString tmp(key, TableBody(poly_));
-    for (int i = 0; i < k_table_size; i++)
-        if (tab[i]->insert(key, tmp))
+    for (int i = 0; i < 3; i++)
+        if (!tab[i]->insert(key, tmp))
         {
-            cout << "THERE IS AT LEAST ONE POLYNOMIAL WITH THE SAME NAME" << endl;
-            break;
+            cout << "A POLYNOM WITH THIS NAME IS ALREADY IN THE TABLE" << endl << endl;
+            return;
         }
+    cout << "SUCCESS!" << endl << endl;
 }
 void Interface::erase()
 {
     string key;
-    cout << "PRINT NAME OF POLYNOM" << endl;
+    cout << "PRINT NAME OF POLYNOM" << endl << "PRINT 0, IF YOU WANT TO RETURN TO OPERATIONS WITH TABLES" << endl;
     cin >> key;
+    if (key == "0")
+    {
+        cout << endl;
+        return;
+    }
     for (int i = 0; i < k_table_size; i++)
-        if (tab[i]->erase(key))
+        if (!tab[i]->erase(key))
         {
-            cout << "THERE IS NO POLYNOMIAL WITH THAT NAME" << endl;
-            break;
+            cout << "THERE IS NO POLYNOM WITH THAT NAME" << endl << endl;
+            return;
         }
+    cout << "SUCCESS!" << endl << endl;
 }
 //choose redefine or use table's print
 void Interface::print()
 {
     tab[mode]->print(tab[mode]);
+    cout << endl;
 }

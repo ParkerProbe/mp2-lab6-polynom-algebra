@@ -72,6 +72,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Polynom& pl);
     friend std::istream& operator>>(std::istream& is, Polynom& pl);
     std::string str() const;
+    friend bool operator==(const Polynom& rhs, const Polynom& lhs);
     //This block strongly depends on the preferences of a particular developer
 
 
@@ -92,7 +93,7 @@ public:
     void write_to_file(std::string path) const;
     void read_from_file(std::string path);
 };
-
+bool operator==(const Polynom& rhs, const Polynom& lhs);
 Polynom operator+(const Polynom& lhs, const Polynom& rhs);
 Polynom operator*(const Polynom& lhs, const Polynom& rhs);
 Polynom operator*(const Polynom& lhs, double num);
