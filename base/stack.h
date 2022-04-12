@@ -77,12 +77,19 @@ bool TStack<T>::is_empty()
 {
     if (top == -1)
         return true;
+    else {
+        return false;
+    }
 }
 template <class T>
 bool TStack<T>::is_full()
 {
-    if (top == size - 1)
+    if (top == size - 1) {
         return true;
+    }
+    else {
+        return false;
+    }
 }
 template <class T>
 void TStack<T>::set_size(int s)

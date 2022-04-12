@@ -98,12 +98,11 @@ bool HashTableList::reset()
     curr_pos = table[0]->begin();
     curr_index = 0;
     curr_pos_num = 0;
-    bool is_end = false;
     if (table[0]->get_size() == 0) {
-        is_end = go_next();
+        go_next();
         curr_pos_num = 0;
     }
-    return is_end;
+    return is_tab_ended();
 }
 
 bool HashTableList::go_next()
@@ -118,8 +117,7 @@ bool HashTableList::go_next()
         while (table[curr_index]->get_size() == 0) {
             curr_index++;
             if (is_tab_ended()) {
-                curr_index = p_curr_index;
-                return true; //is_tab_ended()
+                return is_tab_ended();
             }
         }
         curr_pos_num++;

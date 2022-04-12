@@ -29,13 +29,14 @@ void RedBlackTree::left_rotate(RBTNode* &root, RBTNode* x) {
 
 bool RedBlackTree::insert(const std::string& key, TableBody& data)
 {
-    if(find_str(key) == nullptr) {
+    if(find_str(key) != nullptr) {
         return false;
     }
 
     TableString* tmp = new TableString(key, data);
     RBTNode *z = new RBTNode(tmp, Red, nullptr, nullptr, nullptr);
     insert_in(root, z);
+    data_cnt++;
     return true;
 };
 
@@ -65,6 +66,7 @@ void RedBlackTree::insert_in(RBTNode* &root, RBTNode* node)
     }
     else {
         root = node;
+         ///////////////////////////////////////////
     }
     node->color = Red;
     insert_fix_up(root, node);
@@ -194,6 +196,7 @@ void RedBlackTree::remove(RBTNode*&root, RBTNode*node)
         }
 
         delete node;
+        data_cnt--;
         return;
     }
     if (node->left != nullptr) {
@@ -224,13 +227,17 @@ void RedBlackTree::remove(RBTNode*&root, RBTNode*node)
     if (color == Black) {
         remove_fix_up(root, child, parent);
     }
+    data_cnt--;
     delete node;
-
 }
 
 void RedBlackTree::remove_fix_up(RBTNode* &root, RBTNode* node, RBTNode*parent)
 {
     RBTNode* othernode;
+    if (root == nullptr) {
+        return;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////
     while ((!node) || node->color == Black && node != RedBlackTree::root) {
         if (parent->left == node) {
             othernode = parent->right;
@@ -295,7 +302,12 @@ void RedBlackTree::remove_fix_up(RBTNode* &root, RBTNode* node, RBTNode*parent)
 TableString* RedBlackTree::find_str(const std::string& key)
 {
     RBTNode* tmp = search(root, key);
-    return tmp->data;
+    if (tmp != nullptr) {
+        return tmp->data;
+    }
+    else {
+        return nullptr;
+    }
 
 }
 
@@ -387,12 +399,12 @@ bool RedBlackTree::go_next()
             node = node->left;
         }
         if ((current == nullptr) && !st.is_empty()) {
-            current = st.get_top();
+            current = st.info_top();
         }
         curr_pos++;
-        return true;
+        return is_tab_ended();
     } 
-    return false;
+    return is_tab_ended();
 }
 
 bool RedBlackTree::is_tab_ended() const
@@ -425,7 +437,7 @@ bool RedBlackTree::set_current_pos(int pos)
             cnt++;
         }
     }
-    return is_tab_ended();
+    return true;
 }
 
 // void RedBlackTree::preOrder() {
