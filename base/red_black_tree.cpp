@@ -32,7 +32,6 @@ bool RedBlackTree::insert(const std::string& key, TableBody& data)
     if(find_str(key) != nullptr) {
         return false;
     }
-
     TableString* tmp = new TableString(key, data);
     RBTNode *z = new RBTNode(tmp, Red, nullptr, nullptr, nullptr);
     insert_in(root, z);
@@ -66,7 +65,6 @@ void RedBlackTree::insert_in(RBTNode* &root, RBTNode* node)
     }
     else {
         root = node;
-         ///////////////////////////////////////////
     }
     node->color = Red;
     insert_fix_up(root, node);
@@ -237,7 +235,6 @@ void RedBlackTree::remove_fix_up(RBTNode* &root, RBTNode* node, RBTNode*parent)
     if (root == nullptr) {
         return;
     }
-    ///////////////////////////////////////////////////////////////////////////////////////
     while ((!node) || node->color == Black && node != RedBlackTree::root) {
         if (parent->left == node) {
             othernode = parent->right;
@@ -311,8 +308,6 @@ TableString* RedBlackTree::find_str(const std::string& key)
 
 }
 
-
-
 TableBody* RedBlackTree::find(const std::string& key)
 {
     TableString* tmp = (*this).find_str(key);
@@ -364,18 +359,18 @@ bool RedBlackTree::is_full() const
     try {
         TableString* ts = new TableString();
         RBTNode* rbtnode = new RBTNode(ts, Black, nullptr, nullptr, nullptr);
+        delete rbtnode;
     }
     catch(...) {
-        return 1;
+        return  false;
     }
-    return 0;
+    return true;
 }
 
 bool RedBlackTree::reset()
 {
     RBTNode* node = current = root;
     while (!st.is_empty()) {
-        // Clear stack
         st.get_top();
     }
 
