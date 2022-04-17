@@ -12,7 +12,7 @@ class HashTableDouble : public Table
 {
 private:
     int default_size;//размер таблицы
-    int size;// количество эл-в в таблице
+   // int size;// количество эл-в в таблице
     int size_all_non_nullptr;//кол-во эл-в вместе с удаленными
     int* flag;//массив состояния элементов таблицы
     int curr_index;
@@ -24,7 +24,8 @@ public:
     {
         curr_index = 0;
         default_size = _size;
-        size = 0;
+       // size = 0;
+        data_cnt = 0;
         size_all_non_nullptr = 0;
         table = new TableString * [default_size];
         flag = new int [default_size];
@@ -42,9 +43,9 @@ public:
         delete[] table;
     }
 
-    int get_size()
+    inline int get_data_count() const
     {
-        return size;
+        return data_cnt;
     }
 
     TableString* find_str(const std::string& key);

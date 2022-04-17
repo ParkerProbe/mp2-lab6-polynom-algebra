@@ -61,7 +61,7 @@ bool HashTableDouble::erase(const std::string& key)
     if (f == 1)
     {
         flag[h1] = -1;
-        size--;
+        data_cnt--;
         return true;
     }
     return false;
@@ -71,6 +71,10 @@ bool HashTableDouble::insert(const std::string& key, TableBody& data)
 {
     if (is_full()) {
         throw EqException(error_codes::k_OUT_OF_MEMORY);
+    }
+    TableString* tm = find_str(key);
+    if (tm != nullptr) {
+        return false;
     }
     int i = 0;
     int h1 = Hash1(key);
@@ -91,23 +95,23 @@ bool HashTableDouble::insert(const std::string& key, TableBody& data)
         table[h1] = tmp;
         flag[h1] = 1;
         size_all_non_nullptr++;
-        size++;
+        data_cnt++;
     }
     else if(first_deleted!=-1)
     {
         table[first_deleted] = tmp;
         flag[first_deleted] == 1;
-        size++;
+        data_cnt++;
     }
     return true;
 }
 
 bool HashTableDouble::is_full() const
 {
-    if (size > default_size/2)
-        return 1;
+    if (data_cnt > default_size/2)
+        return true;
     else
-    return 0;
+    return false;
 }
 
 bool  HashTableDouble::is_tab_ended() const
@@ -117,28 +121,13 @@ bool  HashTableDouble::is_tab_ended() const
 
 bool HashTableDouble::reset()
 {
-    if (size != 0)
-    {
-        int i = 0;
-        curr_index = 0;
-        while (flag[curr_index + i] != 1 && curr_index + i < default_size)
-            i++;
-        curr_index = curr_index + i;
-        return is_tab_ended();
-    }
     curr_index = 0;
     return is_tab_ended();
 }
 
 bool HashTableDouble::go_next()
 {
-    if (is_tab_ended()) {
-        return false;
-    }
-    int i = 1;
-    while (flag[curr_index + i] != 1 && curr_index + i<default_size)
-        i++;
-    curr_index= curr_index + i;
+    curr_index= curr_index + 1;
     if (is_tab_ended()) {
         return false;
     }
@@ -147,6 +136,12 @@ bool HashTableDouble::go_next()
 
 TableString* HashTableDouble::get_value()
 {
+    if (table[curr_index] == nullptr || flag[curr_index]!=1)
+    {
+        TableString *k= new TableString;
+
+        return k;
+    }
     return table[curr_index];
 }
 

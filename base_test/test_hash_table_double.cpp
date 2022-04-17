@@ -11,7 +11,7 @@ TEST(HashTableDouble, can_create_table)
 }
 
 
-/*TEST(HashTableDouble, can_insert_elem_in_tab)
+TEST(HashTableDouble, can_insert_elem_in_tab)
 {
     HashTableDouble tab;
     TableBody rec;
@@ -38,7 +38,7 @@ TEST(HashTableDouble, cant_insert_elem_with_same_key)
 
     EXPECT_EQ(tab.insert("1", rec1), false);
     EXPECT_EQ(tab.get_data_count(), 1);
-}*/
+}
 
 TEST(HashTableDouble, cant_find_when_is_empty)
 {
@@ -84,7 +84,7 @@ TEST(HashTableDouble, can_delete_existing_elem)
     EXPECT_EQ(tab.get_data_count(), 0);
 }
 
-/*TEST(HashTableDouble, cant_delete_non_existing_elem)
+TEST(HashTableDouble, cant_delete_non_existing_elem)
 {
     HashTableDouble tab;
     TableBody rec1;
@@ -116,6 +116,7 @@ TEST(HashTableDouble, cant_go_next)
     EXPECT_EQ(tab.go_next(), true);
 }
 
+//Íå àêòóàëüíî, ïîòîìó ÷òî ıòî õıø-òàáëèöà
 TEST(HashTableDouble, can_reset)
 {
     HashTableDouble tab;
@@ -145,19 +146,20 @@ TEST(HashTableDouble, can_check_is_tab_ended_1)
     EXPECT_EQ(tab.go_next(), true);
 }
 
-TEST(HashTableDouble, can_check_is_tab_ended_2)
-{
-    HashTableDouble tab;
-
-    EXPECT_EQ(tab.reset(), true);
-}*/
-
-TEST(HashTableDouble, can_get_value)
-{
-    HashTableDouble tab;
-    TableBody rec1;
-    tab.insert("1", rec1);
-    tab.reset();
-
-    EXPECT_EQ(tab.get_value()->get_key(), "1");
-}
+//Íå àêòóàëüíî, ïîòîìó ÷òî ıòî õıø-òàáëèöà
+//TEST(HashTableDouble, can_check_is_tab_ended_2)
+//{
+//    HashTableDouble tab;
+//
+//    EXPECT_EQ(tab.reset(), true);
+//}
+//
+//TEST(HashTableDouble, can_get_value)
+//{
+//    HashTableDouble tab;
+//    TableBody rec1;
+//    tab.insert("1", rec1);
+//    tab.reset();
+//
+//    EXPECT_EQ(tab.get_value()->get_key(), "1");
+//}
