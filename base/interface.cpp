@@ -169,11 +169,11 @@ void Interface::polynom_menu()
     const int k_com_num = 2;
     string commands[k_com_num] = { "1. CALCULATE THE EXPRESSION", 
         "0. RETURN TO MAIN MENU" };
-    for (int i = 0; i < k_com_num; i++)
-        std::cout << commands[i] << "\n";
-    cout << endl;
     int input;
     do {
+        for (int i = 0; i < k_com_num; i++)
+            std::cout << commands[i] << "\n";
+        cout << endl;        
         input = _getch();
         input -= '0';
         switch (input)
@@ -216,10 +216,11 @@ void Interface::polynom_menu()
                 cin >> name;
                 for (int i = 0; i < Interface::k_table_size; i++)
                 {
-                    if (tab[i]->insert(name, save)) {
-                        cout << "INSERTION PROBLEM" << endl;
+                    if (!tab[i]->insert(name, save)) {
+                        cout << "INSERTION PROBLEM" << endl << endl;
                     }
                 }
+                cout << "SUCCESS" << endl << endl;
                 return;
             }
             }
@@ -232,7 +233,7 @@ void Interface::polynom_menu()
             return;
         }
         }
-    } while (input);
+    } while (input != 0);
 }
 
 void Interface::print_error(EqException eq)
