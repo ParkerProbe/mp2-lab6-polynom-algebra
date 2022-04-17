@@ -13,12 +13,12 @@ class TableString;
 
 struct TableBody
 {
-    string poly_string;
-    Polynom* poly;
-    TableBody()
+    string poly_string; // строка полинома
+    Polynom* poly; // указатель на полином
+    TableBody() // конструктор по умолчанию
         : poly_string(), poly(nullptr)
     {}
-    TableBody(const Polynom& poly_)
+    TableBody(const Polynom& poly_) // конструктор преобразования полинома в тело записи
     {
         poly = new Polynom(poly_);
         poly_string = poly_.str();
@@ -27,19 +27,18 @@ struct TableBody
     ~TableBody() = default;
 };
 
-//Base element in every table
 class TableString
 {
 private:
     //private:
-    string key;
-    TableBody body;
+    string key; // Ключ записи
+    TableBody body; // Тело записи
 public:
-    TableString()
+    TableString() // Конструктор по умолчанию 
         :key("I"), body()
     {}
 
-    TableString(string key_, TableBody& body_)
+    TableString(string key_, TableBody& body_) // Конструктор инициализации
         : key(key_), body(body_)
     {
         const int k_MAX_NAME = 16;
@@ -59,41 +58,41 @@ public:
         }
     }
 
-    TableString(const TableString& other) = default;
-    ~TableString() = default;
+    TableString(const TableString& other) = default; // Конструктор копирования
+    ~TableString() = default; // Деструктор
 
-    TableString& operator=(const TableString& other) = default;
+    TableString& operator=(const TableString& other) = default; // Оператор присваивания
 
-    bool operator==(const TableString& other)
+    bool operator==(const TableString& other) // Оператор проверки на равенство
     {
         return key == other.key;
     }
-    bool operator!=(const TableString& other)
+    bool operator!=(const TableString& other) // Оператор проверки на неравенство
     {
         return key != other.key;
     }
 
-    bool operator<(const TableString& other)
+    bool operator<(const TableString& other) // Оператор "меньше"
     {
         return key < other.key;
     }
 
-    bool operator>(const TableString& other)
+    bool operator>(const TableString& other) // Оператор "больше"
     {
         return key > other.key;
     }
 
-    inline string get_key() const
+    inline string get_key() const // Получение ключа
     {
         return key;
     }
 
-    inline Polynom* get_polynom() const
+    inline Polynom* get_polynom() const // Получение указателя на полином
     {
         return body.poly;
     }
 
-    void print(std::ostream& os) const
+    void print(std::ostream& os) const // Простая печать строки
     {
         os << key << " " << body.poly_string << std::endl;
     }

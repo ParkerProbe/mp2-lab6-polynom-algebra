@@ -11,7 +11,7 @@ unsigned int HashTableList::Hash(const std::string& key)
     for (int i = 0; i < len; i++) {
         hashval = (hashval << 3) + key[i];
     }
-    return hashval;
+    return hashval % size;
 }
 
 TableString* HashTableList::find_str(const std::string& key)

@@ -220,6 +220,7 @@ void Interface::polynom_menu()
                         cout << "INSERTION PROBLEM" << endl;
                     }
                 }
+                return;
             }
             }
             catch (EqException eq) {
@@ -270,25 +271,27 @@ void Interface::insert()
     cout << "PRINT POLYNOM" << endl;
     string poly_;
     cin >> poly_;
-    try { Polynom p(poly_); }
-    catch (EqException eq)
-    {
-        print_error(eq);
-    }
-    Polynom p(poly_);
-    try { TableBody tmp(p); }
-    catch (EqException eq)
-    {
-        print_error(eq);
-    }
-    TableBody tmp(p);
-    for (int i = 0; i < 3; i++)
-        if (!tab[i]->insert(key, tmp))
-        {
-            cout << "A POLYNOM WITH THIS NAME IS ALREADY IN THE TABLE" << endl << endl;
-            return;
+    try { 
+        Polynom p(poly_);
+        try {
+            TableBody tmp(p);
+            for (int i = 0; i < 6; i++)
+                if (!tab[i]->insert(key, tmp))
+                {
+                    cout << "A POLYNOM WITH THIS NAME IS ALREADY IN THE TABLE" << endl << endl;
+                    return;
+                }
+            cout << "SUCCESS!" << endl << endl;
         }
-    cout << "SUCCESS!" << endl << endl;
+        catch (EqException eq)
+        {
+            print_error(eq);
+        }
+    }
+    catch (EqException eq)
+    {
+        print_error(eq);
+    }
 }
 void Interface::erase()
 {

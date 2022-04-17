@@ -46,7 +46,7 @@ TEST(ListTable, cant_find_when_is_empty)
     ListTable tab;
     TableBody rec1;
 
-    EXPECT_EQ(tab.insert("2", rec1), false);
+    EXPECT_EQ(tab.find("2"), nullptr);
 }
 
 TEST(ListTable, can_find_elem)
@@ -56,7 +56,7 @@ TEST(ListTable, can_find_elem)
     TableBody rec1(poly);
     tab.insert("1", rec1);
 
-    EXPECT_EQ(tab.find("1")->poly_string, "x+y");
+    EXPECT_EQ(tab.find("1")->poly_string, "+1x+1y");
 }
 
 TEST(ListTable, cant_find_elem)
@@ -105,6 +105,7 @@ TEST(ListTable, can_check_is_tab_ended_1)
     tab.reset();
     tab.go_next();
     tab.go_next();
+    tab.go_next();
 
     EXPECT_EQ(tab.is_tab_ended(), true);
 }
@@ -127,9 +128,11 @@ TEST(ListTable, cant_go_next)
     TableBody rec1;
     tab.insert("1", rec1);
     tab.reset();
-    tab.go_next();
-
-    EXPECT_EQ(tab.get_value()->get_key(), "1");
+    
+    EXPECT_EQ(tab.go_next(), true);
+    tab.reset();
+    tab.insert("2", rec1);
+    EXPECT_EQ(tab.go_next(), false);
 }
 
 TEST(ListTable, can_reset)
@@ -208,6 +211,7 @@ TEST(ListTable, can_get_value)
     ListTable tab;
     TableBody rec1;
     tab.insert("1", rec1);
+    tab.reset();
 
     EXPECT_EQ(tab.get_value()->get_key(), "1");
 }

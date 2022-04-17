@@ -20,7 +20,8 @@ TEST(HashTableList, can_hash_string)
 TEST(HashTableList, can_insert_elem_in_tab)
 {
     HashTableList tab;
-    TableBody rec;
+    Polynom p("x+y");
+    TableBody rec(p);
 
     EXPECT_EQ(tab.insert("1", rec), true);
     EXPECT_EQ(tab.get_data_count(), 1);

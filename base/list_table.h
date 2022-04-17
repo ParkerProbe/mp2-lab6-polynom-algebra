@@ -37,11 +37,8 @@ public:
     // go to first position of table, returns is_tab_ended()
     bool reset()
     {
-        if (is_tab_ended()) {
-            return true;
-        }
         cur_pos = data.begin();
-        return false;
+        return is_tab_ended();
     }
     // return cur_pos == data.end();
     bool is_tab_ended() const
@@ -51,13 +48,9 @@ public:
     // go to next position, returns is_tab_ended
     bool go_next()
     {
-        if (is_tab_ended()) {
-            return true;
-        }
-        else{
+        if (!is_tab_ended())
             ++cur_pos;
-            return true;
-        }
+        return is_tab_ended();
     }
     TableString* get_value()
     {
