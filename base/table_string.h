@@ -97,7 +97,7 @@ public:
         os << key << " " << body.poly_string << std::endl;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const TableString& ts);
+    friend std::ostream& operator<<(std::ostream& os, const TableString* ts);
 
     friend class ArrayTable;
     friend class Table;

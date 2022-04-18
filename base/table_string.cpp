@@ -14,14 +14,24 @@ std::ostream& operator<<(std::ostream& os, const TableString* ts)
     os << rigth_down;
     os << '\n';
     os << vert;
-    os << ts.key;
-    for (int i = ts.key.size(); i < 16; i++)
-        os << ' ';
-    os << vert;
-    for (int i = 0; i < ts.body.poly_string.size() && i < 101; i++)
-        os << ts.body.poly_string[i];
-    for (int i = 0; i < 101 - ts.body.poly_string.size(); i++)
-        os << ' ';
+    if (ts == nullptr)
+    {
+        for (int i = 1; i < 17; i++)
+            os << ' ';
+        os << vert;
+        for (int i = 0; i < 101; i++)
+            os << ' ';
+    }
+    else {
+        os << ts->key;
+        for (int i = ts->key.size(); i < 16; i++)
+            os << ' ';
+        os << vert;
+        for (int i = 0; i < ts->body.poly_string.size() && i < 101; i++)
+            os << ts->body.poly_string[i];
+        for (int i = 0; i < 101 - ts->body.poly_string.size(); i++)
+            os << ' ';
+    }
     os << vert;
     os << '\n';
     os << left_up;
