@@ -117,20 +117,20 @@ TEST(HashTableDouble, cant_go_next)
 }
 
 //Не актуально, потому что это хэш-таблица
-TEST(HashTableDouble, can_reset)
-{
-    HashTableDouble tab;
-    TableBody rec1;
-
-    tab.insert("1", rec1);
-    tab.insert("2", rec1);
-
-    tab.reset();
-    tab.go_next();
-    tab.reset();
-
-    EXPECT_EQ(tab.get_value()->get_key(), "1");
-}
+//TEST(HashTableDouble, can_reset)
+//{
+//    HashTableDouble tab;
+//    TableBody rec1;
+//
+//    tab.insert("1", rec1);
+//    tab.insert("2", rec1);
+//
+//    tab.reset();
+//    tab.go_next();
+//    tab.reset();
+//
+//    EXPECT_EQ(tab.get_value()->get_key(), "1");
+//}
 
 TEST(HashTableDouble, can_check_is_tab_ended_1)
 {

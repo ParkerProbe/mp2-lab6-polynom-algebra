@@ -114,11 +114,8 @@ bool HashTableList::go_next()
     int p_curr_index = curr_index;
     if ( ++curr_pos == table[curr_index]->end()) {
         curr_index++;
-        while (table[curr_index]->get_size() == 0) {
-            curr_index++;
-            if (is_tab_ended()) {
-                return is_tab_ended();
-            }
+        if (table[curr_index]->get_size() == 0) {
+            return is_tab_ended();
         }
         curr_pos_num++;
         curr_pos = table[curr_index]->begin();
@@ -150,6 +147,10 @@ bool HashTableList::set_current_pos(int pos)
 
 TableString*  HashTableList::get_value()
 {
+    if (table[curr_index]->get_size() == 0) {
+        return nullptr;
+    }
+
     return (*curr_pos);
 }
 

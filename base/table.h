@@ -92,7 +92,7 @@ public:
         print_header();
         bool b;
         for (tab->reset(); !tab->is_tab_ended(); tab->go_next()) {
-            cout << *tab->get_value();
+            cout << tab->get_value();
         }
        /* cout << "Table printing" << std::endl;
         for (tab.reset(); !tab.is_tab_ended(); tab.go_next()) {
