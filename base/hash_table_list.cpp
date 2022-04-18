@@ -114,6 +114,11 @@ bool HashTableList::go_next()
     int p_curr_index = curr_index;
     if ( ++curr_pos == table[curr_index]->end()) {
         curr_index++;
+
+        if (is_tab_ended()) {
+            return true;
+        }
+
         if (table[curr_index]->get_size() == 0) {
             return is_tab_ended();
         }

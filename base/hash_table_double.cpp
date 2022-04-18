@@ -138,9 +138,7 @@ TableString* HashTableDouble::get_value()
 {
     if (table[curr_index] == nullptr || flag[curr_index]!=1)
     {
-        TableString *k= new TableString;
-
-        return k;
+        return nullptr;
     }
     return table[curr_index];
 }
