@@ -98,10 +98,6 @@ bool HashTableList::reset()
     curr_pos = table[0]->begin();
     curr_index = 0;
     curr_pos_num = 0;
-    if (table[0]->get_size() == 0) {
-        go_next();
-        curr_pos_num = 0;
-    }
     return is_tab_ended();
 }
 

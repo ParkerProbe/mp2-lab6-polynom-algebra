@@ -116,22 +116,6 @@ TEST(HashTableDouble, cant_go_next)
     EXPECT_EQ(tab.go_next(), true);
 }
 
-//Íå àêòóàëüíî, ïîòîìó ÷òî ıòî õıø-òàáëèöà
-//TEST(HashTableDouble, can_reset)
-//{
-//    HashTableDouble tab;
-//    TableBody rec1;
-//
-//    tab.insert("1", rec1);
-//    tab.insert("2", rec1);
-//
-//    tab.reset();
-//    tab.go_next();
-//    tab.reset();
-//
-//    EXPECT_EQ(tab.get_value()->get_key(), "1");
-//}
-
 TEST(HashTableDouble, can_check_is_tab_ended_1)
 {
     HashTableDouble tab;
@@ -145,21 +129,3 @@ TEST(HashTableDouble, can_check_is_tab_ended_1)
 
     EXPECT_EQ(tab.go_next(), true);
 }
-
-//Íå àêòóàëüíî, ïîòîìó ÷òî ıòî õıø-òàáëèöà
-//TEST(HashTableDouble, can_check_is_tab_ended_2)
-//{
-//    HashTableDouble tab;
-//
-//    EXPECT_EQ(tab.reset(), true);
-//}
-//
-//TEST(HashTableDouble, can_get_value)
-//{
-//    HashTableDouble tab;
-//    TableBody rec1;
-//    tab.insert("1", rec1);
-//    tab.reset();
-//
-//    EXPECT_EQ(tab.get_value()->get_key(), "1");
-//}
